@@ -1,0 +1,57 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top mb-2" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">Pouet.com</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link {{#if navHome}}active{{/if}}" aria-current="page" href="/">Maison</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{#if navList}}active{{/if}}" href="/article/list">Lis des trucs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{#if navUser}}active{{/if}}" href="/user/register">Créer son compte</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{#if navUserList}}active{{/if}}" href="/user/list">Voir les gens</a>
+        </li>
+
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            eh oh hein
+          </a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">dors</a></li>
+            <li><a class="dropdown-item" href="/article/create">fais un truc</a></li>
+            <li><a class="dropdown-item" href="#">chépa</a></li>
+          </ul>
+        </li>
+      </ul>
+      <ul class="navbar-nav d-flex me-5">
+        {{#if username}}
+          <a class="btn btn-outline-success d-flex me-3" href="/user/read"><i class="bi bi-person-gear pe-2"></i> Gérer {{username}}</a>
+
+          
+        {{/if}}
+        <li class="nav-item me-2">
+          <a class="btn btn-outline-{{#if username}}danger rounded-pill{{else}}success px-4{{/if}} d-flex me-3" {{#if username}}href="/user/logout"><i class="bi bi-box-arrow-right"></i>
+            {{else}}
+            href="/user/login"> Se connecter
+            {{/if}}
+          </a>
+
+
+        </li>
+      </ul>
+      <form class="d-flex" role="search" action="/article/search" method="post">
+        <input class="form-control me-2" type="search" placeholder="Search" id="searchInput" name="search"
+          aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
