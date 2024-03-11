@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h1>Le blörg</h1>
+      <p>bienvenue en enfer les jeunes</p>
+    </div>
+    <hr />
+    <div class="col-md-9 mb-2">
+      <h3>Notre dernier article</h3>
+      {{#if latest}}
+        <div class="card">
+        <div class="card-header">
+          <h4>article [{{latest.id}}]
+            <a href="/article/read/{{latest.id}}" class="btn btn-success float-end">lis maintenant</a>
+          </h4>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{latest.title}}</h5>
+          <p class="card-text text-truncate">{{formatContent latest.content}}</p>
+
+        </div>
+      </div>
+      {{else}}
+        <div class="card">
+        <div class="card-header">
+          <h4>Oups
+            <a  class="btn btn-success float-end disabled">lis maintenant</a>
+          </h4>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Pas encore d'article</h5>
+          <p class="card-text text-truncate">Soyez patient...</p>
+
+        </div>
+      </div>
+      {{/if}}
+      
+    </div>
+  </div>
+</div>
+
