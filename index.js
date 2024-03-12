@@ -1,32 +1,47 @@
-const express = require("express");
-const { engine } = require("express-handlebars");
-const morgan = require("morgan");
+
+const session = require('express-session')
+
+
+let SequelizeStore = require("connect-session-sequelize")(session.Store);
+
+const express = require('express')
+const {engine} = require('express-handlebars')
+
+const path = require('path')
+const router = require('./api/router')
+const config = require('./config')
+
+
+const app = express()
+const port = 3000
+
+app.engine('hbs', engine({extname: '.hbs'}))
+app.set('view engine', 'hbs')
+
+app.use('/css', express.static(path.join(__dirname, 'assets/css')))
+app.use('/js', express.static(path.join(__dirname, 'assets/js')))
+
+try {
+  config.sequelize.authenticate();
+  console.log('Connection has been established successfully.');
+} catch (error) {
+  console.error('Unable to connect to the database:', error);
+}
+
 const Handlebars = require("handlebars");
-const path = require("path");
-
-const app = express();
-
+const MomentHandler = require("handlebars.moment");
+MomentHandler.registerHelpers(Handlebars);
 
 
 
-
-//* Setting the handlebar engine
-app.engine('hbs', engine({ extname: "hbs" }));
-app.set('view engine', 'hbs');
-app.use("/assets", express.static(path.join(__dirname, "/assets"))); 
-app.use("/css", express.static(path.join(__dirname, "assets/css"))); 
-//* Json format for req body
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }))
-//*Morgan for tracking */
-app.use(morgan('dev'));
-PORT = 3300
+app.use(express.urlencoded({extended:true}))
+app.use(express.json())
 
 
-app.listen(PORT, () => {
-    console.log( `Server is running on port ${PORT}`)
-})
+app.use('/', router)
 
-app.get("/", (req, res) => {
-    res.render("test")
+
+app.listen(port, () => {
+  console.log(`Example app listening at 127.0.0.1:${port}`)
+>>>>>>> f86ea21f5243ddaeecd74a66a80abb31ace26c94
 })
