@@ -1,0 +1,87 @@
+const { Sequelize, DataTypes } = require('sequelize');
+const config = require('../../config');
+const ParticipateEvent = require('./participateEventModel');
+const Event = require('./EventModel');
+const Category = require('./categoryModel');
+const Injury = require('./injuryModel');
+const Team = require('./teamModel');
+const User = require('./userModel');
+
+const Adherent = config.sequelize.define('Adherents', {
+    id_adherent: {
+        type: DataTypes.INTEGER,
+        autoIncrement: true,
+        primaryKey: true,
+    },
+    lastname: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    firstname: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    birthdate: {
+        type: DataTypes.DATE,
+        allowNull: false,
+    },
+    email: {
+        type: DataTypes.STRING,
+    },
+    address_number: {
+        type: DataTypes.STRING,
+    },
+    address_wording: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    postal_code: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+    },
+    city: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
+    isValidate: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false,
+    },
+    size: {
+        type: DataTypes.DECIMAL(1, 1),
+        allowNull: false,
+    },
+    weight: {
+        type: DataTypes.DECIMAL(3, 2),
+        allowNull: false,
+    },
+    tutor_lastname: {
+        type: DataTypes.STRING,
+    },
+    tutor_firstname: {
+        type: DataTypes.STRING,
+    },
+    tutor_email: {
+        type: DataTypes.STRING,
+    },
+}, {
+    timestamps: true
+})
+
+Adherent.belongsToMany(Event, {through: ParticipateEvent})
+Event.belongsToMany(Adherent, {through: ParticipateEvent})
+
+Adherent.belongsTo(Category)
+Category.belongsToMany(Adherent)
+
+Adherent.belongsToMany(Injury)
+Injury.hasOne(Adherent)
+
+Adherent.belongsTo(Team)
+Team.belongsToMany(Adherent)
+
+Adherent.belongsTo(User)
+User.belongsToMany(Adherent)
+
+module.exports = Adherent
