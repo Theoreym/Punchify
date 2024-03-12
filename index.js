@@ -43,5 +43,4 @@ app.use('/', router)
 
 app.listen(port, () => {
   console.log(`Example app listening at 127.0.0.1:${port}`)
->>>>>>> f86ea21f5243ddaeecd74a66a80abb31ace26c94
 })
