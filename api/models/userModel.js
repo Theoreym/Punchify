@@ -3,7 +3,7 @@ const config = require('../../config');
 const Profil = require('./profilModel');
 const Enable = require('./enableModel');
 
-const User = config.sequelize.define('Users', {
+const User = config.sequelize.define('users', {
     id_user: {
         type: DataTypes.INTEGER,
         autoIncrement: true,

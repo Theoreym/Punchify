@@ -1,7 +1,7 @@
 const { DataTypes } = require('sequelize');
 const config = require('../../config');
 
-const EventType = config.sequelize.define('eventTypes', {
+const EventType = config.sequelize.define('eventtypes', {
     id_event_type: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
