@@ -12,8 +12,7 @@ const Category = config.sequelize.define('categories',{
         allowNull: false
     }
 
-},{
-    timestamps: true
 })
+
 
 module.exports = Category

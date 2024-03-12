@@ -1,10 +1,8 @@
-const { Sequelize, DataTypes } = require('sequelize');
 const config = require('../../config');
 
-const Enable = config.sequelize.define('enable', {
+const Enable = config.sequelize.define('enables', {
     
-}, {
-    timestamps: true
 });
+
 
 module.exports = Enable

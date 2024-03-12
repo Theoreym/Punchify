@@ -36,12 +36,11 @@ const User = config.sequelize.define('Users', {
     },
     lastConnection: {
         type: DataTypes.DATE
-    },
-}, {
-    timestamps: true
+    }
 })
 
 User.belongsToMany(Profil, {through: Enable})
 Profil.belongsToMany(User, {through: Enable})
+
 
 module.exports = User

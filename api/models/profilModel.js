@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { DataTypes } = require('sequelize');
 const config = require('../../config');
 
 const Profil = config.sequelize.define('profils', {
@@ -11,8 +11,7 @@ const Profil = config.sequelize.define('profils', {
       type: DataTypes.STRING(100),
       allowNull: false
     }
-  },{
-    timestamps: true
   });
+
 
   module.exports = Profil

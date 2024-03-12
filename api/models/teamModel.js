@@ -12,14 +12,13 @@ const Team = config.sequelize.define('teams', {
         allowNull: false
     },
     weight_min: {
-        type: DataTypes.DECIMAL(3, 2),
+        type: DataTypes.DECIMAL(3, 2)
     },
     weight_max: {
-        type: DataTypes.DECIMAL(3, 2),
+        type: DataTypes.DECIMAL(3, 2)
     }
 
-}, {
-    timestamps: true
 })
+
 
 module.exports = Team

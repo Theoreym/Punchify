@@ -1,7 +1,7 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { DataTypes } = require('sequelize');
 const config = require('../../config');
 
-const EventType = config.sequelize.define('EventTypes', {
+const EventType = config.sequelize.define('eventTypes', {
     id_event_type: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -11,8 +11,7 @@ const EventType = config.sequelize.define('EventTypes', {
         type: DataTypes.STRING,
         allowNull: false
     },
-}, {
-    timestamps: true
 })
+
 
 module.exports = EventType

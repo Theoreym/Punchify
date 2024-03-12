@@ -7,7 +7,7 @@ const Injury = require('./injuryModel');
 const Team = require('./teamModel');
 const User = require('./userModel');
 
-const Adherent = config.sequelize.define('Adherents', {
+const Adherent = config.sequelize.define('adherents', {
     id_adherent: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -65,23 +65,22 @@ const Adherent = config.sequelize.define('Adherents', {
     tutor_email: {
         type: DataTypes.STRING,
     },
-}, {
-    timestamps: true
 })
 
 Adherent.belongsToMany(Event, {through: ParticipateEvent})
 Event.belongsToMany(Adherent, {through: ParticipateEvent})
 
-Adherent.belongsTo(Category)
-Category.belongsToMany(Adherent)
+Adherent.hasOne(Category)
+Category.belongsTo(Adherent)
 
-Adherent.belongsToMany(Injury)
+Adherent.belongsTo(Injury)
 Injury.hasOne(Adherent)
 
 Adherent.belongsTo(Team)
-Team.belongsToMany(Adherent)
+Team.hasMany(Adherent)
 
 Adherent.belongsTo(User)
-User.belongsToMany(Adherent)
+User.hasMany(Adherent)
+
 
 module.exports = Adherent

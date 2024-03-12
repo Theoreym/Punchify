@@ -1,10 +1,8 @@
-const { Sequelize, DataTypes } = require('sequelize');
 const config = require('../../config');
 
-const Convoke = config.sequelize.define('convoke', {
+const Convoke = config.sequelize.define('convokes', {
     
-}, {
-    timestamps: true
 });
+
 
 module.exports = Convoke

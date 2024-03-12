@@ -1,6 +1,5 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { DataTypes } = require('sequelize');
 const config = require('../../config');
-const Adherent = require('./adherentModel');
 
 const Injury = config.sequelize.define('injuries', {
     id_injury: {
@@ -23,8 +22,7 @@ const Injury = config.sequelize.define('injuries', {
         type: DataTypes.INTEGER,
         allowNull: false
     }
-}, {
-    timestamps: true
 })
+
 
 module.exports = Injury

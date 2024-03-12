@@ -1,7 +1,7 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { DataTypes } = require('sequelize');
 const config = require('../../config');
 
-const ParticipateEvent = config.sequelize.define('participateEvent', {
+const ParticipateEvent = config.sequelize.define('participateEvents', {
     summoned: {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
@@ -17,8 +17,6 @@ const ParticipateEvent = config.sequelize.define('participateEvent', {
         defaultValue: false,
         allowNull: false
     }
-}, {
-    timestamps: true
 });
 
 module.exports = ParticipateEvent

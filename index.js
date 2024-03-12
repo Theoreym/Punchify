@@ -14,6 +14,7 @@ const port = 3000
 app.engine('hbs', engine({extname: '.hbs'}))
 app.set('view engine', 'hbs')
 
+
 app.use('/css', express.static(path.join(__dirname, 'assets/css')))
 app.use('/img', express.static(path.join(__dirname, 'assets/img')))
 app.use('/js', express.static(path.join(__dirname, 'assets/js')))
@@ -33,7 +34,7 @@ MomentHandler.registerHelpers(Handlebars);
 
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
-
+  
 
 app.use('/', router)
 
