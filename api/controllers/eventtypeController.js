@@ -18,7 +18,7 @@ module.exports = {
 
     postUpdate: async  (req, res) => {
         await EventType.update({
-            event_type_wording: req.body.event_type_wording_update
+            event_type_wording: req.body.event_type_wording_update.toLowerCase()
             },{where: {id_event_type: req.params.id_event_type}
         });
         res.redirect('back');

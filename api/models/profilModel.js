@@ -7,6 +7,10 @@ const Profil = config.sequelize.define('profils', {
         primaryKey: true,
         autoIncrement: true
     },
+    profil_code: {
+      type: DataTypes.STRING(3),
+      allowNull: false
+    },
     profil_wording: {
       type: DataTypes.STRING(100),
       allowNull: false

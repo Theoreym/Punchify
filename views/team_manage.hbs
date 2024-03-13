@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 mx-auto">
-            <h1 class="text-center mt-5 mb-5 bg-primary p-1 rounded-4 fs-3">Gestion des catégories</h1>
+            <h1 class="text-center mt-5 mb-5 bg-primary p-1 rounded-4 fs-3">Gestion des catégories de poids</h1>
         </div>
     </div>
     <div class="row">
@@ -9,44 +9,44 @@
             <table class="table table-stripped">
                 <thead>
                     <tr>
-                        <th scope="col" class="w-50">Catégorie</th>
-                        <th scope="col" class="text-center">Âge mini</th>
-                        <th scope="col" class="text-center">Âge maxi</th>
+                        <th scope="col" class="w-50">Catégorie de poids</th>
+                        <th scope="col" class="text-center">Poids mini</th>
+                        <th scope="col" class="text-center">Poids maxi</th>
                         <th scope="col" class="text-center">Modifier</th>
                         <th scope="col" class="text-center">Supprimer</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {{#each category}}
+                    {{#each team}}
                     <tr>
-                        <td scope="row">{{category_wording}}</td>
-                        <td scope="row" class="text-center">{{age_min}}</td>
-                        <td scope="row" class="text-center">{{age_max}}</td>
+                        <td scope="row">{{team_wording}}</td>
+                        <td scope="row" class="text-center">{{weight_min}}</td>
+                        <td scope="row" class="text-center">{{weight_max}}</td>
                         <td class="text-center">
                             <a href="" class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
-                                data-bs-target="#updateModal{{id_category}}">Modifier</a>
+                                data-bs-target="#updateModal{{id_team}}">Modifier</a>
                         </td>
-                        <!-- Modal modifier la catégorie d'âge -->
-                        <div class="modal fade" id="updateModal{{id_category}}" tabindex="-1"
+                        <!-- Modal modifier la catégorie de poids -->
+                        <div class="modal fade" id="updateModal{{id_team}}" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modification d'une catégorie</h1>
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modification d'une catégorie de poids</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="/category/update/{{id_category}}" method="post">
-                                            <label for="category_wording_update" class="mb-1">Catégorie</label>
-                                            <input class="w-100 mb-2" type="text" name="category_wording_update"
-                                            id="category_wording_update" value="{{category_wording}}">
-                                            <label for="age_min_update" class="mb-1">Âge mini</label>
-                                            <input class="w-100 mb-2" type="number" name="age_min_update"
-                                            id="age_min_update" value="{{age_min}}">
-                                            <label for="age_maxi_update" class="mb-1">Âge maxi</label>
-                                            <input class="w-100 mb-2" type="number" name="age_max_update"
-                                            id="age_max_update" value="{{age_max}}">
+                                        <form action="/team/update/{{id_team}}" method="post">
+                                            <label for="team_wording_update" class="mb-1">Catégorie de poids</label>
+                                            <input class="w-100 mb-2" type="text" name="team_wording_update"
+                                            id="team_wording_update" value="{{team_wording}}">
+                                            <label for="weight_min_update" class="mb-1">Poids mini</label>
+                                            <input class="w-100 mb-2" type="number" step="any" name="weight_min_update"
+                                            id="weight_min_update" value="{{weight_min}}">
+                                            <label for="weight_maxi_update" class="mb-1">Poids maxi</label>
+                                            <input class="w-100 mb-2" type="number" step="any" name="weight_max_update"
+                                            id="weight_max_update" value="{{weight_max}}">
                                     </div>
                                     <div class="modal-footer">
                                             <button type="submit" class="btn btn-outline-success btn-sm">Modifier</button>
@@ -57,26 +57,26 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Fin Modal modifier la catégorie d'âge -->
+                        <!-- Fin Modal modifier la catégorie de poids-->
                         <td class="text-center">
                             <a href="" class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
-                                data-bs-target="#deleteModal{{id_category}}">Supprimer</a>
+                                data-bs-target="#deleteModal{{id_team}}">Supprimer</a>
                         </td>
-                        <!-- Modal supprimer la catégorie d'âge -->
-                        <div class="modal fade" id="deleteModal{{id_category}}" tabindex="-1"
+                        <!-- Modal supprimer la catégorie de poids -->
+                        <div class="modal fade" id="deleteModal{{id_team}}" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Suppression de la catégorie <span class="fw-bold fst-italic">{{category_wording}}</span></h1>
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Suppression de la catégorie de poids <span class="fw-bold fst-italic">{{team_wording}}</span></h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        Etes-vous sûr de vouloir supprimer cette catégorie ?
+                                        Etes-vous sûr de vouloir supprimer cette catégorie de poids ?
                                     </div>
                                     <div class="modal-footer">
-                                        <form action="/category/delete/{{id_category}}" method="post">
+                                        <form action="/team/delete/{{id_team}}" method="post">
                                             <button type="submit" class="btn btn-outline-success btn-sm">Supprimer
                                                 définitivement</button>
                                         </form>
@@ -86,19 +86,19 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Fin Modal supprimer la catégorie d'âge -->
+                        <!-- Fin Modal supprimer la catégorie de poids -->
                     </tr>
                     {{/each}}
                     <tr>
-                        <form action="/category/create" method="post">
+                        <form action="/team/create" method="post">
                             <td scope="row">
-                                <input class="w-100" type="text" name="category_wording" id="category_wording">
+                                <input class="w-100" type="text" name="team_wording" id="team_wording">
                             </td>
                              <td scope="row">
-                                <input class="w-100" type="number" name="age_min" id="age_min">
+                                <input class="w-100" type="number" step="any" name="weight_min" id="weight_min">
                             </td>
                              <td scope="row">
-                                <input class="w-100" type="number" name="age_max" id="age_max">
+                                <input class="w-100" type="number" step="any" name="weight_max" id="weight_max">
                             </td>
                             <td colspan=2 class="text-center">
                                 <button type="submit" class="btn btn-outline-success btn-sm">Ajouter</button>
