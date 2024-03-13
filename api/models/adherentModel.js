@@ -21,6 +21,10 @@ const Adherent = config.sequelize.define('adherents', {
         type: DataTypes.STRING,
         allowNull: false,
     },
+    sexe: {
+        type: DataTypes.STRING(1),
+        allowNull: false,
+    },
     birthdate: {
         type: DataTypes.DATE,
         allowNull: false,

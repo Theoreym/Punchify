@@ -1,0 +1,113 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <h1 class="text-center mt-5 mb-5 bg-primary p-1 rounded-4 display-6">Gestion des catégories</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <table class="table table-stripped">
+                <thead>
+                    <tr>
+                        <th scope="col" class="w-50">Catégories</th>
+                        <th scope="col" class="text-center">Âge mini</th>
+                        <th scope="col" class="text-center">Âge maxi</th>
+                        <th scope="col" class="text-center">Modifier</th>
+                        <th scope="col" class="text-center">Supprimer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each category}}
+                    <tr>
+                        <td scope="row ">{{category_wording}}</td>
+                        <td scope="row" class="text-center">{{age_min}}</td>
+                        <td scope="row" class="text-center">{{age_max}}</td>
+                        <td class="text-center">
+                            <a href="" class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#updateModal{{id_category}}">Modifier</a>
+                        </td>
+                        <!-- Modal modifier la catégorie d'âge -->
+                        <div class="modal fade" id="updateModal{{id_category}}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modification d'une catégorie</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+
+                                    <div class="modal-body">
+                                        <form action="/category/update/{{id_category}}" method="post">
+                                            <label for="category_wording_update">Catégorie</label>
+                                            <input class="w-100 mb-2" type="text" name="category_wording_update"
+                                            id="category_wording_update" value="{{category_wording}}">
+                                            <label for="age_min_update">Âge mini</label>
+                                            <input class="w-100 mb-2" type="text" name="age_min_update"
+                                            id="age_min_update" value="{{age_min}}">
+                                            <label for="age_maxi_update">Âge maxi</label>
+                                            <input class="w-100 mb-2" type="text" name="age_max_update"
+                                            id="age_max_update" value="{{age_max}}">
+                                    </div>
+                                    <div class="modal-footer">
+                                            <button type="submit" class="btn btn-outline-success btn-sm">Modifier</button>
+                                            <button type="button" class="btn btn-secondary btn-sm"
+                                            data-bs-dismiss="modal">Close</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Fin Modal modifier la catégorie d'âge -->
+                        <td class="text-center">
+                            <a href="" class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal{{id_category}}">Supprimer</a>
+                        </td>
+                        <!-- Modal supprimer la catégorie d'âge -->
+                        <div class="modal fade" id="deleteModal{{id_category}}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Suppression de la catégorie <span class="fw-bold">{{category_wording}}</span></h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Etes-vous sûr de vouloir supprimer cette catégorie ?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <form action="/category/delete/{{id_category}}" method="post">
+                                            <button type="submit" class="btn btn-outline-success btn-sm">Supprimer
+                                                définitivement</button>
+                                        </form>
+                                        <button type="button" class="btn btn-secondary btn-sm"
+                                            data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Fin Modal modifier le type d'évènement -->
+                    </tr>
+                    {{/each}}
+                    <tr>
+                        <form action="/category/create" method="post">
+                            <td scope="row">
+                                <input class="w-100" type="text" name="category_wording" id="category_wording">
+                            </td>
+                             <td scope="row">
+                                <input class="w-100" type="number" name="age_min" id="age_min">
+                            </td>
+                             <td scope="row">
+                                <input class="w-100" type="number" name="age_max" id="age_max">
+                            </td>
+                            <td colspan=2 class="text-center">
+                                <button type="submit" class="btn btn-outline-success btn-sm">Ajouter</button>
+                            </td>
+                        </form>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
