@@ -1,7 +1,6 @@
 const config = require('../../config');
 
 const Manage = config.sequelize.define('manages', {
-
 });
 
 

@@ -22,7 +22,7 @@ const Injury = config.sequelize.define('injuries', {
         type: DataTypes.INTEGER,
         allowNull: false
     }
-})
+});
 
 
-module.exports = Injury
+module.exports = Injury;

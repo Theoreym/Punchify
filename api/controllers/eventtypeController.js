@@ -5,15 +5,15 @@ module.exports = {
         const navEventTypeManage = true;
         const eventType = await EventType.findAll({ raw: true });
         //console.log(eventType);
-        res.render('eventType_manage', {eventType, navEventTypeManage})
+        res.render('eventType_manage', {eventType, navEventTypeManage});
     },
 
     postCreate: async (req, res) => {
-        //console.log(req.body)
+        //console.log(req.body);
         await EventType.create({
             event_type_wording: req.body.event_type_wording.toLowerCase()
-        })
-        res.redirect('back')
+        });
+        res.redirect('back');
     },
 
     postUpdate: async  (req, res) => {
@@ -31,4 +31,4 @@ module.exports = {
         });
         res.redirect('back');
     }
-}
+};

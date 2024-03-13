@@ -44,13 +44,13 @@ const Event = config.sequelize.define('events', {
         type: DataTypes.STRING(50),
         allowNull: false
     }
-})
+});
 
-Category.belongsToMany(Event, {through: Convoke})
-Event.belongsToMany(Category, {through: Convoke})
+Category.belongsToMany(Event, {through: Convoke});
+Event.belongsToMany(Category, {through: Convoke});
 
-Event.hasOne(EventType)
-EventType.belongsTo(Event)
+Event.hasOne(EventType);
+EventType.belongsTo(Event);
 
 
-module.exports = Event
+module.exports = Event;

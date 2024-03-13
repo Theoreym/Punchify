@@ -32,15 +32,15 @@ const User = config.sequelize.define('users', {
     },
     isVerified: {
         type: DataTypes.BOOLEAN,
-        allowNull: false,
+        allowNull: false
     },
     lastConnection: {
         type: DataTypes.DATE
     }
-})
+});
 
-User.belongsToMany(Profil, {through: Enable})
-Profil.belongsToMany(User, {through: Enable})
+User.belongsToMany(Profil, {through: Enable});
+Profil.belongsToMany(User, {through: Enable});
 
 
-module.exports = User
+module.exports = User;

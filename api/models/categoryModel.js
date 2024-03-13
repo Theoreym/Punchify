@@ -19,7 +19,7 @@ const Category = config.sequelize.define('categories',{
         type: DataTypes.INTEGER,
         allowNull: false
     }
-})
+});
 
 
-module.exports = Category
+module.exports = Category;

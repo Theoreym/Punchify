@@ -5,17 +5,17 @@ module.exports = {
         const navTeamManage = true;
         const team = await Team.findAll({ raw: true });
         //console.log(team);
-        res.render('team_manage', {team, navTeamManage})
+        res.render('team_manage', {team, navTeamManage});
     },
 
     postCreate: async (req, res) => {
-        //console.log(req.body)
+        //console.log(req.body);
         await Team.create({
             team_wording: req.body.team_wording.toLowerCase(),
             weight_min: req.body.weight_min,
             weight_max: req.body.weight_max
-        })
-        res.redirect('back')
+        });
+        res.redirect('back');
     },
 
     postUpdate: async  (req, res) => {
@@ -34,4 +34,4 @@ module.exports = {
         });
         res.redirect('back');
     }
-}
+};

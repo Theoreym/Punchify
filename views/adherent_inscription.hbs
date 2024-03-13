@@ -1,0 +1,121 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 my-4">
+            <h1 class="d-flex justify-content-center align-items-center bg-primary rounded-4 fs-4 h-100">Demande
+                d'adhésion</h1>
+        </div>
+        <div class="col-md-9 mx-auto my-4 py-4">
+            <form action="/adherent/create" method="post">
+                <div class="row">
+                    <div class="col-md-6 form-floating mb-3">
+                        <input type="text" class="form-control" id="lastname" name="lastname" aria-required="true"
+                            required>
+                        <label for="lastname">Nom</label>
+                    </div>
+                    <div class="col-md-6 form-floating mb-3">
+                        <input type="text" class="form-control" id="firstname" name="firstname" aria-required="true"
+                            required>
+                        <label for="firstname">Prénom</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-floating mb-3 d-flex flex-column">
+                        <div>
+                            Genre
+                        </div>
+                        <div class="ps-5">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="radioGenre" id="radioMen" value="M"
+                                    aria-required="true" required>
+                                <label class="form-check-label" for="radioMen">masuclin</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="radioGenre" id="radioWomen" value="F"
+                                    aria-required="true" required>
+                                <label class="form-check-label" for="radioWomen">féminin</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-floating mb-3">
+                        <input type="date" class="form-control" id="birthdate" name="birthdate" aria-required="true"
+                            required>
+                        <label for="birthdate">Date de naissance</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-floating mb-3">
+                        <input type="number" step="any" class="form-control" id="size" name="size" aria-required="true"
+                            required>
+                        <label for="size">Taille</label>
+                    </div>
+                    <div class="col-md-6 form-floating mb-3">
+                        <input type="number" class="form-control" id="weight" name="weight" aria-required="true"
+                            required>
+                        <label for="weight">Poids</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-floating mb-3">
+                        <input type="email" class="form-control" id="email" name="email">
+                        <label for="email">Email</label>
+                    </div>
+                    <div class="col-md-6 form-floating mb-3">
+                        <input type="text" class="form-control" id="phone" name="phone">
+                        <label for="phone">Numéro de portable</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-floating mb-3">
+                        <input type="text" class="form-control" id="adress_number" name="adress_number">
+                        <label for="adress_number">N° adresse</label>
+                    </div>
+                    <div class="col-md-6 form-floating mb-3">
+                        <input type="text" class="form-control" id="adress_wording" name="adress_wording"
+                            aria-required="true" required>
+                        <label for="adress_wording">Libellé adresse</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-floating mb-3">
+                        <input type="number" class="form-control" id="postal_code" name="postal_code"
+                            aria-required="true" required>
+                        <label for="postal_code">Code postal</label>
+                    </div>
+                    <div class="col-md-6 form-floating mb-3">
+                        <input type="text" class="form-control" id="city" name="city" aria-required="true" required>
+                        <label for="city">Ville</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 mb-3">
+                        <p class="d-flex justify-content-center align-items-center bg-primary rounded-4">Informations du
+                            réprésentant légal</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-floating mb-3">
+                        <input type="text" class="form-control" id="tutor_lastname" name="tutor_lastname">
+                        <label for="tutor_lastname">Nom du représentant légal</label>
+                    </div>
+                    <div class="col-md-6 form-floating mb-3">
+                        <input type="text" class="form-control" id="tutor_firstname" name="tutor_firstname">
+                        <label for="tutor_firstname">Prénom du représentant légal</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-floating mb-3">
+                        <input type="email" class="form-control" id="tutor_email" name="tutor_email">
+                        <label for="tutor_email">Email du représentant légal</label>
+                    </div>
+                    <div class="col-md-6 form-floating mb-3">
+                        <input type="text" class="form-control" id="tutor_phone" name="tutor_phone">
+                        <label for="tutor_phone">Numéro de portable du représentant légal</label>
+                    </div>
+                </div>
+                <div class="col text-center">
+                <button type="submit" class="btn btn-outline-success px-5">Adhérer !</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

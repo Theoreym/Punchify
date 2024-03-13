@@ -17,8 +17,7 @@ const Team = config.sequelize.define('teams', {
     weight_max: {
         type: DataTypes.DECIMAL(5, 2)
     }
+});
 
-})
 
-
-module.exports = Team
+module.exports = Team;

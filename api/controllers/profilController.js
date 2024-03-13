@@ -5,16 +5,16 @@ module.exports = {
         const navProfilManage = true;
         const profil = await Profil.findAll({ raw: true });
         //console.log(profil);
-        res.render('profil_manage', {profil, navProfilManage})
+        res.render('profil_manage', {profil, navProfilManage});
     },
 
     postCreate: async (req, res) => {
-        //console.log(req.body)
+        //console.log(req.body);
         await Profil.create({
             profil_code: req.body.profil_code.toLowerCase(),
             profil_wording: req.body.profil_wording.toLowerCase()
-        })
-        res.redirect('back')
+        });
+        res.redirect('back');
     },
 
     postUpdate: async  (req, res) => {
@@ -33,4 +33,4 @@ module.exports = {
         });
         res.redirect('back');
     }
-}
+};

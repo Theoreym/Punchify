@@ -18,4 +18,4 @@ const Profil = config.sequelize.define('profils', {
   });
 
 
-  module.exports = Profil
+  module.exports = Profil;

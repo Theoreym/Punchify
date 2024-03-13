@@ -19,4 +19,4 @@ const ParticipateEvent = config.sequelize.define('participateevents', {
     }
 });
 
-module.exports = ParticipateEvent
+module.exports = ParticipateEvent;

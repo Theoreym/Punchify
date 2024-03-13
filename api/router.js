@@ -1,18 +1,19 @@
-const express = require('express')
-const router = express.Router()
+const express = require('express');
+const router = express.Router();
 
 const homeController = require("./controllers/homeController");
 const eventtypeController = require('./controllers/eventtypeController');
 const categoryController = require('./controllers/categoryController');
 const teamController = require('./controllers/teamController');
 const profilController = require('./controllers/profilController');
+const adherentController = require('./controllers/adherentController');
 
 
 
 
 //*****     routes HomePage     *****//
 router.route('/')
-    .get(homeController.get)
+    .get(homeController.get);
 //***********************************//
 
 
@@ -77,6 +78,24 @@ router.route('/profil/update/:id_profil')
 
 router.route('/profil/delete/:id_profil')  
     .post(profilController.postDelete);
+//************************************//
+
+
+
+
+
+//*****     routes adherent     *****//
+router.route('/adherent/inscription')
+    .get(adherentController.getInscription);
+
+// router.route('/profil/create')
+//     .post(profilController.postCreate);
+
+// router.route('/profil/update/:id_profil')  
+//     .post(profilController.postUpdate);
+
+// router.route('/profil/delete/:id_profil')  
+//     .post(profilController.postDelete);
 //************************************//
 
 
