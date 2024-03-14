@@ -1,7 +1,6 @@
 const { DataTypes } = require('sequelize');
 const config = require('../../config');
 const Profil = require('./profilModel');
-const Enable = require('./enableModel');
 
 const User = config.sequelize.define('users', {
     id_user: {
@@ -28,8 +27,8 @@ const User = config.sequelize.define('users', {
     }
 });
 
-User.hasOne(Profil);
-Profil.belongsTo(User);
+User.belongsTo(Profil);
+Profil.hasOne(User);
 
 
 module.exports = User;

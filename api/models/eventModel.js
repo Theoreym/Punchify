@@ -49,8 +49,8 @@ const Event = config.sequelize.define('events', {
 Category.belongsToMany(Event, {through: Convoke});
 Event.belongsToMany(Category, {through: Convoke});
 
-Event.hasOne(EventType);
-EventType.belongsTo(Event);
+Event.belongsTo(EventType);
+EventType.hasOne(Event);
 
 
 module.exports = Event;

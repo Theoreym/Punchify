@@ -65,17 +65,17 @@ const Adherent = config.sequelize.define('adherents', {
 Adherent.belongsToMany(Event, {through: ParticipateEvent});
 Event.belongsToMany(Adherent, {through: ParticipateEvent});
 
-Adherent.hasOne(Category);
-Category.belongsTo(Adherent);
+Adherent.belongsTo(Category);
+Category.hasOne(Adherent);
 
-Adherent.belongsTo(Injury);
-Injury.hasOne(Adherent);
+Adherent.hasOne(Injury);
+Injury.belongsTo(Adherent);
 
-Adherent.hasOne(Team);
-Team.belongsTo(Adherent);
+Adherent.belongsTo(Team);
+Team.hasOne(Adherent);
 
-Adherent.hasOne(User);
-User.belongsTo(Adherent);
+Adherent.belongsTo(User);
+User.hasOne(Adherent);
 
 
 module.exports = Adherent;
