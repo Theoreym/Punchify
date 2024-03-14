@@ -17,17 +17,19 @@
           <a class="nav-link {{#if navUser}}active{{/if}}" href="/user/register">Créer son compte</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{#if navUserList}}active{{/if}}" href="/user/list">Voir les gens</a>
+          <a class="nav-link {{#if navAdherentInscription}}active{{/if}}" href="/adherent/inscription">Demande d'adhésion</a>
         </li>
-
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            eh oh hein
+          <a class="nav-link dropdown-toggle" href="/eventType/Manage" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Administration
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">dors</a></li>
-            <li><a class="dropdown-item" href="/article/create">fais un truc</a></li>
-            <li><a class="dropdown-item" href="#">chépa</a></li>
+             <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item {{#if navEventTypeManage}}active{{/if}}" href="/eventType/manage">Gestion des types d'évènements</a></li>
+            <li><a class="dropdown-item {{#if navCategoryManage}}active{{/if}}" href="/category/manage">Gestion des catégories</a></li>
+            <li><a class="dropdown-item {{#if navTeamManage}}active{{/if}}" href="/team/manage">Gestion des catégories de poids</a></li>
+            <li><a class="dropdown-item {{#if navProfilManage}}active{{/if}}" href="/profil/manage">Gestion des profils utilisateurs</a></li>
+            <li><hr class="dropdown-divider"></li>
           </ul>
         </li>
       </ul>

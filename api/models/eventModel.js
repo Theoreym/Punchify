@@ -1,4 +1,4 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { DataTypes } = require('sequelize');
 const config = require('../../config');
 const Convoke = require('./convokeModel');
 const Category = require('./categoryModel');
@@ -44,14 +44,13 @@ const Event = config.sequelize.define('events', {
         type: DataTypes.STRING(50),
         allowNull: false
     }
-}, {
-    timestamps: true
-})
+});
 
-Category.belongsToMany(Event, {through: Convoke})
-Event.belongsToMany(Category, {through: Convoke})
+Category.belongsToMany(Event, {through: Convoke});
+Event.belongsToMany(Category, {through: Convoke});
 
-Event.hasOne(EventType)
-EventType.belongsToMany(Event)
+Event.hasOne(EventType);
+EventType.belongsTo(Event);
 
-module.exports = Event
+
+module.exports = Event;
