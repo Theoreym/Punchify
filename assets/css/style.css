@@ -1,5 +1,5 @@
 :root {
-    --bs-body-color: #B3B3B3 !important; 
+    --bs-body-color: #B3B3B3 !important;
     --bs-body-color-rgb: 179, 179, 179 !important;
 
     --bs-body-bg: #121212 !important;
@@ -9,7 +9,7 @@
     --bs-secondary-color-rgb: 33, 33, 33 !important;
 
     --bs-secondary-bg: #1db954 !important;
-    --bs-secondary-bg-rgb: 29, 185 ,84 !important;
+    --bs-secondary-bg-rgb: 29, 185, 84 !important;
 
     --bs-tertiary-color: #E8E8E8 !important;
     --bs-tertiary-color-rgb: 83, 83, 83 !important;
@@ -21,7 +21,7 @@
     --bs-primary-rgb: 18, 18, 18 !important;
 
     --bs-secondary: #1db954 !important;
-    --bs-secondary-rgb: 29, 185 ,84 !important;
+    --bs-secondary-rgb: 29, 185, 84 !important;
 
     --bs-tertiary: #212121 !important;
     --bs-tertiary-rgb: 33, 33, 33 !important;
@@ -29,10 +29,11 @@
     --bs-dark: #212121 !important;
     --bs-dark-rgb: 33, 33, 33 !important;
 
-    --bs-emphasis-color: #B3B3B3 !important; 
+    --bs-emphasis-color: #B3B3B3 !important;
 }
 
-.form-control, .fight-option {
+.form-control,
+.fight-option {
     background-color: var(--bs-dark) !important;
     border-top: none !important;
     border-right: none !important;
@@ -48,12 +49,31 @@
     background-color: var(--bs-dark) !important;
 }
 
-.btn-outline-success, .schedule-btn, .aside-btn {
+.btn-outline-success,
+.schedule-btn,
+.aside-btn {
     color: var(--bs-secondary) !important;
-    border: 1px  solid var(--bs-secondary) !important;
+    border: 1px solid var(--bs-secondary) !important;
 }
 
-.btn-outline-success:hover, .schedule-btn:hover, .aside-btn:hover{
+.btn-outline-success:hover,
+.schedule-btn:hover,
+.aside-btn:hover {
     color: var(--bs-secondary-color) !important;
-    background-color: var(--bs-secondary-bg)! important ; 
+    background-color: var(--bs-secondary-bg) ! important;
 }
+
+
+/*########################################## Coach Part ( Abdelrahman ) ###################################################### */
+.info-coach-card {
+    background-color: rgb(42, 111, 42);
+    padding: 1rem;
+    color: #f4f4f4;
+    border-radius: .75rem;
+
+}
+
+.read {
+    background-color: red;
+}
+
