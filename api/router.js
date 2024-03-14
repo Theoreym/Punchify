@@ -7,6 +7,8 @@ const categoryController = require('./controllers/categoryController');
 const teamController = require('./controllers/teamController');
 const profilController = require('./controllers/profilController');
 const adherentController = require('./controllers/adherentController');
+const loginController = require('./controllers/loginController');
+const coachController = require('./controllers/coachController');
 
 
 
@@ -14,6 +16,12 @@ const adherentController = require('./controllers/adherentController');
 //*****     routes HomePage     *****//
 router.route('/')
     .get(homeController.get);
+//***********************************//
+
+
+//*****     routes login     *****//
+router.route('/login')
+    .get(loginController.get);
 //***********************************//
 
 
@@ -83,7 +91,6 @@ router.route('/profil/delete/:id_profil')
 
 
 
-
 //*****     routes adherent     *****//
 router.route('/adherent/inscription')
     .get(adherentController.getInscription);
@@ -97,6 +104,18 @@ router.route('/adherent/create')
 // router.route('/profil/delete/:id_profil')  
 //     .post(profilController.postDelete);
 //************************************//
+
+//*****     routes coach dashboard     *****//
+
+
+router.route('/coach/meeting')
+    .get(coachController.addMeeting);
+router.route('/coach/injury-notifications')
+    .get(coachController.injuryNotification);
+router.route('/coach/availability-notifications')
+    .get(coachController.meetingNotification);
+//************************************//
+
 
 
 

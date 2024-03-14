@@ -1,0 +1,28 @@
+<section class="container mt-5 vh-100">
+    <h2>Planifier une Rencontre avec un Combattant</h2>
+    <form method="/coach/meeting" method="POST">
+        <div class="mb-3">
+            <label for="figherName" class="form-label">Nom du Combattant</label>
+            <select class="form-select fight-option" id="studentName">
+                <option selected>Choisir...</option>
+                <option value="student1">Combattant 1</option>
+                <option value="student2">Combattant 2</option>
+                <option value="student3">Combattant 3</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="meetingDate" class="form-label">Date de la Rencontre</label>
+            <input type="date" class="form-control" id="meetingDate">
+        </div>
+        <div class="mb-3">
+            <label for="meetingTime" class="form-label">Heure de la Rencontre</label>
+            <input type="time" class="form-control" id="meetingTime">
+        </div>
+        <div class="mb-3">
+            <label for="meetingInfo" class="form-label">Informations sur la Rencontre</label>
+            <textarea class="form-control" id="meetingInfo" maxlength="250" rows="3" placeholder="Entrez toutes les informations ou instructions supplémentaires ici."></textarea>
+        </div>
+        <button type="submit" class="btn  schedule-btn">Planifier la Rencontre</button>
+    </form>
+</section>
+
