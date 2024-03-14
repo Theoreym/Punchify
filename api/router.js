@@ -88,8 +88,8 @@ router.route('/profil/delete/:id_profil')
 router.route('/adherent/inscription')
     .get(adherentController.getInscription);
 
-// router.route('/profil/create')
-//     .post(profilController.postCreate);
+router.route('/adherent/create')
+    .post(adherentController.postCreate);
 
 // router.route('/profil/update/:id_profil')  
 //     .post(profilController.postUpdate);

@@ -21,7 +21,7 @@ const Adherent = config.sequelize.define('adherents', {
         type: DataTypes.STRING,
         allowNull: false
     },
-    sexe: {
+    genre: {
         type: DataTypes.STRING(1),
         allowNull: false
     },

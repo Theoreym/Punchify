@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 mx-auto">
-            <h1 class="text-center mt-5 mb-5 bg-primary p-1 rounded-4 fs-3">Gestion des profils</h1>
+            <h1 class="text-center mt-5 mb-5 bg-secondary text-dark p-1 rounded-4 fs-3">Gestion des profils</h1>
         </div>
     </div>
     <div class="row">
@@ -37,10 +37,10 @@
                                     <div class="modal-body">
                                         <form action="/profil/update/{{id_profil}}" method="post">
                                             <label for="profil_code_update" class="mb-1">Code Profil</label>
-                                            <input class="w-100" type="text" name="profil_code_update"
+                                            <input class="form-control w-100" type="text" name="profil_code_update"
                                             id="profil_code_update" value="{{profil_code}}">
                                             <label for="profil_wording_update" class="mb-1">Profil</label>
-                                            <input class="w-100" type="text" name="profil_wording_update"
+                                            <input class="form-control w-100" type="text" name="profil_wording_update"
                                             id="profil_wording_update" value="{{profil_wording}}">
                                     </div>
                                     <div class="modal-footer">
@@ -87,10 +87,10 @@
                     <tr>
                         <form action="/profil/create" method="post">
                             <td scope="row">
-                                <input class="w-100" type="text" name="profil_code" id="profil_code">
+                                <input class="form-control w-100" type="text" name="profil_code" id="profil_code">
                             </td>
                             <td scope="row">
-                                <input class="w-100" type="text" name="profil_wording" id="profil_wording">
+                                <input class="form-control w-100" type="text" name="profil_wording" id="profil_wording">
                             </td>
                             <td colspan=2 class="text-center">
                                 <button type="submit" class="btn btn-outline-success btn-sm">Ajouter</button>
