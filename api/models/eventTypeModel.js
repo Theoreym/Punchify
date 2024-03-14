@@ -8,7 +8,7 @@ const EventType = config.sequelize.define('eventtypes', {
         primaryKey: true
     },
     event_type_wording: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(100),
         allowNull: false
     }
 });

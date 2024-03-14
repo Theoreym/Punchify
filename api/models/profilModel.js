@@ -12,8 +12,13 @@ const Profil = config.sequelize.define('profils', {
       allowNull: false
     },
     profil_wording: {
-      type: DataTypes.STRING(100),
+      type: DataTypes.STRING(255),
       allowNull: false
+    },
+    isAdmin: {
+      type: DataTypes.BOOLEAN,
+        defaultValue: false,
+        allowNull: false
     }
   });
 

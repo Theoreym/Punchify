@@ -28,7 +28,7 @@ const Event = config.sequelize.define('events', {
         type: DataTypes.TIME
     },
     place_name: {
-        type: DataTypes.STRING(100)
+        type: DataTypes.STRING(255)
     },
     address_number: {
         type: DataTypes.STRING(50)
@@ -41,7 +41,7 @@ const Event = config.sequelize.define('events', {
         type: DataTypes.INTEGER
     },
     city: {
-        type: DataTypes.STRING(50),
+        type: DataTypes.STRING(100),
         allowNull: false
     }
 });

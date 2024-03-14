@@ -16,8 +16,7 @@ const Category = config.sequelize.define('categories',{
         allowNull: false
     },
     age_max: {
-        type: DataTypes.INTEGER,
-        allowNull: false
+        type: DataTypes.INTEGER
     }
 });
 
