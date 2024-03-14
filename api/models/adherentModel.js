@@ -14,11 +14,11 @@ const Adherent = config.sequelize.define('adherents', {
         primaryKey: true
     },
     lastname: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(100),
         allowNull: false
     },
     firstname: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(100),
         allowNull: false
     },
     genre: {
@@ -29,17 +29,14 @@ const Adherent = config.sequelize.define('adherents', {
         type: DataTypes.DATE,
         allowNull: false
     },
-    email: {
-        type: DataTypes.STRING
-    },
     phone: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING(50),
     },
     address_number: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING(50)
     },
     address_wording: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(255),
         allowNull: false
     },
     postal_code: {
@@ -47,13 +44,8 @@ const Adherent = config.sequelize.define('adherents', {
         allowNull: false
     },
     city: {
-        type: DataTypes.STRING,
+        type: DataTypes.STRING(100),
         allowNull: false
-    },
-    isValidate: {
-        type: DataTypes.BOOLEAN,
-        allowNull: false,
-        defaultValue: false
     },
     size: {
         type: DataTypes.DECIMAL(3, 2),
@@ -63,34 +55,27 @@ const Adherent = config.sequelize.define('adherents', {
         type: DataTypes.DECIMAL(5, 2),
         allowNull: false
     },
-    tutor_lastname: {
-        type: DataTypes.STRING
-    },
-    tutor_firstname: {
-        type: DataTypes.STRING
-    },
-    tutor_email: {
-        type: DataTypes.STRING
-    },
-    tutor_phone: {
-        type: DataTypes.STRING(50)
+    isValidate: {
+        type: DataTypes.BOOLEAN,
+        allowNull: false,
+        defaultValue: false
     }
 });
 
 Adherent.belongsToMany(Event, {through: ParticipateEvent});
 Event.belongsToMany(Adherent, {through: ParticipateEvent});
 
-Adherent.hasOne(Category);
-Category.belongsTo(Adherent);
+Adherent.belongsTo(Category);
+Category.hasOne(Adherent);
 
-Adherent.belongsTo(Injury);
-Injury.hasOne(Adherent);
+Adherent.hasOne(Injury);
+Injury.belongsTo(Adherent);
 
 Adherent.belongsTo(Team);
-Team.hasMany(Adherent);
+Team.hasOne(Adherent);
 
 Adherent.belongsTo(User);
-User.hasMany(Adherent);
+User.hasOne(Adherent);
 
 
 module.exports = Adherent;
