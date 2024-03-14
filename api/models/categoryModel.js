@@ -7,13 +7,19 @@ const Category = config.sequelize.define('categories',{
         primaryKey: true,
         autoIncrement: true
     },
-    categorie_wording: {
+    category_wording: {
         type: DataTypes.STRING(100),
         allowNull: false
+    },
+    age_min: {
+        type: DataTypes.INTEGER,
+        allowNull: false
+    },
+    age_max: {
+        type: DataTypes.INTEGER,
+        allowNull: false
     }
+});
 
-},{
-    timestamps: true
-})
 
-module.exports = Category
+module.exports = Category;

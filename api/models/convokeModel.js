@@ -1,10 +1,7 @@
-const { Sequelize, DataTypes } = require('sequelize');
 const config = require('../../config');
 
-const Convoke = config.sequelize.define('convoke', {
-    
-}, {
-    timestamps: true
+const Convoke = config.sequelize.define('convokes', {
 });
 
-module.exports = Convoke
+
+module.exports = Convoke;

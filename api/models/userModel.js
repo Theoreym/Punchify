@@ -3,7 +3,7 @@ const config = require('../../config');
 const Profil = require('./profilModel');
 const Enable = require('./enableModel');
 
-const User = config.sequelize.define('Users', {
+const User = config.sequelize.define('users', {
     id_user: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
@@ -32,16 +32,15 @@ const User = config.sequelize.define('Users', {
     },
     isVerified: {
         type: DataTypes.BOOLEAN,
-        allowNull: false,
+        allowNull: false
     },
     lastConnection: {
         type: DataTypes.DATE
-    },
-}, {
-    timestamps: true
-})
+    }
+});
 
-User.belongsToMany(Profil, {through: Enable})
-Profil.belongsToMany(User, {through: Enable})
+User.belongsToMany(Profil, {through: Enable});
+Profil.belongsToMany(User, {through: Enable});
 
-module.exports = User
+
+module.exports = User;
