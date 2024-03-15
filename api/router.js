@@ -88,14 +88,29 @@ router.route('/profil/delete/:id_profil')
 router.route('/adherent/inscription')
     .get(adherentController.getInscription);
 
+router.route('/adherent/createbyuser')
+    .post(adherentController.postCreateByUser);
+
 router.route('/adherent/create')
     .post(adherentController.postCreate);
 
-// router.route('/profil/update/:id_profil')  
-//     .post(profilController.postUpdate);
+router.route('/adherent/manage')
+    .get(adherentController.getList);
 
-// router.route('/profil/delete/:id_profil')  
-//     .post(profilController.postDelete);
+router.route('/adherent/read/')  
+    .get(adherentController.getRead);
+
+router.route('/adherent/read/:id_adherent')  
+    .get(adherentController.getRead);
+
+router.route('/adherent/confirmAdhesion/:id_adherent')  
+    .post(adherentController.postConfirmAdhesion);
+
+router.route('/adherent/update/:id_adherent')  
+    .post(adherentController.postUpdate);
+
+router.route('/adherent/delete/:id_adherent')  
+    .post(adherentController.postDelete);
 //************************************//
 
 

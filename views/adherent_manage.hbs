@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <h1 class="text-center mt-5 mb-4 bg-secondary text-dark p-1 rounded-4 fs-3">Gestion des adhérents</h1>
+        </div>
+        <div class="col-md-8 mx-auto text-center mb-4">
+            <a href="/adherent/read/" class="btn btn-outline-success btn-sm">Ajouter un adhérent</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <table class="table table-stripped">
+                <thead>
+                    <tr>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Date de naissance</th>
+                        <th scope="col" class="text-center">Adhésion validée</th>
+                        <th scope="col" class="text-center">Voir la fiche</th>
+                        <th scope="col" class="text-center">Valider l'adhésion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each adherent}}
+                    <tr>
+                        <td scope="row">{{lastname}}</td>
+                        <td scope="row">{{firstname}}</td>
+                        <td scope="row">{{moment birthdate format="DD/MM/YYYY"}}</td>
+                        <td scope="row" class="text-center">{{isValidate}}</td>
+                        <td class="text-center">
+                            <a href="/adherent/read/{{id_adherent}}" class="btn btn-outline-success btn-sm">Voir la fiche</a>
+                        </td>
+                        <td class="text-center">
+                            <form action="/adherent/confirmAdhesion/{{id_adherent}}" method="post">
+                                <button type="submit" class="btn btn-outline-success btn-sm" {{#ifEquals isValidate 1}}disabled{{/ifEquals}}>Valider l'adhésion</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
