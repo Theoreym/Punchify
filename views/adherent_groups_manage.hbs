@@ -1,0 +1,95 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <h1 class="text-center mt-5 mb-4 bg-secondary text-dark p-1 rounded-4 fs-3">Gestion des groupes
+                d'adhérents<br>Catégories d'âge et de poids</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-5 form-control mb-3 d-flex flex-column w-50">
+            <form action="/adherent/groupsList/" method="post">
+            <div style="font-size:0.8em">
+                Catégorie
+            </div>
+            <div class="ps-5">
+                <select class="form-select form-select-sm" aria-label="Small select example" name="categoryIdCategory">
+                    <option {{#if categoryIdCategoryRequest}}{{else}}selected{{/if}}>Liste des Catégories</option>
+                    {{#each categories}}
+                    <option value="{{id_category}}" {{#ifEquals id_category @root.categoryIdCategoryRequest}}selected{{else}}{{/ifEquals}}>{{category_wording}}</option>
+                    {{/each}}
+                </select>
+            </div>
+        </div>
+        <div class="col-md-5 form-control mb-3 d-flex flex-column w-50">
+            <div style="font-size:0.8em">
+                Catégorie de poids
+            </div>
+            <div class="ps-5">
+                <select class="form-select form-select-sm" aria-label="Small select example" name="teamIdTeam">
+                    <option {{#if teamIdTeamRequest}}{{else}}selected{{/if}}>Liste des Catégories de Poids</option>
+                    {{#each teams}}
+                    <option value="{{id_team}}"{{#ifEquals id_team @root.teamIdTeamRequest}}selected{{else}}{{/ifEquals}}>{{team_wording}}</option>
+                    {{/each}}
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 mx-auto text-center mb-4">
+            <button type="submit" class="btn btn-outline-success btn-sm">Lancer</button>
+        </div>
+        </form>
+    </div>
+    {{#if adherents}}
+    <div class="row">
+        <div class="col-md-12 mx-auto">
+            <table class="table table-stripped">
+                <thead>
+                    <tr>
+                        <th scope="col">Selection</th>
+                        <th scope="col">Nom</th>
+                        <th scope="col">Prénom</th>
+                        <th scope="col">Date de naissance</th>
+                        <th scope="col" class="text-center">Adhésion validée</th>
+                        <th scope="col" class="text-center">Voir la fiche</th>
+                        <th scope="col" class="text-center">Valider l'adhésion</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each adherents}}
+                    <tr>
+                        <td scope="row">
+                            <input type="checkbox" name="selectedAdherents" value="{{dataValues.id_adherent}}">
+                        </td>
+                        <td scope="row">{{dataValues.lastname}}</td>
+                        <td scope="row">{{dataValues.firstname}}</td>
+                        <td scope="row">{{moment dataValues.birthdate format="DD/MM/YYYY"}}</td>
+                        <td scope="row" class="text-center">{{dataValues.isValidate}}</td>
+                        <td class="text-center">
+                            <a href="/adherent/read/{{dataValues.id_adherent}}"
+                                class="btn btn-outline-success btn-sm">Voir la fiche</a>
+                        </td>
+                        <td class="text-center">
+                            <form action="/adherent/confirmAdhesion/{{dataValues.id_adherent}}" method="post">
+                                <button type="submit" class="btn btn-outline-success btn-sm" {{#ifEquals dataValues.isValidate
+                                    1}}disabled{{/ifEquals}}>Valider l'adhésion</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 mx-auto text-center my-4">
+        <a href="" class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#updateModal{{id_event_type}}">Ajouter un adéherent au groupe</a>
+            <a href="" class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#updateModal{{id_event_type}}">Retirer la selection du groupe</a>
+            <a href="" class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#updateModal{{id_event_type}}">Transférer la selection vers un autre groupe</a>
+        </div>
+    </div>
+    {{/if}}
+</div>

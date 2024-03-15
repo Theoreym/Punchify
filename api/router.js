@@ -111,6 +111,12 @@ router.route('/adherent/update/:id_adherent')
 
 router.route('/adherent/delete/:id_adherent')  
     .post(adherentController.postDelete);
+
+router.route('/adherent/groups')
+    .get(adherentController.getGroups);
+
+router.route('/adherent/groupsList')
+    .post(adherentController.getGroupsList);
 //************************************//
 
 

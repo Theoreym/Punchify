@@ -131,7 +131,7 @@
                         <div class="ps-5">
                             <select class="form-select form-select-sm" aria-label="Small select example"
                                 name="userIdUser">
-                                <option selected>Liste des Utilisateurs</option>
+                                <option {{#if adherent}}{{else}}selected{{/if}}>Liste des Utilisateurs</option>
                                 {{#each users}}
                                 <option value="{{id_user}}" {{#if @root.adherent}}{{#ifCond id_user
                                     @root.adherent.userIdUser}}selected{{else}}{{/ifCond}}{{/if}}>{{email}}</option>
@@ -148,7 +148,7 @@
                         <div class="ps-5">
                             <select class="form-select form-select-sm" aria-label="Small select example"
                                 name="categoryIdCategory">
-                                <option selected>Liste des Catégories</option>
+                                <option {{#if adherent}}{{else}}selected{{/if}}>Liste des Catégories</option>
                                 {{#each categories}}
                                 <option value="{{id_category}}" {{#if @root.adherent}}{{#ifCond id_category
                                     @root.adherent.categoryIdCategory}}selected{{else}}{{/ifCond}}{{/if}}>
@@ -181,8 +181,9 @@
                         adherent}}Modifier{{else}}Créer{{/if}}</button>
                     {{#if adherent}}
                     <a href="" class="btn btn-outline-success" data-bs-toggle="modal"
-                                data-bs-target="#deleteModal{{id_adherent}}">Supprimer</a>
+                                data-bs-target="#deleteModal{{adherent.id_adherent}}">Supprimer</a>
                     {{/if}}
+                    <a href="javascript:history.go(-1)" class="btn btn-outline-success">Retour à la liste</a>
                 </div>
             </form>
             <!-- Modal supprimer l'adhérent -->

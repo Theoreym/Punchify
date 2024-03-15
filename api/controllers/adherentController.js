@@ -3,6 +3,8 @@ const Category = require("../models/categoryModel");
 const Team = require("../models/teamModel");
 const User = require("../models/userModel");
 
+const { Op } = require('sequelize');
+
 module.exports = {
     getInscription: async (req, res) => {
         const navAdherentInscription = true;
@@ -84,7 +86,7 @@ module.exports = {
     getList: async function (req,res) {
         const navAdherentManage = true;
         const adherent = await Adherent.findAll({ raw: true });
-        //console.log(team);
+        //console.log(adherent);
         res.render('adherent_manage', {adherent, navAdherentManage});
     },
     
@@ -142,7 +144,7 @@ module.exports = {
         },{where: {id_adherent: req.params.id_adherent}
         });
         console.log(adherent)
-        res.redirect('back');
+        res.redirect('/adherent/manage');
     }, 
 
     postDelete: async (req, res) => {
@@ -151,6 +153,62 @@ module.exports = {
         await Adherent.destroy({
             where:{id_adherent: req.params.id_adherent}
         });
-        res.render('adherent_manage');
+        res.redirect('/adherent/manage');
+    },
+
+    getGroups: async (req, res) => {
+        const navAdherentGroups = true;
+
+        const categories = await Category.findAll({ order: [['age_min', 'ASC']], raw: true });
+        const teams = await Team.findAll({ order: [['weight_max', 'ASC'],['weight_min', 'ASC']], raw: true });
+        const users = await User.findAll({ order: [['email', 'ASC']], raw: true });
+
+        res.render('adherent_groups_manage', { categories, teams, users, navAdherentGroups });
+    },
+
+    getGroupsList: async function (req,res) {
+        const navAdherentGroups = true;
+
+        const categoryIdCategoryRequest = req.body.categoryIdCategory;
+        const teamIdTeamRequest = req.body.teamIdTeam;
+        console.log(categoryIdCategoryRequest);
+        console.log(teamIdTeamRequest);
+
+        const categories = await Category.findAll({ order: [['age_min', 'ASC']], raw: true });
+        const teams = await Team.findAll({ order: [['weight_max', 'ASC'],['weight_min', 'ASC']], raw: true });
+        const users = await User.findAll({ order: [['email', 'ASC']], raw: true });
+
+        if (!isNaN(categoryIdCategoryRequest) && !isNaN(teamIdTeamRequest)) {
+            const adherents = await Adherent.findAll({
+                where: { 
+                    [Op.and]: [
+                        {categoryIdCategory: req.body.categoryIdCategory},
+                        {teamIdTeam: req.body.teamIdTeam}
+                    ]
+                }
+            },{ raw: true });
+    
+            res.render('adherent_groups_manage', {adherents, categories, teams, users, categoryIdCategoryRequest, teamIdTeamRequest, navAdherentGroups});    
+        } 
+
+        if (isNaN(teamIdTeamRequest)) {
+            const adherents = await Adherent.findAll({
+                where: { 
+                        categoryIdCategory: req.body.categoryIdCategory
+                }
+            },{ raw: true });
+        
+            res.render('adherent_groups_manage', {adherents, categories, teams, users, categoryIdCategoryRequest, navAdherentGroups});    
+        }
+
+        if (isNaN(categoryIdCategoryRequest)) {
+            const adherents = await Adherent.findAll({
+                where: { 
+                        teamIdTeam: req.body.teamIdTeam
+                }
+            },{ raw: true });
+        
+            res.render('adherent_groups_manage', {adherents, categories, teams, users, teamIdTeamRequest, navAdherentGroups});    
+        }  
     }
 }
