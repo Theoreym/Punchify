@@ -8,17 +8,19 @@
     <div class="row">
         <div class="col-md-5 form-control mb-3 d-flex flex-column w-50">
             <form action="/adherent/groupsList/" method="post">
-            <div style="font-size:0.8em">
-                Catégorie
-            </div>
-            <div class="ps-5">
-                <select class="form-select form-select-sm" aria-label="Small select example" name="categoryIdCategory">
-                    <option {{#if categoryIdCategoryRequest}}{{else}}selected{{/if}}>Liste des Catégories</option>
-                    {{#each categories}}
-                    <option value="{{id_category}}" {{#ifEquals id_category @root.categoryIdCategoryRequest}}selected{{else}}{{/ifEquals}}>{{category_wording}}</option>
-                    {{/each}}
-                </select>
-            </div>
+                <div style="font-size:0.8em">
+                    Catégorie
+                </div>
+                <div class="ps-5">
+                    <select class="form-select form-select-sm" aria-label="Small select example"
+                        name="categoryIdCategory">
+                        <option {{#if categoryIdCategoryRequest}}{{else}}selected{{/if}}>Liste des Catégories</option>
+                        {{#each categories}}
+                        <option value="{{id_category}}" {{#ifEquals id_category
+                            @root.categoryIdCategoryRequest}}selected{{else}}{{/ifEquals}}>{{category_wording}}</option>
+                        {{/each}}
+                    </select>
+                </div>
         </div>
         <div class="col-md-5 form-control mb-3 d-flex flex-column w-50">
             <div style="font-size:0.8em">
@@ -28,7 +30,8 @@
                 <select class="form-select form-select-sm" aria-label="Small select example" name="teamIdTeam">
                     <option {{#if teamIdTeamRequest}}{{else}}selected{{/if}}>Liste des Catégories de Poids</option>
                     {{#each teams}}
-                    <option value="{{id_team}}"{{#ifEquals id_team @root.teamIdTeamRequest}}selected{{else}}{{/ifEquals}}>{{team_wording}}</option>
+                    <option value="{{id_team}}" {{#ifEquals id_team
+                        @root.teamIdTeamRequest}}selected{{else}}{{/ifEquals}}>{{team_wording}}</option>
                     {{/each}}
                 </select>
             </div>
@@ -40,7 +43,7 @@
         </div>
         </form>
     </div>
-    {{#if adherents}}
+    {{#if listSelected}}
     <div class="row">
         <div class="col-md-12 mx-auto">
             <table class="table table-stripped">
@@ -71,8 +74,8 @@
                         </td>
                         <td class="text-center">
                             <form action="/adherent/confirmAdhesion/{{dataValues.id_adherent}}" method="post">
-                                <button type="submit" class="btn btn-outline-success btn-sm" {{#ifEquals dataValues.isValidate
-                                    1}}disabled{{/ifEquals}}>Valider l'adhésion</button>
+                                <button type="submit" class="btn btn-outline-success btn-sm" {{#ifEquals
+                                    dataValues.isValidate 1}}disabled{{/ifEquals}}>Valider l'adhésion</button>
                             </form>
                         </td>
                     </tr>
@@ -83,12 +86,27 @@
     </div>
     <div class="row">
         <div class="col-md-8 mx-auto text-center my-4">
-        <a href="" class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
-                                data-bs-target="#updateModal{{id_event_type}}">Ajouter un adéherent au groupe</a>
             <a href="" class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
-                                data-bs-target="#updateModal{{id_event_type}}">Retirer la selection du groupe</a>
+                data-bs-target="#updateModal{{id_event_type}}" id="btnAddAdherentOnList">Ajouter un adéherent au groupe</a>
             <a href="" class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
-                                data-bs-target="#updateModal{{id_event_type}}">Transférer la selection vers un autre groupe</a>
+                data-bs-target="#updateModal{{id_event_type}}">Retirer la selection du groupe</a>
+            <a href="" class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
+                data-bs-target="#updateModal{{id_event_type}}">Transférer la selection vers un autre groupe</a>
+        </div>
+    </div>
+    <div class="row visually-hidden" id="divAddAdherentOnList">
+        <div class="col-md-5 form-control mb-3 d-flex flex-column w-50">
+            <select class="form-select form-select-sm" aria-label="Small select example" name="adherentsAll">
+                <option {{#if adherentsAll}}{{else}}selected{{/if}}>Liste des Adhérents</option>
+                {{#each adherentsAll}}
+                <option value="{{id_adherent}}">{{lastname}} {{firstname}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="col-md-5 mb-3 d-flex flex-column w-50">
+            <form action="/adherent/addGroups/" method="post">
+                <button type="submit" class="btn btn-outline-success btn-sm">Ajouter l'adhérent</button>
+            </form>
         </div>
     </div>
     {{/if}}

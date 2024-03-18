@@ -171,24 +171,30 @@ module.exports = {
 
         const categoryIdCategoryRequest = req.body.categoryIdCategory;
         const teamIdTeamRequest = req.body.teamIdTeam;
-        console.log(categoryIdCategoryRequest);
-        console.log(teamIdTeamRequest);
+        // console.log(categoryIdCategoryRequest);
+        // console.log(teamIdTeamRequest);
 
         const categories = await Category.findAll({ order: [['age_min', 'ASC']], raw: true });
         const teams = await Team.findAll({ order: [['weight_max', 'ASC'],['weight_min', 'ASC']], raw: true });
-        const users = await User.findAll({ order: [['email', 'ASC']], raw: true });
+        const adherentsAll = await Adherent.findAll({ order: [['lastname', 'ASC']], raw: true });
+        //console.log(adherentsAll);
+        const listSelected = 1
 
         if (!isNaN(categoryIdCategoryRequest) && !isNaN(teamIdTeamRequest)) {
-            const adherents = await Adherent.findAll({
+            let adherents = await Adherent.findAll({
                 where: { 
                     [Op.and]: [
                         {categoryIdCategory: req.body.categoryIdCategory},
                         {teamIdTeam: req.body.teamIdTeam}
                     ]
                 }
-            },{ raw: true });
-    
-            res.render('adherent_groups_manage', {adherents, categories, teams, users, categoryIdCategoryRequest, teamIdTeamRequest, navAdherentGroups});    
+            }
+            // ,{ raw: true }
+            ); 
+            
+            adherents = adherents.toJSON();
+            const listSelected = 1; 
+            res.render('adherent_groups_manage', {adherents, categories, teams, categoryIdCategoryRequest, adherentsAll, teamIdTeamRequest, navAdherentGroups, listSelected});    
         } 
 
         if (isNaN(teamIdTeamRequest)) {
@@ -197,8 +203,8 @@ module.exports = {
                         categoryIdCategory: req.body.categoryIdCategory
                 }
             },{ raw: true });
-        
-            res.render('adherent_groups_manage', {adherents, categories, teams, users, categoryIdCategoryRequest, navAdherentGroups});    
+            const listSelected = 1;
+            res.render('adherent_groups_manage', {adherents, categories, teams, categoryIdCategoryRequest, adherentsAll, navAdherentGroups, listSelected});    
         }
 
         if (isNaN(categoryIdCategoryRequest)) {
@@ -207,8 +213,8 @@ module.exports = {
                         teamIdTeam: req.body.teamIdTeam
                 }
             },{ raw: true });
-        
-            res.render('adherent_groups_manage', {adherents, categories, teams, users, teamIdTeamRequest, navAdherentGroups});    
+            const listSelected = 1;
+            res.render('adherent_groups_manage', {adherents, categories, teams, teamIdTeamRequest, adherentsAll, navAdherentGroups, listSelected});    
         }  
     }
 }
