@@ -115,6 +115,12 @@ router.route('/coach/injury-notifications')
     .get(coachController.injuryNotification);
 router.route('/coach/availability-notifications')
     .get(coachController.meetingNotification);
+router.route('/coach/modify-team')
+    .get(coachController.modifyTeam)
+    .post(coachController.modifyTeamPatch)
+router.route('/injury-notification')
+    .post(coachController.injuryNotificationPost);
+
 //************************************//
 
 
