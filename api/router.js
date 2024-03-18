@@ -109,7 +109,8 @@ router.route('/adherent/create')
 
 
 router.route('/coach/meeting')
-    .get(coachController.addMeeting);
+    .get(coachController.addMeeting)
+    // .post(coachController.addMeetingPost)
 router.route('/coach/injury-notifications')
     .get(coachController.injuryNotification);
 router.route('/coach/availability-notifications')
