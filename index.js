@@ -1,15 +1,12 @@
+const express = require('express')
+const {engine, ExpressHandlebars} = require('express-handlebars')
 const session = require('express-session')
 
-
-let SequelizeStore = require("connect-session-sequelize")(session.Store);
-
-const express = require('express')
-const {engine} = require('express-handlebars')
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 const path = require('path')
 const router = require('./api/router')
 const config = require('./config')
-
 
 const app = express()
 const port = 3000
@@ -17,8 +14,11 @@ const port = 3000
 app.engine('hbs', engine({extname: '.hbs'}))
 app.set('view engine', 'hbs')
 
+
 app.use('/css', express.static(path.join(__dirname, 'assets/css')))
+app.use('/img', express.static(path.join(__dirname, 'assets/img')))
 app.use('/js', express.static(path.join(__dirname, 'assets/js')))
+
 
 try {
   config.sequelize.authenticate();
@@ -32,10 +32,9 @@ const MomentHandler = require("handlebars.moment");
 MomentHandler.registerHelpers(Handlebars);
 
 
-
 app.use(express.urlencoded({extended:true}))
 app.use(express.json())
-
+  
 
 app.use('/', router)
 

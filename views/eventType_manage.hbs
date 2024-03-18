@@ -1,0 +1,98 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <h1 class="text-center mt-5 mb-5 bg-primary p-1 rounded-4 fs-3">Gestion des types d'évènements</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <table class="table table-stripped">
+                <thead>
+                    <tr>
+                        <th scope="col" class="w-70">Type d'évènement</th>
+                        <th class="text-center" scope="col">Modifier</th>
+                        <th class="text-center" scope="col">Supprimer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each eventType}}
+                    <tr>
+                        <td scope="row">{{event_type_wording}}</td>
+                        <td class="text-center">
+                            <a href="" class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#updateModal{{id_event_type}}">Modifier</a>
+                        </td>
+                        <!-- Modal modifier le type d'évènement -->
+                        <div class="modal fade" id="updateModal{{id_event_type}}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modification d'un type
+                                            d'évènements</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="/eventType/update/{{id_event_type}}" method="post">
+                                            <label for="event_type_wording_update" class="mb-1">Type d'évènement</label>
+                                            <input class="w-100" type="text" name="event_type_wording_update"
+                                            id="event_type_wording_update" value="{{event_type_wording}}">
+                                    </div>
+                                    <div class="modal-footer">
+                                            <button type="submit" class="btn btn-outline-success btn-sm">Modifier</button>
+                                            <button type="button" class="btn btn-secondary btn-sm"
+                                            data-bs-dismiss="modal">Close</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Fin Modal modifier le type d'évènement -->
+                        <td class="text-center">
+                            <a href="" class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal{{id_event_type}}">Supprimer</a>
+                        </td>
+                        <!-- Modal supprimer le type d'évènement -->
+                        <div class="modal fade" id="deleteModal{{id_event_type}}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Suppression du type
+                                            d'évènements <span class="fw-bold fst-italic">{{event_type_wording}}</span></h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Etes-vous sûr de vouloir supprimer ce type d'évènement ?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <form action="/eventType/delete/{{id_event_type}}" method="post">
+                                            <button type="submit" class="btn btn-outline-success btn-sm">Supprimer
+                                                définitivement</button>
+                                        </form>
+                                        <button type="button" class="btn btn-secondary btn-sm"
+                                            data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Fin Modal modifier le type d'évènement -->
+                    </tr>
+                    {{/each}}
+                    <tr>
+                        <form action="/eventType/create" method="post">
+                            <td scope="row">
+                                <input class="w-100" type="text" name="event_type_wording" id="event_type_wording">
+                            </td>
+                            <td colspan=2 class="text-center">
+                                <button type="submit" class="btn btn-outline-success btn-sm">Ajouter</button>
+                            </td>
+                        </form>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

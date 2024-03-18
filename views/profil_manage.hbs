@@ -1,0 +1,104 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <h1 class="text-center mt-5 mb-5 bg-primary p-1 rounded-4 fs-3">Gestion des profils</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <table class="table table-stripped">
+                <thead>
+                    <tr>
+                        <th scope="col" style="width: auto;">Code Profil</th>
+                        <th scope="col">Profil</th>
+                        <th class="text-center" scope="col">Modifier</th>
+                        <th class="text-center" scope="col">Supprimer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each profil}}
+                    <tr>
+                        <td scope="row">{{profil_code}}</td>
+                        <td scope="row">{{profil_wording}}</td>
+                        <td class="text-center">
+                            <a href="" class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#updateModal{{id_profil}}">Modifier</a>
+                        </td>
+                        <!-- Modal modifier le profil -->
+                        <div class="modal fade" id="updateModal{{id_profil}}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modification d'un profil</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <form action="/profil/update/{{id_profil}}" method="post">
+                                            <label for="profil_code_update" class="mb-1">Code Profil</label>
+                                            <input class="w-100" type="text" name="profil_code_update"
+                                            id="profil_code_update" value="{{profil_code}}">
+                                            <label for="profil_wording_update" class="mb-1">Profil</label>
+                                            <input class="w-100" type="text" name="profil_wording_update"
+                                            id="profil_wording_update" value="{{profil_wording}}">
+                                    </div>
+                                    <div class="modal-footer">
+                                            <button type="submit" class="btn btn-outline-success btn-sm">Modifier</button>
+                                            <button type="button" class="btn btn-secondary btn-sm"
+                                            data-bs-dismiss="modal">Close</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Fin Modal modifier le profil -->
+                        <td class="text-center">
+                            <a href="" class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal{{id_profil}}">Supprimer</a>
+                        </td>
+                        <!-- Modal supprimer le type d'évènement -->
+                        <div class="modal fade" id="deleteModal{{id_profil}}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Suppression du profil <span class="fw-bold fst-italic">{{profil_wording}}</span></h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Etes-vous sûr de vouloir supprimer ce profil ?
+                                    </div>
+                                    <div class="modal-footer">
+                                        <form action="/profil/delete/{{id_profil}}" method="post">
+                                            <button type="submit" class="btn btn-outline-success btn-sm">Supprimer
+                                                définitivement</button>
+                                        </form>
+                                        <button type="button" class="btn btn-secondary btn-sm"
+                                            data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Fin Modal modifier le profil -->
+                    </tr>
+                    {{/each}}
+                    <tr>
+                        <form action="/profil/create" method="post">
+                            <td scope="row">
+                                <input class="w-100" type="text" name="profil_code" id="profil_code">
+                            </td>
+                            <td scope="row">
+                                <input class="w-100" type="text" name="profil_wording" id="profil_wording">
+                            </td>
+                            <td colspan=2 class="text-center">
+                                <button type="submit" class="btn btn-outline-success btn-sm">Ajouter</button>
+                            </td>
+                        </form>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

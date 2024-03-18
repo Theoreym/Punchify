@@ -1,6 +1,5 @@
-const { Sequelize, DataTypes } = require('sequelize');
+const { DataTypes } = require('sequelize');
 const config = require('../../config');
-const Adherent = require('./adherentModel');
 
 const Injury = config.sequelize.define('injuries', {
     id_injury: {
@@ -9,7 +8,7 @@ const Injury = config.sequelize.define('injuries', {
         autoIncrement: true
     },
     injury_wording: {
-        type: DataTypes.STRING(100),
+        type: DataTypes.STRING(255),
         allowNull: false
     },
     date_start: {
@@ -23,8 +22,8 @@ const Injury = config.sequelize.define('injuries', {
         type: DataTypes.INTEGER,
         allowNull: false
     }
-}, {
-    timestamps: true
-})
+    // Supprimer
+});
 
-module.exports = Injury
+
+module.exports = Injury;

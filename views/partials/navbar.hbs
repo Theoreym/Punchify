@@ -21,13 +21,16 @@
         </li>
 
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            eh oh hein
+          <a class="nav-link dropdown-toggle" href="/eventType/Manage" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Administration
           </a>
           <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">dors</a></li>
-            <li><a class="dropdown-item" href="/article/create">fais un truc</a></li>
-            <li><a class="dropdown-item" href="#">chépa</a></li>
+            <li><a class="dropdown-item {{#if navEventTypeManage}}active{{/if}}" href="/eventType/manage">Gestion des types d'évènements</a></li>
+            <li><a class="dropdown-item {{#if navCategoryManage}}active{{/if}}" href="/category/manage">Gestion des catégories</a></li>
+            <li><a class="dropdown-item {{#if navTeamManage}}active{{/if}}" href="/team/manage">Gestion des catégories de poids</a></li>
+            <li><a class="dropdown-item {{#if navProfilManage}}active{{/if}}" href="/profil/manage">Gestion des profils utilisateurs</a></li>
+            <li><a class="dropdown-item" href="/absence">Mes absences</a></li>
+            <li><a class="dropdown-item" href="/profil/boxer">Mon profil</a></li>
           </ul>
         </li>
       </ul>
@@ -40,7 +43,7 @@
         <li class="nav-item me-2">
           <a class="btn btn-outline-{{#if username}}danger rounded-pill{{else}}success px-4{{/if}} d-flex me-3" {{#if username}}href="/user/logout"><i class="bi bi-box-arrow-right"></i>
             {{else}}
-            href="/user/login"> Se connecter
+            <a href="/user/login"> Se connecter </a>
             {{/if}}
           </a>
 

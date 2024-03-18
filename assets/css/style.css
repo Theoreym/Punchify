@@ -1,0 +1,59 @@
+:root {
+    --bs-body-color: #B3B3B3 !important; 
+    --bs-body-color-rgb: 179, 179, 179 !important;
+
+    --bs-body-bg: #121212 !important;
+    --bs-body-bg-rgb: 18, 18, 18 !important;
+
+    --bs-secondary-color: #212121 !important;
+    --bs-secondary-color-rgb: 33, 33, 33 !important;
+
+    --bs-secondary-bg: #1db954 !important;
+    --bs-secondary-bg-rgb: 29, 185 ,84 !important;
+
+    --bs-tertiary-color: #E8E8E8 !important;
+    --bs-tertiary-color-rgb: 83, 83, 83 !important;
+
+    --bs-tertiary-bg: #212121 !important;
+    --bs-tertiary-bg-rgb: 33, 33, 33 !important;
+
+    --bs-primary: #121212 !important;
+    --bs-primary-rgb: 18, 18, 18 !important;
+
+    --bs-secondary: #1db954 !important;
+    --bs-secondary-rgb: 29, 185 ,84 !important;
+
+    --bs-tertiary: #212121 !important;
+    --bs-tertiary-rgb: 33, 33, 33 !important;
+
+    --bs-dark: #212121 !important;
+    --bs-dark-rgb: 33, 33, 33 !important;
+
+    --bs-emphasis-color: #B3B3B3 !important; 
+}
+
+.form-control {
+    background-color: var(--bs-dark) !important;
+    border-top: none !important;
+    border-right: none !important;
+    border-left: none !important;
+    border-bottom: var(--bs-border-width) solid #1db954 !important;
+}
+
+.form-control:focus {
+    box-shadow: none !important;
+}
+
+.form-floating>.form-control:not(:placeholder-shown)~label::after {
+    background-color: var(--bs-dark) !important;
+}
+
+.btn-outline-success {
+    color: var(--bs-secondary) !important;
+    border: 1px  solid var(--bs-secondary) !important;
+}
+
+.btn-outline-success:hover {
+    color: var(--bs-secondary-color) !important;
+    background-color: var(--bs-secondary-bg)! important ; 
+}
