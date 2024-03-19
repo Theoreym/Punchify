@@ -1,0 +1,216 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 pe-0 my-4">
+            <h1
+                class="d-flex flex-column justify-content-center align-items-center rounded-start-4 fs-4 h-100 bg-secondary text-dark">
+                <div>Fiche adhérent</div>
+                <div>{{#if adherent}}{{adherent.firstname}} {{adherent.lastname}}{{else}}Création{{/if}}</div>
+                {{#if adherent}}
+                <div class="mt-3 mb-2 text-body" style="font-size:0.5em">créée le {{moment createdAt
+                    format="DD/MM/YYYY"}}</div>
+                <div class="text-body" style="font-size:0.5em">modifiée le {{moment updatedAt format="DD/MM/YYYY"}}
+                </div>
+                {{/if}}
+            </h1>
+        </div>
+        <div class="col-md-9 mx-auto my-4 py-4 bg-dark rounded-end-4">
+            <form action={{#if adherent}}"/adherent/update/{{adherent.id_adherent}}"{{else}}"/adherent/create"{{/if}}
+                method="post" class="bg-dark">
+                <div class="row">
+                    <div class="col-md-6 form-floating mb-3">
+                        <input type="text" class="form-control" id="lastname" name="lastname" {{#if
+                            adherent}}value="{{adherent.lastname}}" {{/if}} required>
+                        <label for="lastname">Nom</label>
+                    </div>
+                    <div class="col-md-6 form-floating mb-3">
+                        <input type="text" class="form-control" id="firstname" name="firstname" aria-required="true"
+                            {{#if adherent}}value="{{adherent.firstname}}" {{/if}} required>
+                        <label for="firstname">Prénom</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-control mb-3 d-flex flex-column w-50">
+                        <div style="font-size:0.8em">
+                            Genre
+                        </div>
+                        <div class="ps-5" style="font-size:0.8em">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="radioGenre" id="radioMen" value="M"
+                                    aria-required="true" required {{#if adherent}}{{#ifEquals adherent.genre "M"
+                                    }}checked{{/ifEquals}}{{/if}}>
+                                <label class="form-check-label" for="radioMen">masuclin</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="radioGenre" id="radioWomen" value="F"
+                                    aria-required="true" required {{#if adherent}}{{#ifEquals adherent.genre "F"
+                                    }}checked{{/ifEquals}}{{/if}}>
+                                <label class="form-check-label" for="radioWomen">féminin</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-floating mb-3">
+                        <input type="date" class="form-control" id="birthdate" name="birthdate" aria-required="true"
+                            {{#if adherent}}value="{{moment adherent.birthdate format="YYYY-MM-DD"}}"{{/if}} required>
+                        <label for="birthdate">Date de naissance</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-floating mb-3">
+                        <input type="number" step="any" class="form-control" id="size" name="size" aria-required="true"
+                            {{#if adherent}}value="{{adherent.size}}" {{/if}} required>
+                        <label for="size">Taille</label>
+                    </div>
+                    <div class="col-md-6 form-floating mb-3">
+                        <input type="number" step="any" class="form-control" id="weight" name="weight"
+                            aria-required="true" {{#if adherent}}value="{{adherent.weight}}" {{/if}} required>
+                        <label for="weight">Poids</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-floating mb-3">
+                        <input type="text" class="form-control" id="phone" name="phone" {{#if
+                            adherent}}value="{{adherent.phone}}" {{/if}}>
+                        <label for="phone">Numéro de portable</label>
+                    </div>
+                    <div class="col-md-6 form-floating mb-3">
+                        <input type="email" class="form-control" id="user_email" name="user_email" {{#if
+                            adherent}}value="{{adherent.user.email}}" disabled{{/if}}>
+                        <label for="user_email">Email</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-floating mb-3">
+                        <input type="text" class="form-control" id="address_number" name="address_number" {{#if
+                            adherent}}value="{{adherent.address_number}}" {{/if}}>
+                        <label for="address_number">N° adresse</label>
+                    </div>
+                    <div class="col-md-6 form-floating mb-3">
+                        <input type="text" class="form-control" id="address_wording" name="address_wording" {{#if
+                            adherent}}value="{{adherent.address_wording}}" {{/if}} aria-required="true" required>
+                        <label for="address_wording">Libellé adresse</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-floating mb-3">
+                        <input type="number" class="form-control" id="postal_code" name="postal_code" {{#if
+                            adherent}}value="{{adherent.postal_code}}" {{/if}} aria-required="true" required>
+                        <label for="postal_code">Code postal</label>
+                    </div>
+                    <div class="col-md-6 form-floating mb-3">
+                        <input type="text" class="form-control" id="city" name="city" aria-required="true" {{#if
+                            adherent}}value="{{adherent.city}}" {{/if}} required>
+                        <label for="city">Ville</label>
+                    </div>
+                </div>
+                <div class="row mt-5">
+                    <div class="col-md-6 form-control mb-3 d-flex flex-column w-50">
+                        <div style="font-size:0.8em">
+                            Statut de l'adhésion
+                        </div>
+                        <div class="ps-5" style="font-size:0.8em">
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="radioIsValidate"
+                                    id="radioIsValidateY" value="1" aria-required="true" required {{#if
+                                    adherent}}{{#ifEquals adherent.isValidate "1" }}checked{{/ifEquals}}{{/if}}>
+                                <label class="form-check-label" for="radioMen">valide</label>
+                            </div>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="radio" name="radioIsValidate"
+                                    id="radioIsValidateN" value="0" aria-required="true" required {{#if
+                                    adherent}}{{#ifEquals adherent.isValidate "0" }}checked{{/ifEquals}}{{/if}}>
+                                <label class="form-check-label" for="radioWomen">à confirmer</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-control mb-3 d-flex flex-column w-50">
+                        <div style="font-size:0.8em">
+                            Utilisateur de connexion
+                        </div>
+                        <div class="ps-5">
+                            <select class="form-select form-select-sm" aria-label="Small select example"
+                                name="userIdUser">
+                                <option {{#if adherent}}{{else}}selected{{/if}}>Liste des Utilisateurs</option>
+                                {{#each users}}
+                                <option value="{{id_user}}" {{#if @root.adherent}}{{#ifCond id_user
+                                    @root.adherent.userIdUser}}selected{{else}}{{/ifCond}}{{/if}}>{{email}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-control mb-3 d-flex flex-column w-50">
+                        <div style="font-size:0.8em">
+                            Catégorie
+                        </div>
+                        <div class="ps-5">
+                            <select class="form-select form-select-sm" aria-label="Small select example"
+                                name="categoryIdCategory">
+                                <option {{#if adherent}}{{else}}selected{{/if}}>Liste des Catégories</option>
+                                {{#each categories}}
+                                <option value="{{id_category}}" {{#if @root.adherent}}{{#ifCond id_category
+                                    @root.adherent.categoryIdCategory}}selected{{else}}{{/ifCond}}{{/if}}>
+                                    {{category_wording}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 form-control mb-3 d-flex flex-column w-50">
+                        <div style="font-size:0.8em">
+                            Catégorie de poids
+                        </div>
+                        <div class="ps-5">
+                            <select class="form-select form-select-sm" aria-label="Small select example"
+                                name="teamIdTeam">
+                                <option {{#if adherent}}{{else}}selected{{/if}}>Liste des Catégories de Poids</option>
+                                {{#each teams}}
+                                <option value="{{id_team}}" {{#if @root.adherent}}{{#ifCond id_team
+                                    @root.adherent.teamIdTeam}}selected{{else}}{{/ifCond}}{{/if}}>{{team_wording}}
+                                </option>
+                                {{/each}}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col text-center">
+                    <button type="submit" class="btn btn-outline-success px-5">{{#if
+                        adherent}}Modifier{{else}}Créer{{/if}}</button>
+                    {{#if adherent}}
+                    <a href="" class="btn btn-outline-success" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal{{adherent.id_adherent}}">Supprimer</a>
+                    {{/if}}
+                    <a href="javascript:history.go(-1)" class="btn btn-outline-success">Retour à la liste</a>
+                </div>
+            </form>
+            <!-- Modal supprimer l'adhérent -->
+                        <div class="modal fade" id="deleteModal{{adherent.id_adherent}}" tabindex="-1"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Suppression de l'{{#ifEquals adherent.genre "M" }}adhérent{{else}}adhérente{{/ifEquals}} <span class="fw-bold fst-italic">{{adherent.firstname}} {{adherent.lastname}}</span></h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        Etes-vous sûr de vouloir supprimer {{#ifEquals adherent.genre "M" }}cet adhérent{{else}}cette adhérente{{/ifEquals}} ?
+                                    </div>
+                                    <div class="modal-footer">
+                                    <form action="/adherent/delete/{{adherent.id_adherent}}" method="post">
+                                        <button type="submit" class="btn btn-outline-success btn-sm">Supprimer
+                                                définitivement</button>
+                                    </form>
+                                        <button type="button" class="btn btn-secondary btn-sm"
+                                            data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+            <!-- Fin Modal  supprimer l'adhérent -->
+        </div>
+    </div>
+</div>

@@ -68,7 +68,7 @@ Event.belongsToMany(Adherent, {through: ParticipateEvent});
 Adherent.belongsTo(Category);
 Category.hasOne(Adherent);
 
-Adherent.hasOne(Injury);
+Adherent.hasMany(Injury);
 Injury.belongsTo(Adherent);
 
 Adherent.belongsTo(Team);

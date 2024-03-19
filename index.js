@@ -13,7 +13,20 @@ const config = require('./config');
 const app = express();
 const port = 3000;
 
-app.engine('hbs', engine({extname: '.hbs'}));
+app.engine('hbs', engine({
+  extname: '.hbs',
+  helpers: {
+    ifCond: function (v1, v2, option) {
+      if (v1===v2) {
+        return option.fn(this)
+      }
+      return option.inverse(this)
+    },
+    ifEquals: function(arg1, arg2, options) {
+      return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+    }
+  }
+}))
 app.set('view engine', 'hbs');
 
 
