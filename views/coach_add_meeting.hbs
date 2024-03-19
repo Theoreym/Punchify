@@ -1,0 +1,57 @@
+<section class="container mt-5">
+  <h2>Planifier une Rencontre avec un Combattant</h2>
+  <form action="/coach/meeting" method="POST">
+    <div class="mb-3">
+      <label for="figherName" class="form-label">Nom du Combattant</label>
+      <select class="form-select fight-option" id="figherName">
+        <option selected>Choisir...</option>
+        {{#each ad}}
+          <option name="player" value="{{this.id_adherent}}">{{this.firstname}} {{this.lastname}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="meetingDate" class="form-label">Date de la Rencontre</label>
+      <input type="date" name="date" class="form-control" id="meetingDate" />
+    </div>
+    <div class="mb-3">
+      <label for="meetingTime" class="form-label">Heure de la Rencontre</label>
+      <input type="time" name="time" class="form-control" id="meetingTime" />
+    </div>
+    <div class="mb-3">
+      <label for="meetingInfo" class="form-label">Informations sur la Rencontre</label>
+      <textarea class="form-control" name="message" id="meetingInfo" maxlength="250" rows="3" placeholder="Entrez toutes les informations ou instructions supplémentaires ici."></textarea>
+    </div>
+    <button type="submit" class="btn schedule-btn">Planifier la Rencontre</button>
+  </form>
+</section>
+<section class="container mt-5">
+  <h2>Envoyer une notification de blessure</h2>
+  <form action="/injury-notification" method="POST">
+    <div class="mb-3">
+      <label for="figherId" class="form-label">Nom du Combattant</label>
+      <select name="adherentId" class="form-select fight-option" id="figherId">
+        <option selected>Choisir...</option>
+        {{#each ad}}
+          <option name="player" value="{{this.id_adherent}}">{{this.firstname}} {{this.lastname}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="inuryDate" class="form-label">Date de la blessure</label>
+      <input type="date" name="startDate" class="form-control" id="inuryDate" />
+    </div>
+    <div class="mb-3">
+      <label for="inuryDate" class="form-label">Date de retour</label>
+      <input type="date" name="returnDate" class="form-control" id="inuryDate" />
+    </div>
+    <div class="mb-3">
+      <label for="message" class="form-label">Informations sur la blessure</label>
+      <textarea class="form-control" name="message" id="message" maxlength="250" rows="3" placeholder="Entrez toutes les informations ou instructions supplémentaires ici."></textarea>
+    </div>
+    <button type="submit" class="btn schedule-btn">Envoyer la notification</button>
+  </form>
+</section>
+
+
+
