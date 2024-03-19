@@ -47,8 +47,11 @@
             href="/user/login"> Se connecter
             {{/if}}
           </a>
-
-
+        </li>
+         <li>
+           <button class="btn aside-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
+               Coach Dashboard
+          </button>
         </li>
       </ul>
       <form class="d-flex" role="search" action="/article/search" method="post">
@@ -59,3 +62,38 @@
     </div>
   </div>
 </nav>
+
+<div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop" aria-labelledby="staticBackdropLabel">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="staticBackdropLabel">Gestion des Entraîneurs</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Fermer"></button>
+  </div>
+  <div class="offcanvas-body">
+    <ul class="list-group vh-75"> 
+      <li class="list-group-item active" aria-current="true">
+        <a href="/coach/meeting">Créer une Réunion et Notification</a>
+      </li>
+      <li class="list-group-item">
+        <a href="/coach/modify-team">Modifier une Équipe Déjà Formée</a> 
+      </li>
+      <li class="list-group-item">
+        <a href="/coach/injury-notifications">Notification de Blessure</a>
+      </li>
+      <li class="list-group-item">
+        <a href="/coach/availability-notifications">Notification de Disponibilité des Combattants</a> 
+      </li>
+    </ul>
+  </div>
+</div>
+
+<style>
+  .list-group-item a {
+    text-decoration: none; 
+    color: inherit; 
+    transition: color 0.3s;
+  }
+
+  .list-group-item a:hover {
+    color: white;
+  }
+</style>

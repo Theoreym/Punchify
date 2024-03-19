@@ -7,6 +7,9 @@ const categoryController = require('./controllers/categoryController');
 const teamController = require('./controllers/teamController');
 const profilController = require('./controllers/profilController');
 const adherentController = require('./controllers/adherentController');
+const loginController = require('./controllers/loginController');
+const coachController = require('./controllers/coachController');
+
 
 
 
@@ -15,6 +18,14 @@ const adherentController = require('./controllers/adherentController');
 router.route('/')
     .get(homeController.get);
 //***********************************//
+
+
+
+//*****     routes login     *****//
+router.route('/login')
+    .get(loginController.get);
+//***********************************//
+
 
 
 
@@ -32,7 +43,7 @@ router.route('/eventType/delete/:id_event_type')
     .post(eventtypeController.postDelete);
 //************************************//
 
-
+    
 
 //*****     routes category     *****//   
 router.route('/category/manage')
@@ -81,9 +92,6 @@ router.route('/profil/delete/:id_profil')
 //************************************//
 
 
-
-
-
 //*****     routes adherent     *****//
 router.route('/adherent/inscription')
     .get(adherentController.getInscription);
@@ -128,6 +136,24 @@ router.route('/adherent/addToGroups/:id_teamSelected')
     .post(adherentController.postAddToGroups);
 //************************************//
 
+
+//*****     routes coach dashboard     *****//
+
+
+router.route('/coach/meeting')
+    .get(coachController.addMeeting)
+    // .post(coachController.addMeetingPost)
+router.route('/coach/injury-notifications')
+    .get(coachController.injuryNotification);
+router.route('/coach/availability-notifications')
+    .get(coachController.meetingNotification);
+router.route('/coach/modify-team')
+    .get(coachController.modifyTeam)
+    .post(coachController.modifyTeamPatch)
+router.route('/injury-notification')
+    .post(coachController.injuryNotificationPost);
+
+//************************************//
 
 
 module.exports = router

@@ -32,7 +32,9 @@
     --bs-emphasis-color: #B3B3B3 !important; 
 }
 
-.form-control {
+
+/*########################################## Administration Part ( David ) ###################################################### */
+.form-control, .fight-option {
     background-color: var(--bs-dark) !important;
     border-top: none !important;
     border-right: none !important;
@@ -56,4 +58,20 @@
 .btn-outline-success:hover {
     color: var(--bs-secondary-color) !important;
     background-color: var(--bs-secondary-bg)! important ; 
+}
+
+
+
+/*########################################## Coach Part ( Abdelrahman ) ###################################################### */
+.info-coach-card {
+    background-color: rgb(42, 111, 42);
+    padding: 1rem;
+    color: #f4f4f4;
+    border-radius: .75rem;
+
+}
+
+.read {
+    background-color: red;
+/*############################################################################################################################ */
 }
