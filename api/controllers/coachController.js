@@ -1,6 +1,8 @@
 const Adherent = require("../models/adherentModel")
 const Team = require("../models/teamModel")
 const Injury = require("../models/injuryModel")
+const Event = require("../models/eventModel")
+const EventType = require("../models/eventTypeModel")
 module.exports = {
     addMeeting: async (req, res) => {
         try {
@@ -58,10 +60,14 @@ module.exports = {
 
         }
     },
-    SendEvents: (req, res) => {
-        res.render("coach_events")
-    },
     SendEvents: async (req, res) => {
+
+        const events = await Event.findAll({include: [EventType], raw:true})
+        console.log(events)
+
+        res.render("coach_events", {events});
+    },
+    SendEventsPost: async (req, res) => {
 
     }
 

@@ -1,1 +1,35 @@
-<h1>HELLO</h1>
+<div class="container mt-5">
+  <form>
+    <div class="mb-3">
+      <label for="summoned" class="form-label">Summoned</label>
+      <input type="text" class="form-control" id="summoned" placeholder="Enter summoned" />
+    </div>
+    <div class="mb-3">
+      <label for="available" class="form-label">Available</label>
+      <input type="text" class="form-control" id="available" placeholder="Enter available" />
+    </div>
+    <div class="mb-3">
+      <label for="present" class="form-label">Present</label>
+      <input type="text" class="form-control" id="present" placeholder="Enter present" />
+    </div>
+    <div class="mb-3">
+      <label for="adherentIdAdherent" class="form-label">Adherent ID</label>
+      <select name="adhe" class="form-select" id="adherentIdAdherent">
+        <option selected>Select Adherent ID</option>
+        {{#each adherent}}
+          <option value={{idadherent}}>Adherent 1</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="eventIdEvent" class="form-label">Event ID</label>
+      <select name="eventIdEvent" class="form-select" id="eventIdEvent">
+        <option selected>Select Event ID</option>
+          {{#each adherent}}
+          <option value={{id_event}}>{{event_wording}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
