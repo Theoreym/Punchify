@@ -13,8 +13,8 @@
                 </div>
                 <div class="ps-5">
                     <select class="form-select form-select-sm" aria-label="Small select example"
-                        name="categoryIdCategory">
-                        <option {{#if categoryIdCategoryRequest}}{{else}}selected{{/if}}>Liste des Catégories</option>
+                        name="categoryIdCategory" id="categoryIdCategorySelected">
+                        <option {{#if categoryIdCategoryRequest}}{{else}}selected{{/if}} value="0">Liste des Catégories</option>
                         {{#each categories}}
                         <option value="{{id_category}}" {{#ifEquals id_category
                             @root.categoryIdCategoryRequest}}selected{{else}}{{/ifEquals}}>{{category_wording}}</option>
@@ -27,8 +27,8 @@
                 Catégorie de poids
             </div>
             <div class="ps-5">
-                <select class="form-select form-select-sm" aria-label="Small select example" name="teamIdTeam">
-                    <option {{#if teamIdTeamRequest}}{{else}}selected{{/if}}>Liste des Catégories de Poids</option>
+                <select class="form-select form-select-sm" aria-label="Small select example" name="teamIdTeam" id="teamIdTeamSelected">
+                    <option {{#if teamIdTeamRequest}}{{else}}selected{{/if}} value="0">Liste des Catégories de Poids</option>
                     {{#each teams}}
                     <option value="{{id_team}}" {{#ifEquals id_team
                         @root.teamIdTeamRequest}}selected{{else}}{{/ifEquals}}>{{team_wording}}</option>
@@ -88,8 +88,6 @@
         <div class="col-md-8 mx-auto text-center my-4">
             <a href="" class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
                 data-bs-target="#updateModal{{id_event_type}}" id="btnAddAdherentOnList">Ajouter un adéherent au groupe</a>
-            <a href="" class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
-                data-bs-target="#updateModal{{id_event_type}}">Retirer la selection du groupe</a>
             <a href="" class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
                 data-bs-target="#updateModal{{id_event_type}}">Transférer la selection vers un autre groupe</a>
         </div>

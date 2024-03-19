@@ -26,8 +26,8 @@ module.exports = {
             res.redirect("back")
 
         } catch (err) {
-            console.log(err.message);
-            res.sendStatus(500).send("Sending notifciation failed")
+            //console.log(err.message);
+            //res.sendStatus(500).send("Sending notifciation failed")
         }
     },
     meetingNotification: (req, res) => {
@@ -39,8 +39,8 @@ module.exports = {
             const selectTeams = await Team.findAll({ raw: true })
             res.render("coach_modify_team", { teams, selectTeams })
         } catch (err) {
-            console.log(err.message)
-            res.sendStatus(500).send("Modification failed")
+            //console.log(err.message)
+            //res.sendStatus(500).send("Modification failed")
         }
 
     },

@@ -128,12 +128,6 @@ router.route('/adherent/groupsList')
 
 router.route('/adherent/addToGroups/:id_categorySelected/:id_teamSelected')
     .post(adherentController.postAddToGroups);
-
-router.route('/adherent/addToGroups/:id_categorySelected')
-    .post(adherentController.postAddToGroups);
-
-router.route('/adherent/addToGroups/:id_teamSelected')
-    .post(adherentController.postAddToGroups);
 //************************************//
 
 
