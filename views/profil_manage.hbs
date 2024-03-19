@@ -9,8 +9,9 @@
             <table class="table table-stripped">
                 <thead>
                     <tr>
-                        <th scope="col" style="width: auto;">Code Profil</th>
-                        <th scope="col">Profil</th>
+                        <th scope="col" class="text-center">Code Profil</th>
+                        <th scope="col" class="w-50">Profil</th>
+                        <th scope="col" class="text-center">isAdmin</th>
                         <th class="text-center" scope="col">Modifier</th>
                         <th class="text-center" scope="col">Supprimer</th>
                     </tr>
@@ -18,8 +19,9 @@
                 <tbody>
                     {{#each profil}}
                     <tr>
-                        <td scope="row">{{profil_code}}</td>
+                        <td scope="row" class="text-center">{{profil_code}}</td>
                         <td scope="row">{{profil_wording}}</td>
+                        <td scope="row" class="text-center">{{isAdmin}}</td>
                         <td class="text-center">
                             <a href="" class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#updateModal{{id_profil}}">Modifier</a>
@@ -42,6 +44,9 @@
                                             <label for="profil_wording_update" class="mb-1">Profil</label>
                                             <input class="form-control w-100" type="text" name="profil_wording_update"
                                             id="profil_wording_update" value="{{profil_wording}}">
+                                            <label for="profil_wording_update" class="mb-1">isAdmin</label>
+                                            <input class="form-control w-100" type="number" name="profil_isAdmin"
+                                            id="profil_isAdmin" value="{{isAdmin}}">
                                     </div>
                                     <div class="modal-footer">
                                             <button type="submit" class="btn btn-outline-success btn-sm">Modifier</button>
@@ -57,7 +62,7 @@
                             <a href="" class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#deleteModal{{id_profil}}">Supprimer</a>
                         </td>
-                        <!-- Modal supprimer le type d'évènement -->
+                        <!-- Modal Supprimer le profil -->
                         <div class="modal fade" id="deleteModal{{id_profil}}" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
@@ -81,7 +86,7 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Fin Modal modifier le profil -->
+                        <!-- Fin Modal Supprimer le profil -->
                     </tr>
                     {{/each}}
                     <tr>
@@ -91,6 +96,9 @@
                             </td>
                             <td scope="row">
                                 <input class="form-control w-100" type="text" name="profil_wording" id="profil_wording">
+                            </td>
+                            <td scope="row">
+                                <input class="form-control w-100" type="number" name="profil_isAdmin" id="profil_isAdmin">
                             </td>
                             <td colspan=2 class="text-center">
                                 <button type="submit" class="btn btn-outline-success btn-sm">Ajouter</button>

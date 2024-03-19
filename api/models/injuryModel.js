@@ -8,7 +8,7 @@ const Injury = config.sequelize.define('injuries', {
         autoIncrement: true
     },
     injury_wording: {
-        type: DataTypes.STRING(100),
+        type: DataTypes.STRING(255),
         allowNull: false
     },
     date_start: {
@@ -17,10 +17,6 @@ const Injury = config.sequelize.define('injuries', {
     },
     date_end: {
         type: DataTypes.DATE
-    },
-    id_adherent: {
-        type: DataTypes.INTEGER,
-        allowNull: false
     }
 });
 
