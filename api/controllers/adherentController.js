@@ -143,7 +143,7 @@ module.exports = {
             teamIdTeam: req.body.teamIdTeam
         },{where: {id_adherent: req.params.id_adherent}
         });
-        console.log(adherent)
+        //console.log(adherent)
         res.redirect('/adherent/manage');
     }, 
 
@@ -178,7 +178,6 @@ module.exports = {
         const teams = await Team.findAll({ order: [['weight_max', 'ASC'],['weight_min', 'ASC']], raw: true });
         const adherentsAll = await Adherent.findAll({ order: [['lastname', 'ASC']], raw: true });
         //console.log(adherentsAll);
-        const listSelected = 1
 
         if (!isNaN(categoryIdCategoryRequest) && !isNaN(teamIdTeamRequest)) {
             let adherents = await Adherent.findAll({
@@ -187,12 +186,10 @@ module.exports = {
                         {categoryIdCategory: req.body.categoryIdCategory},
                         {teamIdTeam: req.body.teamIdTeam}
                     ]
-                }
+                }, raw: true
             }
-            // ,{ raw: true }
             ); 
             
-            adherents = adherents.toJSON();
             const listSelected = 1; 
             res.render('adherent_groups_manage', {adherents, categories, teams, categoryIdCategoryRequest, adherentsAll, teamIdTeamRequest, navAdherentGroups, listSelected});    
         } 
@@ -201,8 +198,8 @@ module.exports = {
             const adherents = await Adherent.findAll({
                 where: { 
                         categoryIdCategory: req.body.categoryIdCategory
-                }
-            },{ raw: true });
+                }, raw: true
+            });
             const listSelected = 1;
             res.render('adherent_groups_manage', {adherents, categories, teams, categoryIdCategoryRequest, adherentsAll, navAdherentGroups, listSelected});    
         }
@@ -211,10 +208,22 @@ module.exports = {
             const adherents = await Adherent.findAll({
                 where: { 
                         teamIdTeam: req.body.teamIdTeam
-                }
-            },{ raw: true });
+                }, raw: true
+            });
             const listSelected = 1;
             res.render('adherent_groups_manage', {adherents, categories, teams, teamIdTeamRequest, adherentsAll, navAdherentGroups, listSelected});    
         }  
+    },
+
+    postAddToGroups: async function (req,res) {
+        console.log(req.params)
+        console.log(req.body)
+        // const adherent = await Adherent.update({
+        //     categoryIdCategory: req.params.categoryIdCategory,
+        //     teamIdTeam: req.params.teamIdTeam
+        // },{where: {id_adherent: req.params.id_adherent}
+        // });
+
+        res.render('adherent_groups_manage')
     }
 }
