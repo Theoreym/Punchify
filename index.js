@@ -1,10 +1,8 @@
+const express = require('express')
+const {engine, ExpressHandlebars} = require('express-handlebars')
 const session = require('express-session')
 
-
-let SequelizeStore = require("connect-session-sequelize")(session.Store);
-
-const express = require('express')
-const {engine} = require('express-handlebars')
+const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 const path = require('path');
 const router = require('./api/router');
@@ -29,10 +27,24 @@ app.engine('hbs', engine({
 }))
 app.set('view engine', 'hbs');
 
+<<<<<<< HEAD
 
 app.use('/css', express.static(path.join(__dirname, 'assets/css')));
 app.use('/img', express.static(path.join(__dirname, 'assets/img')));
 app.use('/js', express.static(path.join(__dirname, 'assets/js')));
+
+=======
+const app = express()
+const port = 3000
+
+app.engine('hbs', engine({extname: '.hbs'}))
+app.set('view engine', 'hbs')
+
+
+app.use('/css', express.static(path.join(__dirname, 'assets/css')))
+app.use('/img', express.static(path.join(__dirname, 'assets/img')))
+app.use('/js', express.static(path.join(__dirname, 'assets/js')))
+>>>>>>> dc26be2b771865a997db1627b63cf2d258d5681a
 
 
 try {
@@ -47,11 +59,19 @@ const MomentHandler = require("handlebars.moment");
 MomentHandler.registerHelpers(Handlebars);
 
 
+<<<<<<< HEAD
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
   
 
 app.use('/', router);
+=======
+app.use(express.urlencoded({extended:true}))
+app.use(express.json())
+  
+
+app.use('/', router)
+>>>>>>> dc26be2b771865a997db1627b63cf2d258d5681a
 
 
 app.listen(port, () => {
