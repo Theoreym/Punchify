@@ -30,9 +30,4 @@ const User = config.sequelize.define('users', {
 User.belongsTo(Profil);
 Profil.hasOne(User);
 
-
-<<<<<<< HEAD
 module.exports = User;
-=======
-module.exports = User;
->>>>>>> dc26be2b771865a997db1627b63cf2d258d5681a

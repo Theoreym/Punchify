@@ -17,11 +17,7 @@ const Injury = config.sequelize.define('injuries', {
     },
     date_end: {
         type: DataTypes.DATE
-    }
-<<<<<<< HEAD
-=======
-    // Supprimer
->>>>>>> dc26be2b771865a997db1627b63cf2d258d5681a
+    },
 });
 
 
