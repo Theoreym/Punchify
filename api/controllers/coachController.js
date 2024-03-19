@@ -57,6 +57,12 @@ module.exports = {
             res.status(500).send("Error modifying player's team.");
 
         }
+    },
+    SendEvents: (req, res) => {
+        res.render("coach_events")
+    },
+    SendEvents: async (req, res) => {
+
     }
 
 }
