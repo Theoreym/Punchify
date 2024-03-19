@@ -5,6 +5,8 @@ const User = require("../models/userModel");
 
 const { Op } = require('sequelize');
 
+const { validationResult } = require('express-validator');
+
 module.exports = {
     getInscription: async (req, res) => {
         const navAdherentInscription = true;
@@ -42,23 +44,47 @@ module.exports = {
         //     res.redirect('/');
         // }
 
-        const user = 1;
-        //console.log(req.body);
-        await Adherent.create({
-            lastname:  req.body.lastname.toUpperCase(),
-            firstname: req.body.firstname,
-            genre: req.body.radioGenre,
-            birthdate: req.body.birthdate,
-            size: req.body.size,
-            weight: req.body.weight,
-            phone: req.body.phone,
-            address_number: req.body.address_number,
-            address_wording: req.body.address_wording,
-            postal_code: req.body.postal_code,
-            city: req.body.city.toUpperCase(),
-            userIdUser: user     
+
+        // Résultat traitement Express Validator
+        const result = validationResult(req);
+        console.log(result);
+       
+        if (!result.isEmpty()) {
+            const navAdherentInscription = true;
+
+            //console.log(result.errors[0].msg);
+            const lastname = req.body.lastname.toUpperCase();
+            const firstname = req.body.firstname;
+            const genre = req.body.radioGenre;
+            const birthdate = req.body.birthdate;
+            const size = req.body.size;
+            const weight = req.body.weight;
+            const phone = req.body.phone;
+            const address_number = req.body.address_number;
+            const address_wording = req.body.address_wording;
+            const postal_code = req.body.postal_code;
+            const city = req.body.city.toUpperCase();
+            res.render('adherent_inscription', { lastname, firstname, genre, birthdate, size, weight, phone, address_number, address_wording, postal_code, city, navAdherentInscription, 'errors': result.errors });
+            //res.redirect('back')
+        } else {
+            const user = 1;
+            //console.log(req.body);
+            await Adherent.create({
+                lastname:  req.body.lastname.toUpperCase(),
+                firstname: req.body.firstname,
+                genre: req.body.radioGenre,
+                birthdate: req.body.birthdate,
+                size: req.body.size,
+                weight: req.body.weight,
+                phone: req.body.phone,
+                address_number: req.body.address_number,
+                address_wording: req.body.address_wording,
+                postal_code: req.body.postal_code,
+                city: req.body.city.toUpperCase(),
+                userIdUser: user     
         });
         res.redirect('/');
+        }
     },
 
     postCreate: async (req, res) => {

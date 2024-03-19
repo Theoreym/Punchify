@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 
+const { body } = require('express-validator');
+
 const homeController = require("./controllers/homeController");
 const eventtypeController = require('./controllers/eventtypeController');
 const categoryController = require('./controllers/categoryController');
@@ -9,8 +11,6 @@ const profilController = require('./controllers/profilController');
 const adherentController = require('./controllers/adherentController');
 const loginController = require('./controllers/loginController');
 const coachController = require('./controllers/coachController');
-
-
 
 
 
@@ -25,7 +25,6 @@ router.route('/')
 router.route('/login')
     .get(loginController.get);
 //***********************************//
-
 
 
 
@@ -50,7 +49,19 @@ router.route('/category/manage')
     .get(categoryController.getList);
 
 router.route('/category/create')
-    .post(categoryController.postCreate);
+    .post(
+        body('category_wording')
+            .exists()
+            .notEmpty().withMessage('Ce champ ne doit pas être vide'),
+        body('age_min')
+            .exists()
+            .notEmpty().withMessage('Ce champ ne doit pas être vide')
+            .isNumeric().withMessage('Format incorrect'),
+        body('age_max')
+            .exists()
+            .notEmpty().withMessage('Ce champ ne doit pas être vide')
+            .isNumeric().withMessage('Format incorrect'),
+        categoryController.postCreate);
 
 router.route('/category/update/:id_category')  
     .post(categoryController.postUpdate);
@@ -97,7 +108,45 @@ router.route('/adherent/inscription')
     .get(adherentController.getInscription);
 
 router.route('/adherent/createbyuser')
-    .post(adherentController.postCreateByUser);
+    .post(
+        body('lastname')
+            .exists()
+            .notEmpty().withMessage('Ce champ ne doit pas être vide')
+            .isLength({ min: 2, max:100 }).withMessage('Le champ doit contenir plus de 2 caractères ou moins de 100')
+            .trim().escape(),
+        body('firstname')
+            .exists()
+            .notEmpty().withMessage('Ce champ ne doit pas être vide')
+            .isLength({ min: 2, max:100 }).withMessage('Le champ doit contenir plus de 2 caractères ou moins de 100')
+            .trim().escape(),
+        body('radioGenre')
+            .exists(),
+        body('birthdate')
+            .exists()
+            .notEmpty().withMessage('Veuillez renseigner une date de naissance')
+            .isDate().withMessage('Format incorrect'),
+        body('size')
+            .exists()
+            .notEmpty().withMessage('Ce champ ne doit pas être vide')
+            .isNumeric().withMessage('Format incorrect'),
+        body('weight')
+            .exists()
+            .notEmpty().withMessage('Ce champ ne doit pas être vide')
+            .isNumeric().withMessage('Format incorrect'),
+        body('adress_wording')
+            .exists()
+            .notEmpty().withMessage('Ce champ ne doit pas être vide')
+            .isLength({ min: 2, max:255 }).withMessage('Le champ doit contenir plus de 2 caractères ou moins de 255'),
+        body('postal_code')
+            .exists()
+            .notEmpty().withMessage('Ce champ ne doit pas être vide')
+            .isLength({ min: 5, max:5 }).withMessage('Le champ doit contenir 5 caractères')
+            .isNumeric().withMessage('Format incorrect'),
+        body('city')
+            .exists()
+            .notEmpty().withMessage('Ce champ ne doit pas être vide')
+            .isLength({ min: 2, max:100 }).withMessage('Le champ doit contenir plus de 2 caractères ou moins de 100'),
+        adherentController.postCreateByUser);
 
 router.route('/adherent/create')
     .post(adherentController.postCreate);
