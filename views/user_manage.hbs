@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto">
+            <table class="table table-striped table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nom d'utilisateur</th>
+                        <th scope="col">Adresse mail</th>
+                        <th scope="col">Vérifié</th>
+                        <th class="col"></th>
+                        <th class="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{#each users}}
+                    <tr>
+                        <th scope="row">{{id}}</th>
+                        <td>{{username}}</td>
+                        <td><em>{{email}}</em></td>
+                        <td>
+                            {{#if isVerified}}
+                            <i class="bi bi-patch-check"></i> oui
+                            {{else}}
+                            <i class="bi bi-patch-exclamation"></i> non
+                            {{/if}}
+                        </td>
+                        <td>
+                                <a class="btn btn-outline-warning rounded-pill" href="/user/update/{{id}}" ><i class="bi bi-arrow-repeat" ></i></a>
+                        </td>
+                        <td>
+                            <form action="/user/delete/{{id}}" method="post">
+                                <button class="btn btn-outline-danger rounded-pill"
+                                    onclick="return confirm('Voulez vous vraiment supprimer ?')" type="submit"><i
+                                        class="bi bi-trash3"></i></button>
+                            </form>
+
+                        </td>
+                    </tr>
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
