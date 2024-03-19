@@ -120,8 +120,9 @@ router.route('/coach/modify-team')
     .post(coachController.modifyTeamPatch)
 router.route('/injury-notification')
     .post(coachController.injuryNotificationPost);
-router.route('/hello')
-    .get(coachController.SendEvents);
+router.route('/event-notification')
+    .get(coachController.SendEvents)
+    .post(coachController.SendEventsPost);
 
 //************************************//
 
