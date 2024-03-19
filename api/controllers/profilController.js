@@ -12,7 +12,8 @@ module.exports = {
         //console.log(req.body);
         await Profil.create({
             profil_code: req.body.profil_code.toLowerCase(),
-            profil_wording: req.body.profil_wording.toLowerCase()
+            profil_wording: req.body.profil_wording.toLowerCase(),
+            isAdmin: req.body.profil_isAdmin
         });
         res.redirect('back');
     },
@@ -20,7 +21,8 @@ module.exports = {
     postUpdate: async  (req, res) => {
         await Profil.update({
             profil_code: req.body.profil_code_update.toLowerCase(),
-            profil_wording: req.body.profil_wording_update.toLowerCase()
+            profil_wording: req.body.profil_wording_update.toLowerCase(),
+            isAdmin: req.body.profil_isAdmin
             },{where: {id_profil: req.params.id_profil}
         });
         res.redirect('back');

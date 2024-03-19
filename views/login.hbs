@@ -1,29 +1,50 @@
 <style>
-  .form-signin { border:none; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); border-radius: 10px; max-width: 500px; width: 100%;  padding: 4rem 0; background-color: #202020; display: flex; flex-flow: column wrap; align-items: center;} 
-  .login-button{ background-color: #17502b; } 
-  .login-button:hover {background-color:#0d6e3a;}
-  .inputs{ border-bottom: #1ED760 solid 4px; transition: all 400ms; max-width: 300px; width: 100%; }
-   .inputs:focus{ box-shadow: none;
-   border-color: #1ED760; }
-   .header{
-    text-align: center;
-   }
+  .form-signin { border:none; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); border-radius: 10px; max-width: 500px; width: 100%; padding: 4rem 0; background-color: #202020; display: flex; flex-flow: column wrap; align-items: center;} .login-button{ background-color: #17502b; } .login-button:hover {background-color:#0d6e3a;} .inputs{ border-bottom: #1ED760 solid 4px; transition: all 400ms; max-width: 300px; width: 100%; } .inputs:focus{ box-shadow: none; border-color: #1ED760; } .header{ text-align: center; }
 </style>
 
 <main class="d-flex align-items-center justify-content-center min-vh-100 py-4 bg-body-tertiary">
   <div class="form-signin">
-    <form class="d-flex flex-column gap-4" style="max-width: 300px;">
+    <form class="d-flex flex-column gap-4" style="max-width: 300px;" id="login-form" action="#" method="post">
       <h1 class="header h3 mb-3 fw-normal">Connexion</h1>
 
       <div class="form-floating">
-        <input type="email" class="form-control inputs" id="email" placeholder="name@example.com" />
+        <input type="email" class="form-control inputs" id="email" placeholder="name@example.com" aria-label="Email d’utilisateur" required />
         <label for="email">Email d’utilisateur</label>
+        <span class="email-error"></span>
       </div>
       <div class="form-floating">
-        <input type="password" class="form-control inputs" id="password" placeholder="Password" />
+        <input type="password" class="form-control inputs" id="password" placeholder="Password" aria-label="Mot de passe" required />
         <label for="password">Mot de passe</label>
+        <span class="password-error"></span>
+
       </div>
       <button class="btn login-button w-100 py-2" type="submit">Se connecter</button>
     </form>
   </div>
 </main>
+<style>
+  .error{
+    background-color: red;
+    border: 34px solid red;
+  }
+</style>
+
+<script>
+  const email = document.querySelector("#email") 
+  const password = document.querySelector("#password") 
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+  email.addEventListener("blur", () => {
+    const emailError = document.querySelector(".email-error")
+    if(!emailRegex.test(email.value)){
+      email.classList.add('error')
+      emailError.textContent = "Invalid Email"
+    }else{
+      emailError.textContent = ""
+       email.classList.remove('error')
+
+    }
+  })
+
+
+</script>

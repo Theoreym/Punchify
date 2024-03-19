@@ -1,0 +1,94 @@
+<div class="container">
+    <div class="mb-3">
+        <div class="row">
+            <div class="col mt-5">
+                <div class="card mb-3">
+
+                    <div class="card">
+                        <div class="row align-items-start m-0">
+                            <div class="card col-5 bg-success text-center pt-5 pb-5">
+                                <p class="m-4">PUNCHIFY</p>
+                            </div>
+                            <div class="col-7">
+                                <p>Date de naissance: </p>
+                                <p>Catégorie: </p>
+                                <p>Poids: </p>
+                                <p>Taille: </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="card">
+                    <div class="row align-items-start m-3">
+                        <div class="col-5">
+                            <img src="" alt="">
+                            test
+                        </div>
+                        <div class="col-7">
+                            <p>Nom: </p>
+                            <p>Prénom: </p>
+                            <p>Email: </p>
+                            <p>Numéro: </p>
+                            <p>Adresse: </p>
+                            <!-- Button trigger modal -->
+                            <div class="col">
+                                <div class="d-grid gap-2">
+                                    <button type="button" class="btn btn-success m-2" data-bs-toggle="modal"
+                                        data-bs-target="#exampleModal">
+                                        Modifier
+                                    </button>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col mt-5">
+                <div class="alert alert-secondary">
+                    A simple primary alert—check it out!
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Modifier mes informations</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <form action="" method="post">
+                        <label for="nom" class="form-label">Nom</label>
+                        <input name="nom" type="text" class="form-control" id="nom" placeholder="nom" value="">
+
+                        <label for="prenom" class="form-label">Prénom</label>
+                        <input name="prenom" type="text" class="form-control" id="prenom" placeholder="prenom" value="">
+
+                        <label for="email" class="form-label">Email</label>
+                        <input name="email" type="email" class="form-control" id="email" placeholder="email" value="">
+
+                        <label for="numero" class="form-label">Numéro</label>
+                        <input name="numero" type="text" class="form-control" id="numero" placeholder="numero" value="">
+
+                        <label for="adresse" class="form-label">Adresse</label>
+                        <input name="adresse" type="text" class="form-control" id="adresse" placeholder="adresse" value="">
+
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                            <button type="button" class="btn btn-danger">Sauvegarder</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
