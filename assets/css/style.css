@@ -97,6 +97,10 @@
     text-shadow: 0px 1px 3px rgba(0,0,0,0.78) !important;
 }
 
+.green {
+    color: #1ED964;
+}
+
 .btn-outline-success:hover,
 .schedule-btn:hover,
 .aside-btn:hover {
