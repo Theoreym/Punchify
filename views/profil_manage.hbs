@@ -1,11 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 mx-auto">
-<<<<<<< HEAD
-            <h1 class="text-center mt-5 mb-5 bg-secondary text-dark p-1 rounded-4 fs-3">Gestion des profils</h1>
-=======
             <h1 class="text-center mt-5 mb-5 bg-primary p-1 rounded-4 fs-3">Gestion des profils</h1>
->>>>>>> dc26be2b771865a997db1627b63cf2d258d5681a
         </div>
     </div>
     <div class="row">
@@ -13,14 +9,8 @@
             <table class="table table-stripped">
                 <thead>
                     <tr>
-<<<<<<< HEAD
-                        <th scope="col" class="text-center">Code Profil</th>
-                        <th scope="col" class="w-50">Profil</th>
-                        <th scope="col" class="text-center">isAdmin</th>
-=======
                         <th scope="col" style="width: auto;">Code Profil</th>
                         <th scope="col">Profil</th>
->>>>>>> dc26be2b771865a997db1627b63cf2d258d5681a
                         <th class="text-center" scope="col">Modifier</th>
                         <th class="text-center" scope="col">Supprimer</th>
                     </tr>
@@ -28,14 +18,8 @@
                 <tbody>
                     {{#each profil}}
                     <tr>
-<<<<<<< HEAD
-                        <td scope="row" class="text-center">{{profil_code}}</td>
-                        <td scope="row">{{profil_wording}}</td>
-                        <td scope="row" class="text-center">{{isAdmin}}</td>
-=======
                         <td scope="row">{{profil_code}}</td>
                         <td scope="row">{{profil_wording}}</td>
->>>>>>> dc26be2b771865a997db1627b63cf2d258d5681a
                         <td class="text-center">
                             <a href="" class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#updateModal{{id_profil}}">Modifier</a>
@@ -53,22 +37,11 @@
                                     <div class="modal-body">
                                         <form action="/profil/update/{{id_profil}}" method="post">
                                             <label for="profil_code_update" class="mb-1">Code Profil</label>
-<<<<<<< HEAD
-                                            <input class="form-control w-100" type="text" name="profil_code_update"
-                                            id="profil_code_update" value="{{profil_code}}">
-                                            <label for="profil_wording_update" class="mb-1">Profil</label>
-                                            <input class="form-control w-100" type="text" name="profil_wording_update"
-                                            id="profil_wording_update" value="{{profil_wording}}">
-                                            <label for="profil_wording_update" class="mb-1">isAdmin</label>
-                                            <input class="form-control w-100" type="number" name="profil_isAdmin"
-                                            id="profil_isAdmin" value="{{isAdmin}}">
-=======
                                             <input class="w-100" type="text" name="profil_code_update"
                                             id="profil_code_update" value="{{profil_code}}">
                                             <label for="profil_wording_update" class="mb-1">Profil</label>
                                             <input class="w-100" type="text" name="profil_wording_update"
                                             id="profil_wording_update" value="{{profil_wording}}">
->>>>>>> dc26be2b771865a997db1627b63cf2d258d5681a
                                     </div>
                                     <div class="modal-footer">
                                             <button type="submit" class="btn btn-outline-success btn-sm">Modifier</button>
@@ -84,11 +57,7 @@
                             <a href="" class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#deleteModal{{id_profil}}">Supprimer</a>
                         </td>
-<<<<<<< HEAD
-                        <!-- Modal Supprimer le profil -->
-=======
                         <!-- Modal supprimer le type d'évènement -->
->>>>>>> dc26be2b771865a997db1627b63cf2d258d5681a
                         <div class="modal fade" id="deleteModal{{id_profil}}" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
@@ -122,20 +91,10 @@
                     <tr>
                         <form action="/profil/create" method="post">
                             <td scope="row">
-<<<<<<< HEAD
-                                <input class="form-control w-100" type="text" name="profil_code" id="profil_code">
-                            </td>
-                            <td scope="row">
-                                <input class="form-control w-100" type="text" name="profil_wording" id="profil_wording">
-                            </td>
-                            <td scope="row">
-                                <input class="form-control w-100" type="number" name="profil_isAdmin" id="profil_isAdmin">
-=======
                                 <input class="w-100" type="text" name="profil_code" id="profil_code">
                             </td>
                             <td scope="row">
                                 <input class="w-100" type="text" name="profil_wording" id="profil_wording">
->>>>>>> dc26be2b771865a997db1627b63cf2d258d5681a
                             </td>
                             <td colspan=2 class="text-center">
                                 <button type="submit" class="btn btn-outline-success btn-sm">Ajouter</button>

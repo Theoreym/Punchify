@@ -24,44 +24,32 @@
             Administration
           </a>
           <ul class="dropdown-menu">
-<<<<<<< HEAD
-            <li><a class="dropdown-item {{#if navAdherentManage}}active{{/if}}" href="/adherent/manage">Gestion des adhérents</a></li>
-            <li><a class="dropdown-item {{#if navAdherentGroups}}active{{/if}}" href="/adherent/groups">Gestion des groupes</a></li>
-            <li><hr class="dropdown-divider"></li>
-=======
->>>>>>> dc26be2b771865a997db1627b63cf2d258d5681a
             <li><a class="dropdown-item {{#if navEventTypeManage}}active{{/if}}" href="/eventType/manage">Gestion des types d'évènements</a></li>
             <li><a class="dropdown-item {{#if navCategoryManage}}active{{/if}}" href="/category/manage">Gestion des catégories</a></li>
             <li><a class="dropdown-item {{#if navTeamManage}}active{{/if}}" href="/team/manage">Gestion des catégories de poids</a></li>
             <li><a class="dropdown-item {{#if navProfilManage}}active{{/if}}" href="/profil/manage">Gestion des profils utilisateurs</a></li>
-<<<<<<< HEAD
-            <li><hr class="dropdown-divider"></li>
-=======
             <li><a class="dropdown-item" href="/absence">Mes absences</a></li>
             <li><a class="dropdown-item" href="/profil/boxer">Mon profil</a></li>
->>>>>>> dc26be2b771865a997db1627b63cf2d258d5681a
           </ul>
         </li>
       </ul>
       <ul class="navbar-nav d-flex me-5">
         {{#if username}}
           <a class="btn btn-outline-success d-flex me-3" href="/user/read"><i class="bi bi-person-gear pe-2"></i> Gérer {{username}}</a>
-         
+
           
         {{/if}}
         <li class="nav-item me-2">
           <a class="btn btn-outline-{{#if username}}danger rounded-pill{{else}}success px-4{{/if}} d-flex me-3" {{#if username}}href="/user/logout"><i class="bi bi-box-arrow-right"></i>
             {{else}}
-            <a href="/user/login"> Se connecter </a>
+            href="/login"> Se connecter
             {{/if}}
           </a>
-
         </li>
-        <li>
+         <li>
            <button class="btn aside-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
                Coach Dashboard
           </button>
-          
         </li>
       </ul>
       <form class="d-flex" role="search" action="/article/search" method="post">
@@ -107,4 +95,3 @@
     color: white;
   }
 </style>
-
