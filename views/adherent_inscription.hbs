@@ -1,19 +1,21 @@
 <div class="container">
     <div class="row">
         <div class="col-md-3 pe-0 my-4">
-            <h1 class="d-flex justify-content-center align-items-center rounded-start-4 fs-4 h-100 bg-secondary text-dark">Demande
-                d'adhésion</h1> 
+            <h1 class="d-flex justify-content-center align-items-center rounded-start-4 fs-4 h-100 bg-secondary text-dark"
+                id="adhesionTitle" tabindex="0" aria-labelledby="adhesionTitle" role="heading">Demande
+                d'adhésion</h1>
         </div>
         <div class="col-md-9 mx-auto my-4 py-4 bg-dark rounded-end-4">
-            <form action="/adherent/createbyuser" method="post" class="bg-dark">
+            <form action="/adherent/createbyuser" method="post" class="bg-dark" aria-label="Formulaire de demande d'adhésion" role="form">
                 <div class="row">
                     <div class="col-md-6 form-floating mb-3">
-                        <input type="text" class="form-control" id="lastname" name="lastname" required>
+                        <input type="text" class="form-control" id="lastname" name="lastname" aria-label="Nom"
+                            aria-required="true" required {{#if lastname}}value="{{lastname}}" {{/if}}>
                         <label for="lastname">Nom</label>
                     </div>
                     <div class="col-md-6 form-floating mb-3">
-                        <input type="text" class="form-control" id="firstname" name="firstname" aria-required="true"
-                            required>
+                        <input type="text" class="form-control" id="firstname" name="firstname" aria-label="Prénom"
+                            aria-required="true" required {{#if firstname}}value="{{firstname}}" {{/if}}>
                         <label for="firstname">Prénom</label>
                     </div>
                 </div>
@@ -22,69 +24,84 @@
                         <div style="font-size:0.8em">
                             Genre
                         </div>
-                        <div class="ps-5" style="font-size:0.8em" >
+                        <div class="ps-5" style="font-size:0.8em">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="radioGenre" id="radioMen" value="M"
-                                    aria-required="true" required>
+                                    aria-label="Masculin" aria-required="true" required {{#if genre}}{{#ifEquals genre "M"
+                                    }}checked{{/ifEquals}}{{/if}}>
                                 <label class="form-check-label" for="radioMen">masuclin</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="radioGenre"  id="radioWomen" value="F"
-                                    aria-required="true" required>  
+                                <input class="form-check-input" type="radio" name="radioGenre" id="radioWomen" value="F"
+                                    aria-label="Féminin" aria-required="true" required {{#if genre}}{{#ifEquals genre "F"
+                                    }}checked{{/ifEquals}}{{/if}}>
                                 <label class="form-check-label" for="radioWomen">féminin</label>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 form-floating mb-3">
                         <input type="date" class="form-control" id="birthdate" name="birthdate" aria-required="true"
-                            required>
+                            required {{#if birthdate}}value="{{birthdate}}" {{/if}}>
                         <label for="birthdate">Date de naissance</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 form-floating mb-3">
-                        <input type="number" step="any" class="form-control" id="size" name="size" aria-required="true"
-                            required>
+                        <input type="number" step="any" class="form-control" id="size" name="size"  aria-label="Taille" aria-required="true"
+                            required {{#if size}}value="{{size}}" {{/if}}>
                         <label for="size">Taille</label>
                     </div>
                     <div class="col-md-6 form-floating mb-3">
-                        <input type="number" step="any" class="form-control" id="weight" name="weight" aria-required="true"
-                            required>
+                        <input type="number" step="any" class="form-control" id="weight" name="weight" aria-label="Poids"
+                            aria-required="true" required {{#if weight}}value="{{weight}}" {{/if}}>
                         <label for="weight">Poids</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 form-floating mb-3">
-                        <input type="text" class="form-control" id="phone" name="phone">
+                        <input type="text" class="form-control" id="phone" name="phone" aria-label="Numéro de portable" {{#if phone}}value="{{phone}}"
+                            {{/if}}>
                         <label for="phone">Numéro de portable</label>
                     </div>
                     <div class="col-md-6 form-floating mb-3">
-                        <input type="email" class="form-control" id="user_email" name="user_email" value="email de la fiche user champ nom modifiable ici" disabled>
+                        <input type="email" class="form-control" id="user_email" name="user_email"
+                            value="email de la fiche user champ nom modifiable ici" aria-label="Email non modifiable" disabled>
                         <label for="user_email">Email</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 form-floating mb-3">
-                        <input type="text" class="form-control" id="address_number" name="address_number">
+                        <input type="text" class="form-control" id="address_number" name="address_number" aria-label="Numéro d'adresse" {{#if
+                            address_number}}value="{{address_number}}" {{/if}}>
                         <label for="address_number">N° adresse</label>
                     </div>
                     <div class="col-md-6 form-floating mb-3">
-                        <input type="text" class="form-control" id="address_wording" name="address_wording"
-                            aria-required="true" required>
+                        <input type="text" class="form-control" id="address_wording" name="address_wording" aria-label="Libellé d'adresse"
+                            aria-required="true" required {{#if address_wording}}value="{{address_wording}}" {{/if}}>
                         <label for="address_wording">Libellé adresse</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 form-floating mb-3">
-                        <input type="number" class="form-control" id="postal_code" name="postal_code"
-                            aria-required="true" required>
+                        <input type="number" class="form-control" id="postal_code" name="postal_code" aria-label="Code postal"
+                            aria-required="true" required {{#if postal_code}}value="{{postal_code}}" {{/if}}>
                         <label for="postal_code">Code postal</label>
                     </div>
                     <div class="col-md-6 form-floating mb-3">
-                        <input type="text" class="form-control" id="city" name="city" aria-required="true" required>
+                        <input type="text" class="form-control" id="city" name="city" aria-required="true" aria-label="Ville"  required
+                            {{#if city}}value="{{city}}" {{/if}}>
                         <label for="city">Ville</label>
                     </div>
                 </div>
+                {{#if errors}}
+                <div class="col text-center">
+                    {{#each errors}}
+                    <div class="alert alert-danger" role="alert">
+                        {{msg}}
+                    </div>
+                    {{/each}}
+                </div>
+                {{/if}}
                 <div class="col text-center">
                     <button type="submit" class="btn btn-outline-success px-5">Adhérer !</button>
                 </div>

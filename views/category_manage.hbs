@@ -6,7 +6,7 @@
     </div>
     <div class="row">
         <div class="col-md-8 mx-auto">
-            <table class="table table-stripped">
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col" class="w-50">Catégorie</th>
@@ -40,13 +40,13 @@
                                         <form action="/category/update/{{id_category}}" method="post">
                                             <label for="category_wording_update" class="mb-1">Catégorie</label>
                                             <input class="w-100 mb-2" type="text" name="category_wording_update"
-                                            id="category_wording_update" value="{{category_wording}}">
+                                            id="category_wording_update" required value="{{category_wording}}">
                                             <label for="age_min_update" class="mb-1">Âge mini</label>
                                             <input class="w-100 mb-2" type="number" name="age_min_update"
-                                            id="age_min_update" value="{{age_min}}">
+                                            id="age_min_update" required value="{{age_min}}">
                                             <label for="age_maxi_update" class="mb-1">Âge maxi</label>
                                             <input class="w-100 mb-2" type="number" name="age_max_update"
-                                            id="age_max_update" value="{{age_max}}">
+                                            id="age_max_update" required value="{{age_max}}">
                                     </div>
                                     <div class="modal-footer">
                                             <button type="submit" class="btn btn-outline-success btn-sm">Modifier</button>
@@ -92,13 +92,13 @@
                     <tr>
                         <form action="/category/create" method="post">
                             <td scope="row">
-                                <input class="w-100" type="text" name="category_wording" id="category_wording">
+                                <input class="form-control w-100" type="text" name="category_wording" id="category_wording" required {{#if category_wording}}value="{{category_wording}}"{{/if}}>
                             </td>
                              <td scope="row">
-                                <input class="w-100" type="number" name="age_min" id="age_min">
+                                <input class="form-control w-100" type="number" name="age_min" id="age_min" required {{#if age_min}}value="{{age_min}}"{{/if}}>
                             </td>
                              <td scope="row">
-                                <input class="w-100" type="number" name="age_max" id="age_max">
+                                <input class="form-control w-100" type="number" name="age_max" id="age_max" required {{#if age_max}}value="{{age_max}}"{{/if}}>
                             </td>
                             <td colspan=2 class="text-center">
                                 <button type="submit" class="btn btn-outline-success btn-sm">Ajouter</button>
@@ -108,5 +108,14 @@
                 </tbody>
             </table>
         </div>
+        {{#if errors}}
+        <div class="col-md-8 mx-auto">
+            {{#each errors}}
+            <div class="alert alert-danger" role="alert">
+                {{msg}}
+            </div>
+            {{/each}}
+        </div>
+        {{/if}}
     </div>
 </div>

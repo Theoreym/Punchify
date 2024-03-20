@@ -93,3 +93,19 @@
     background-color: red;
     border: 2px solid red;
 }
+
+
+
+/*########################################## Coach Part ( Abdelrahman ) ###################################################### */
+.info-coach-card {
+    background-color: rgb(42, 111, 42);
+    padding: 1rem;
+    color: #f4f4f4;
+    border-radius: .75rem;
+
+}
+
+.read {
+    background-color: red;
+/*############################################################################################################################ */
+}

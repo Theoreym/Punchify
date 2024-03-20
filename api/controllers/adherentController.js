@@ -6,6 +6,8 @@ const User = require("../models/userModel");
 
 const { Op } = require('sequelize');
 
+const { validationResult } = require('express-validator');
+
 module.exports = {
     getInscription: async (req, res) => {
         const navAdherentInscription = true;
@@ -13,22 +15,77 @@ module.exports = {
     },
 
     postCreateByUser: async (req, res) => {
-        const user = 1; // Temporary user ID for testing
-        await Adherent.create({
-            lastname: req.body.lastname.toUpperCase(),
-            firstname: req.body.firstname,
-            genre: req.body.radioGenre,
-            birthdate: req.body.birthdate,
-            size: req.body.size,
-            weight: req.body.weight,
-            phone: req.body.phone,
-            address_number: req.body.address_number,
-            address_wording: req.body.address_wording,
-            postal_code: req.body.postal_code,
-            city: req.body.city.toUpperCase(),
-            userIdUser: user     
-        });
-        res.redirect('/');
+        // const user = await User.findOne({
+        //     where:
+        //     {
+        //         id_user: req.session.id_user
+        //     }
+        // }, { raw: true });
+        // //console.log(user);
+        
+        // if (!user) { 
+        //     res.redirect(301, "/login");
+        // }
+        // else {
+        //     //console.log(req.body);
+        //     await Adherent.create({
+        //         lastname:  req.body.lastname.toUpperCase(),
+        //         firstname: req.body.firstname,
+        //         genre: req.body.radioGenre,
+        //         birthdate: req.body.birthdate,
+        //         size: req.body.size,
+        //         weight: req.body.weight,
+        //         phone: req.body.phone,
+        //         address_number: req.body.address_number,
+        //         address_wording: req.body.address_wording,
+        //         postal_code: req.body.postal_code,
+        //         city: req.body.city.toUpperCase(),
+        //         userIdUser: user.id_user      
+        //     });
+        //     res.redirect('/');
+        // }
+
+
+        // Résultat traitement Express Validator
+        const result = validationResult(req);
+        console.log(result);
+       
+        if (!result.isEmpty()) {
+            const navAdherentInscription = true;
+
+            //console.log(result.errors[0].msg);
+            const lastname = req.body.lastname.toUpperCase();
+            const firstname = req.body.firstname;
+            const genre = req.body.radioGenre;
+            const birthdate = req.body.birthdate;
+            const size = req.body.size;
+            const weight = req.body.weight;
+            const phone = req.body.phone;
+            const address_number = req.body.address_number;
+            const address_wording = req.body.address_wording;
+            const postal_code = req.body.postal_code;
+            const city = req.body.city.toUpperCase();
+            res.render('adherent_inscription', { lastname, firstname, genre, birthdate, size, weight, phone, address_number, address_wording, postal_code, city, navAdherentInscription, 'errors': result.errors });
+            //res.redirect('back')
+        } else {
+            const user = 1;
+            //console.log(req.body);
+            await Adherent.create({
+                lastname:  req.body.lastname.toUpperCase(),
+                firstname: req.body.firstname,
+                genre: req.body.radioGenre,
+                birthdate: req.body.birthdate,
+                size: req.body.size,
+                weight: req.body.weight,
+                phone: req.body.phone,
+                address_number: req.body.address_number,
+                address_wording: req.body.address_wording,
+                postal_code: req.body.postal_code,
+                city: req.body.city.toUpperCase(),
+                userIdUser: user     
+                });
+            res.redirect('/');
+        }
     },
 
     postCreate: async (req, res) => {
@@ -49,7 +106,6 @@ module.exports = {
             categoryIdCategory: req.body.categoryIdCategory,
             teamIdTeam: req.body.teamIdTeam
         });
-        console.log(adherent);
         res.redirect('/');
     },
 
@@ -127,9 +183,8 @@ module.exports = {
 
         const categories = await Category.findAll({ order: [['age_min', 'ASC']], raw: true });
         const teams = await Team.findAll({ order: [['weight_max', 'ASC'],['weight_min', 'ASC']], raw: true });
-        const users = await User.findAll({ order: [['email', 'ASC']], raw: true });
 
-        res.render('adherent_groups_manage', { categories, teams, users, navAdherentGroups });
+        res.render('adherent_groups_manage', { categories, teams, navAdherentGroups });
     },
 
     getGroupsList: async function (req,res) {
@@ -140,10 +195,11 @@ module.exports = {
 
         const categories = await Category.findAll({ order: [['age_min', 'ASC']], raw: true });
         const teams = await Team.findAll({ order: [['weight_max', 'ASC'],['weight_min', 'ASC']], raw: true });
-        const adherentsAll = await Adherent.findAll({ order: [['lastname', 'ASC']], raw: true });
+        //const adherentsAll = await Adherent.findAll({ order: [['lastname', 'ASC']], raw: true });
+        //console.log(adherentsAll);
 
-        if (!isNaN(categoryIdCategoryRequest) && !isNaN(teamIdTeamRequest)) {
-            let adherents = await Adherent.findAll({
+        if (categoryIdCategoryRequest !== '0' && teamIdTeamRequest !== '0') {
+            const adherents = await Adherent.findAll({
                 where: { 
                     [Op.and]: [
                         {categoryIdCategory: req.body.categoryIdCategory},
@@ -152,37 +208,65 @@ module.exports = {
                 }, raw: true
             }
             ); 
+
+            const adherentsIds = adherents.map(adherent => adherent.id_adherent);
+            const adherentsAll = await Adherent.findAll({
+                where: {
+                    id_adherent: {
+                        [Op.notIn]: adherentsIds
+                    }
+                },
+                order: [['lastname', 'ASC']],
+                raw: true
+            });
             
             const listSelected = 1; 
-            res.render('adherent_groups_manage', {adherents, categories, teams, categoryIdCategoryRequest, adherentsAll, teamIdTeamRequest, navAdherentGroups, listSelected});    
+            res.render('adherent_groups_manage', {adherents, categories, teams, categoryIdCategoryRequest, teamIdTeamRequest, adherentsAll, navAdherentGroups, listSelected});    
         } 
 
-        if (isNaN(teamIdTeamRequest)) {
+        if (categoryIdCategoryRequest !== '0' && teamIdTeamRequest === '0') {
             const adherents = await Adherent.findAll({
                 where: { 
                         categoryIdCategory: req.body.categoryIdCategory
                 }, raw: true
             });
+
+            const adherentsIds = adherents.map(adherent => adherent.id_adherent);
+            const adherentsAll = await Adherent.findAll({
+                where: {
+                    id_adherent: {
+                        [Op.notIn]: adherentsIds
+                    }
+                },
+                order: [['lastname', 'ASC']],
+                raw: true
+            });
+
             const listSelected = 1;
-            res.render('adherent_groups_manage', {adherents, categories, teams, categoryIdCategoryRequest, adherentsAll, navAdherentGroups, listSelected});    
+            res.render('adherent_groups_manage', {adherents, categories, teams, categoryIdCategoryRequest, teamIdTeamRequest, adherentsAll, navAdherentGroups, listSelected});    
         }
 
-        if (isNaN(categoryIdCategoryRequest)) {
+        if (categoryIdCategoryRequest === '0' && teamIdTeamRequest !== '0') {
             const adherents = await Adherent.findAll({
                 where: { 
                         teamIdTeam: req.body.teamIdTeam
                 }, raw: true
             });
-            const listSelected = 1;
-            res.render('adherent_groups_manage', {adherents, categories, teams, teamIdTeamRequest, adherentsAll, navAdherentGroups, listSelected});    
-        }  
-    },
 
-    postAddToGroups: async function (req, res) {
-        console.log(req.params);
-        console.log(req.body);
-        res.render('adherent_groups_manage');
-   
+            const adherentsIds = adherents.map(adherent => adherent.id_adherent);
+            const adherentsAll = await Adherent.findAll({
+                where: {
+                    id_adherent: {
+                        [Op.notIn]: adherentsIds
+                    }
+                },
+                order: [['lastname', 'ASC']],
+                raw: true
+            });
+
+            const listSelected = 1;
+            res.render('adherent_groups_manage', {adherents, categories, teams, categoryIdCategoryRequest, teamIdTeamRequest, adherentsAll, navAdherentGroups, listSelected});    
+        }  
     },
 
     getBlessure: async (req, res) => {
@@ -217,5 +301,118 @@ module.exports = {
             }
         })
         res.redirect('back')
+    },
+    postAddToGroups: async function (req,res) {
+        const navAdherentGroups = true;
+
+        // console.log(req.params);
+        // console.log(req.body);
+
+        const id_categorySelected = req.params.id_categorySelected;
+        const id_teamSelected = req.params.id_teamSelected;
+
+        if (id_categorySelected !== '0' && id_teamSelected !== '0') {
+            await Adherent.update({
+                categoryIdCategory: req.params.id_categorySelected,
+                teamIdTeam: req.params.id_teamSelected
+            },{where: {id_adherent: req.body.adherentsAll}
+            });
+
+            const categoryIdCategoryRequest = req.params.id_categorySelected;
+            const teamIdTeamRequest = req.params.id_teamSelected;
+            const categories = await Category.findAll({ order: [['age_min', 'ASC']], raw: true });
+            const teams = await Team.findAll({ order: [['weight_max', 'ASC'],['weight_min', 'ASC']], raw: true });
+            //const adherentsAll = await Adherent.findAll({ order: [['lastname', 'ASC']], raw: true });
+
+            const adherents = await Adherent.findAll({
+                where: { 
+                    [Op.and]: [
+                        {categoryIdCategory: req.params.id_categorySelected},
+                        {teamIdTeam: req.params.id_teamSelected}
+                    ]
+                }, raw: true
+            }
+            ); 
+
+            const adherentsIds = adherents.map(adherent => adherent.id_adherent);
+            const adherentsAll = await Adherent.findAll({
+                where: {
+                    id_adherent: {
+                        [Op.notIn]: adherentsIds
+                    }
+                },
+                order: [['lastname', 'ASC']],
+                raw: true
+            });
+
+            const listSelected = 1;
+            res.render('adherent_groups_manage', {adherents, categories, teams, categoryIdCategoryRequest, teamIdTeamRequest, adherentsAll, navAdherentGroups, listSelected}); 
+        }
+
+        if (id_categorySelected !== '0' && id_teamSelected === '0') {
+            await Adherent.update({
+                categoryIdCategory: req.params.id_categorySelected
+            },{where: {id_adherent: req.body.adherentsAll}
+            });
+
+            const categoryIdCategoryRequest = req.params.id_categorySelected;
+            const teamIdTeamRequest = req.params.id_teamSelected;
+            const categories = await Category.findAll({ order: [['age_min', 'ASC']], raw: true });
+            const teams = await Team.findAll({ order: [['weight_max', 'ASC'],['weight_min', 'ASC']], raw: true });
+            //const adherentsAll = await Adherent.findAll({ order: [['lastname', 'ASC']], raw: true });
+
+            const adherents = await Adherent.findAll({
+                where: { 
+                        categoryIdCategory: req.params.id_categorySelected
+                }, raw: true
+            }); 
+
+            const adherentsIds = adherents.map(adherent => adherent.id_adherent);
+            const adherentsAll = await Adherent.findAll({
+                where: {
+                    id_adherent: {
+                        [Op.notIn]: adherentsIds
+                    }
+                },
+                order: [['lastname', 'ASC']],
+                raw: true
+            });
+
+            const listSelected = 1;
+            res.render('adherent_groups_manage', {adherents, categories, teams, categoryIdCategoryRequest, teamIdTeamRequest, adherentsAll, navAdherentGroups, listSelected}); 
+        }
+
+        if (id_categorySelected === '0' && id_teamSelected !== '0') {
+            await Adherent.update({
+                teamIdTeam: req.params.id_teamSelected
+            },{where: {id_adherent: req.body.adherentsAll}
+            });
+
+            const categoryIdCategoryRequest = req.params.id_categorySelected;
+            const teamIdTeamRequest = req.params.id_teamSelected;
+            const categories = await Category.findAll({ order: [['age_min', 'ASC']], raw: true });
+            const teams = await Team.findAll({ order: [['weight_max', 'ASC'],['weight_min', 'ASC']], raw: true });
+            //const adherentsAll = await Adherent.findAll({ order: [['lastname', 'ASC']], raw: true });
+
+            const adherents = await Adherent.findAll({
+                where: { 
+                        teamIdTeam: req.params.id_teamSelected
+                }, raw: true
+            });
+
+            const adherentsIds = adherents.map(adherent => adherent.id_adherent);
+            const adherentsAll = await Adherent.findAll({
+                where: {
+                    id_adherent: {
+                        [Op.notIn]: adherentsIds
+                    }
+                },
+                order: [['lastname', 'ASC']],
+                raw: true
+            });
+
+            const listSelected = 1;
+            res.render('adherent_groups_manage', {adherents, categories, teams, categoryIdCategoryRequest, teamIdTeamRequest, adherentsAll, navAdherentGroups, listSelected}); 
+        }
     }
 }
