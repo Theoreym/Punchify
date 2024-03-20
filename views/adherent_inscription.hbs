@@ -27,12 +27,14 @@
                         <div class="ps-5" style="font-size:0.8em">
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="radioGenre" id="radioMen" value="M"
-                                    aria-label="Masculin" aria-required="true" required>
+                                    aria-label="Masculin" aria-required="true" required {{#if genre}}{{#ifEquals genre "M"
+                                    }}checked{{/ifEquals}}{{/if}}>
                                 <label class="form-check-label" for="radioMen">masuclin</label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="radioGenre" id="radioWomen" value="F"
-                                    aria-label="Féminin" aria-required="true" required>
+                                    aria-label="Féminin" aria-required="true" required {{#if genre}}{{#ifEquals genre "F"
+                                    }}checked{{/ifEquals}}{{/if}}>
                                 <label class="form-check-label" for="radioWomen">féminin</label>
                             </div>
                         </div>
