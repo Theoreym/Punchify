@@ -17,7 +17,7 @@ module.exports = {
         if (!result.isEmpty()) {
             const navCategoryManage = true;
             const category = await Category.findAll({ raw: true });
-            
+                
             const category_wording = req.body.category_wording;
             const age_min = req.body.age_min;
             const age_max = req.body.age_max;
@@ -29,8 +29,12 @@ module.exports = {
             category_wording: req.body.category_wording.toLowerCase(),
             age_min: req.body.age_min,
             age_max: req.body.age_max
-        });
-        res.redirect('back');
+            });
+
+            const navCategoryManage = true;
+            const category = await Category.findAll({ raw: true });
+            res.render('category_manage', {category, navCategoryManage});
+            //res.redirect('back');
         }
     },
 
@@ -41,13 +45,20 @@ module.exports = {
             age_max: req.body.age_max_update
             },{where: {id_category: req.params.id_category}
         });
-        res.redirect('back');
+
+        const navCategoryManage = true;
+        const category = await Category.findAll({ raw: true });
+        res.render('category_manage', {category, navCategoryManage});
+        //res.redirect('back');
     },
 
     postDelete: async  (req, res) => {
         await Category.destroy({
             where:{id_category: req.params.id_category}
         });
-        res.redirect('back');
+        const navCategoryManage = true;
+        const category = await Category.findAll({ raw: true });
+        res.render('category_manage', {category, navCategoryManage});
+        //res.redirect('back');
     }
 };

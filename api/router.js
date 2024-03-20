@@ -33,7 +33,12 @@ router.route('/eventType/manage')
     .get(eventtypeController.getList);
 
 router.route('/eventType/create')
-    .post(eventtypeController.postCreate);
+    .post(
+        body('event_type_wording')
+            .exists()
+            .isLength({ min: 2, max:100 }).withMessage('Le champ doit contenir plus de 2 caractères ou moins de 100')
+            .notEmpty().withMessage('Ce champ ne doit pas être vide'),
+        eventtypeController.postCreate);
 
 router.route('/eventType/update/:id_event_type')  
     .post(eventtypeController.postUpdate);
@@ -52,6 +57,7 @@ router.route('/category/create')
     .post(
         body('category_wording')
             .exists()
+            .isLength({ min: 2, max:100 }).withMessage('Le champ doit contenir plus de 2 caractères ou moins de 100')
             .notEmpty().withMessage('Ce champ ne doit pas être vide'),
         body('age_min')
             .exists()
@@ -77,7 +83,20 @@ router.route('/team/manage')
     .get(teamController.getList);
 
 router.route('/team/create')
-    .post(teamController.postCreate);
+    .post(
+        body('team_wording')
+            .exists()
+            .isLength({ min: 2, max:100 }).withMessage('Le champ doit contenir plus de 2 caractères ou moins de 100')
+            .notEmpty().withMessage('Ce champ ne doit pas être vide'),
+        body('weight_min')
+            .exists()
+            .notEmpty().withMessage('Ce champ ne doit pas être vide')
+            .isNumeric().withMessage('Format incorrect'),
+        body('weight_max')
+            .exists()
+            .notEmpty().withMessage('Ce champ ne doit pas être vide')
+            .isNumeric().withMessage('Format incorrect'),
+        teamController.postCreate);
 
 router.route('/team/update/:id_team')  
     .post(teamController.postUpdate);
@@ -93,7 +112,20 @@ router.route('/profil/manage')
     .get(profilController.getList);
 
 router.route('/profil/create')
-    .post(profilController.postCreate);
+    .post(
+        body('profil_code')
+            .exists()
+            .isLength({ min:2, max:3 }).withMessage('Le champ doit contenir entre 2 et 3 caractères')
+            .notEmpty().withMessage('Ce champ ne doit pas être vide'),
+        body('profil_wording')
+            .exists()
+            .isLength({ min: 2, max:100 }).withMessage('Le champ doit contenir plus de 2 caractères ou moins de 255')
+            .notEmpty().withMessage('Ce champ ne doit pas être vide'),
+        body('profil_isAdmin')
+            .exists()
+            .isBoolean()
+            .notEmpty().withMessage('Ce champ ne doit pas être vide'),
+        profilController.postCreate);
 
 router.route('/profil/update/:id_profil')  
     .post(profilController.postUpdate);

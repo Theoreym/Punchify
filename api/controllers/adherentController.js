@@ -82,8 +82,8 @@ module.exports = {
                 postal_code: req.body.postal_code,
                 city: req.body.city.toUpperCase(),
                 userIdUser: user     
-        });
-        res.redirect('/');
+                });
+            res.redirect('/');
         }
     },
 

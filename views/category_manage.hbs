@@ -40,13 +40,13 @@
                                         <form action="/category/update/{{id_category}}" method="post">
                                             <label for="category_wording_update" class="mb-1">Catégorie</label>
                                             <input class="form-control w-100 mb-2" type="text" name="category_wording_update"
-                                            id="category_wording_update" value="{{category_wording}}">
+                                            id="category_wording_update" required value="{{category_wording}}">
                                             <label for="age_min_update" class="mb-1">Âge mini</label>
                                             <input class="form-control w-100 mb-2" type="number" name="age_min_update"
-                                            id="age_min_update" value="{{age_min}}">
+                                            id="age_min_update" required value="{{age_min}}">
                                             <label for="age_maxi_update" class="mb-1">Âge maxi</label>
                                             <input class="form-control w-100 mb-2" type="number" name="age_max_update"
-                                            id="age_max_update" value="{{age_max}}">
+                                            id="age_max_update" required value="{{age_max}}">
                                     </div>
                                     <div class="modal-footer">
                                             <button type="submit" class="btn btn-outline-success btn-sm">Modifier</button>

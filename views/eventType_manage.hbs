@@ -37,7 +37,7 @@
                                         <form action="/eventType/update/{{id_event_type}}" method="post">
                                             <label for="event_type_wording_update" class="mb-1">Type d'évènement</label>
                                             <input class="form-control w-100" type="text" name="event_type_wording_update"
-                                            id="event_type_wording_update" value="{{event_type_wording}}">
+                                            id="event_type_wording_update" value="{{event_type_wording}}" required>
                                     </div>
                                     <div class="modal-footer">
                                             <button type="submit" class="btn btn-outline-success btn-sm">Modifier</button>
@@ -84,7 +84,7 @@
                     <tr>
                         <form action="/eventType/create" method="post">
                             <td scope="row">
-                                <input class="form-control w-100" type="text" name="event_type_wording" id="event_type_wording">
+                                <input class="form-control w-100" type="text" name="event_type_wording" id="event_type_wording" required {{#if event_type_wording}}value="{{event_type_wording}}"{{/if}}>
                             </td>
                             <td colspan=2 class="text-center">
                                 <button type="submit" class="btn btn-outline-success btn-sm">Ajouter</button>
@@ -94,5 +94,14 @@
                 </tbody>
             </table>
         </div>
+        {{#if errors}}
+        <div class="col-md-8 mx-auto">
+            {{#each errors}}
+            <div class="alert alert-danger" role="alert">
+                {{msg}}
+            </div>
+            {{/each}}
+        </div>
+        {{/if}}
     </div>
 </div>
