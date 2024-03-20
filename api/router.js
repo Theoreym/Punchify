@@ -159,10 +159,11 @@ router.route('/absence')
 //*****     routes Profil Boxer     *****//
 router.route('/profil/boxer')
     .get(adherentController.getProfilBoxer)
-
-router.route('/profil/boxer/id')
-    .get(adherentController.getProfilUpdate)
     .post(adherentController.postProfilUpdate)
+
+// router.route('/profil/boxer/id')
+//     .get(adherentController.getProfilUpdate)
+//     .post(adherentController.postProfilUpdate)
 //************************************//
 
 

@@ -269,10 +269,10 @@ module.exports = {
         res.render('profil_boxer', { profilBoxer });
     },
 
-      getProfilUpdate: async (req, res) => {
-        const profil = await Adherent.findByPk(req.params.id, { raw: true })
-        res.render('profil_boxer', { profil });
-      },
+    //   getProfilUpdate: async (req, res) => {
+    //     const profil = await Adherent.findByPk(req.params.id, { raw: true })
+    //     res.render('profil_boxer', { profil });
+    //   },
 
       postProfilUpdate: async (req, res) => {
         await Adherent.update({
@@ -283,7 +283,7 @@ module.exports = {
             city: req.body.adresse
         }, {
             where: {
-                id : req.params.id
+                id : 1
             }
         })
         res.redirect('back')

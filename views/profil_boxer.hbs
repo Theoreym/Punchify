@@ -29,7 +29,8 @@
                             <p>Nom: {{profilBoxer.lastname}}</p>
                             <p>Prénom: {{profilBoxer.firstname}}</p>
                             <p>Numéro: {{profilBoxer.phone}}</p>
-                            <p>Adresse: {{profilBoxer.address_number}} {{profilBoxer.address_wording}}, {{profilBoxer.postal_code}} {{profilBoxer.city}}</p>
+                            <p>Adresse: {{profilBoxer.address_number}} {{profilBoxer.address_wording}},
+                                {{profilBoxer.postal_code}} {{profilBoxer.city}}</p>
                             <!-- Button trigger modal -->
                             <div class="col">
                                 <div class="d-grid gap-2">
@@ -46,12 +47,13 @@
                 </div>
 
             </div>
+            {{#each }}
             <div class="col mt-5">
                 <div class="alert alert-secondary">
                     <div class="container-fluid">
                         <p>NOTIFICATION</p>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                                {{moment  format="DD/MM/YY"}} {{moment  format="HH:mm"}}
+                            {{moment format="DD/MM/YY"}} {{moment format="HH:mm"}}
                         </div>
                     </div>
                     <div class="container-fluid">
@@ -60,11 +62,13 @@
                     </div>
                 </div>
             </div>
+            {{/each}}
         </div>
     </div>
 
     <!-- Modal de modification -->
-    <div class="modal fade" id="exampleModal{{id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="exampleModal{{profilBoxer.id}}" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -73,18 +77,24 @@
                 </div>
                 <div class="modal-body">
 
-                    <form action="/information/update/{{profilBoxer.id}}" method="post">
+                    <form action="/profil/boxer" method="post">
 
                         <label for="numero" class="form-label">Numéro</label>
-                        <input name="numero" type="text" class="form-control" id="numero" placeholder="numero" value="{{profilBoxer.phone}}">
+                        <input name="numero" type="text" class="form-control" id="numero" placeholder="numero"
+                            value="{{profilBoxer.phone}}">
 
                         <label for="adresse" class="form-label">Adresse</label>
-                        <input name="adresse" type="text" class="form-control" id="adresse" placeholder="adresse"
-                            value="{{profilBoxer.address_number}} {{profilBoxer.address_wording}}, {{profilBoxer.postal_code}} {{profilBoxer.city}}">
+                        <input name="number" type="text" class="form-control" id="adresse"
+                            value="{{profilBoxer.address_number}}">
+                        <input name="street" type="text" class="form-control" id="adresse"
+                            value="{{profilBoxer.address_wording}} {{profilBoxer.postal_code}} {{profilBoxer.city}}">
+                        <input name="postalCode" type="text" class="form-control" id="adresse" placeholder="adresse"
+                            value="{{profilBoxer.postal_code}}">
+                        <input name="city" type="text" class="form-control" id="adresse" value="{{profilBoxer.city}}">
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
-                            <button type="button" class="btn btn-danger">Sauvegarder</button>
+                            <button type="submit" class="btn btn-danger">Sauvegarder</button>
                         </div>
                     </form>
                 </div>
