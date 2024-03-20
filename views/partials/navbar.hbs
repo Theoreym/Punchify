@@ -14,7 +14,7 @@
           <a class="nav-link {{#if navList}}active{{/if}}" href="/article/list">Lis des trucs</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link {{#if navUser}}active{{/if}}" href="/user/register">Créer son compte</a>
+          <a class="nav-link {{#if navUser}}active{{/if}}" href="/register">Créer son compte</a>
         </li>
         <li class="nav-item">
           <a class="nav-link {{#if navAdherentInscription}}active{{/if}}" href="/adherent/inscription">Demande d'adhésion</a>
@@ -41,13 +41,18 @@
          
           
         {{/if}}
-        <li class="nav-item me-2">
-          <a class="btn btn-outline-{{#if username}}danger rounded-pill{{else}}success px-4{{/if}} d-flex me-3" {{#if username}}href="/user/logout"><i class="bi bi-box-arrow-right"></i>
-            {{else}}
-            href="/login"> Se connecter
-            {{/if}}
-          </a>
+        {{#unless email}}
+        <li class="nav-item">
+          <a class="btn btn-outline-dark   me-2 ms-2 {{#if navLogin}} active {{/if}}" href="/login"><i
+              class="bi bi-person-fill"></i> Connexion</a>
         </li>
+        {{/unless}}
+        {{#if email}}
+        <li class="nav-item">
+          <a class=" btn btn-outline-danger me-2 ms-2 {{#if navLogin}} active {{/if}}" href="/logout"><i
+              class="bi bi-box-arrow-right me-2"></i>Se deconnecter</a>
+        </li>
+        {{/if}}
          <li>
            <button class="btn aside-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
                Coach Dashboard

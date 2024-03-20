@@ -9,8 +9,8 @@ const categoryController = require('./controllers/categoryController');
 const teamController = require('./controllers/teamController');
 const profilController = require('./controllers/profilController');
 const adherentController = require('./controllers/adherentController');
-const loginController = require('./controllers/loginController');
 const coachController = require('./controllers/coachController');
+const userController = require('./controllers/userController');
 
 
 
@@ -19,17 +19,20 @@ router.route('/')
     .get(homeController.get);
 //***********************************//
 
-
-//*****     routes login     *****//
-router.route('/login')
-    .get(loginController.get);
-//***********************************//
-
+router.route('/register')
+    .get(userController.get)
+    .post(userController.post);
 
 
 //*****     routes login     *****//
 router.route('/login')
-    .get(loginController.get);
+    .get(userController.getLogin)
+    .post(userController.postLogin);
+
+
+router.route('/logout')
+    .get(userController.logout)
+//*****     routes login     *****//
 //***********************************//
 
 

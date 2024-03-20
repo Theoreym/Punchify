@@ -1,6 +1,7 @@
 const { DataTypes } = require('sequelize');
 const config = require('../../config');
 const Profil = require('./profilModel');
+const bcrypt = require("bcrypt");
 
 const User = config.sequelize.define('users', {
     id_user: {
@@ -24,8 +25,24 @@ const User = config.sequelize.define('users', {
     },
     lastConnection: {
         type: DataTypes.DATE
+    },
+}, {
+    hooks: {
+      beforeCreate: (User) => {
+        {
+          User.password = User.password && User.password != "" ? bcrypt.hashSync(User.password, 10) : ""
+        }
+      },
+      beforeUpdate: (User) => {
+        {
+          User.password = User.password && User.password != "" ? bcrypt.hashSync(User.password, 10) : ""
+        }
+      }
     }
-});
+  }
+  );
+
+
 
 User.belongsTo(Profil);
 Profil.hasOne(User);

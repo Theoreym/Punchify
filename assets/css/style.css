@@ -1,14 +1,19 @@
 :root {
+
+    .bg-body-tertiary {
+        background-color: rgba(33, 33, 33) !important;
+    };
+    
     --bs-body-color: #B3B3B3 !important;
     --bs-body-color-rgb: 179, 179, 179 !important;
 
-    --bs-body-bg: #121212 !important;
+    --bs-body-bg: #1C1C1C !important;
     --bs-body-bg-rgb: 18, 18, 18 !important;
 
     --bs-secondary-color: #212121 !important;
     --bs-secondary-color-rgb: 33, 33, 33 !important;
 
-    --bs-secondary-bg: #1db954 !important;
+    --bs-secondary-bg: #00ff59 !important;
     --bs-secondary-bg-rgb: 29, 185, 84 !important;
 
     --bs-tertiary-color: #E8E8E8 !important;
@@ -39,22 +44,57 @@
     border-top: none !important;
     border-right: none !important;
     border-left: none !important;
+    box-shadow: none !important;
     border-bottom: var(--bs-border-width) solid #1db954 !important;
+    transition: 1s !important;
+
 }
 
 .form-control:focus {
     box-shadow: none !important;
+    border: var(--bs-border-width) solid #1db954 !important;
+    transition: border 1s !important; /* Transition only the border */
 }
+
 
 .form-floating>.form-control:not(:placeholder-shown)~label::after {
     background-color: var(--bs-dark) !important;
 }
+
+.information-home-right-up {
+    border-top: var(--bs-border-width) solid #1db954 !important;
+    border-right: var(--bs-border-width) solid #1db954 !important;
+    border-left: none !important;
+    border-bottom: none !important;
+    background-color: #292929 !important;
+}
+
+.information-home-left-down {
+    border-left: var(--bs-border-width) solid #1db954 !important;
+    border-bottom: var(--bs-border-width) solid #1db954 !important;
+    border-right: none !important;
+    border-top: none !important;
+    background-color: #292929 !important;
+}
+
+.information-home {
+    border: var(--bs-border-width) solid #1db954 !important;
+    background-color: #292929 !important;
+}
+
 
 .btn-outline-success,
 .schedule-btn,
 .aside-btn {
     color: var(--bs-secondary) !important;
     border: 1px solid var(--bs-secondary) !important;
+}
+
+.green-btn {
+    color: white !important;
+    background-color: #1ED964 !important;
+    border: 1px solid #1ED964 !important;
+    text-shadow: 0px 1px 3px rgba(0,0,0,0.78) !important;
 }
 
 .btn-outline-success:hover,

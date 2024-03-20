@@ -50,6 +50,24 @@ MomentHandler.registerHelpers(Handlebars);
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
   
+app.use(session({
+  secret: config.sessionSecret,
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false, maxAge: 3600000 },
+  store: new SequelizeStore({db: config.sequelize})
+}))
+
+app.use('*', (req, res, next)=>{
+  if (req.session.email) {
+    res.locals.email = req.session.email;
+    res.locals.userId = req.session.userId;
+    if (req.session.isAdmin){
+      res.locals.isAdmin = req.session.isAdmin;
+    }
+  }
+  next();
+});
 
 app.use('/', router);
 
