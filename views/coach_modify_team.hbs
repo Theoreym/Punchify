@@ -1,0 +1,36 @@
+<div class="container mt-5">
+  <h2>Modify Team</h2>
+  <form action="/coach/modify-team" method="post">
+    <div class="mb-3">
+      <label for="currentTeamSelect" class="form-label">Select Player </label>
+      <select name="id_adherent" class="form-select" id="currentTeamSelect">
+        <option selected>Choose a team</option>
+
+        {{#if teams}}
+          {{#each teams}}
+            <option data-check={{id_team}} value={{adherent.id_adherent}}> {{adherent.firstname}} {{adherent.lastname}} (Team {{id_team}})</option>
+          {{/each}}
+
+        {{else}}
+          <option>Heloo</option>
+        {{/if}}
+
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="newTeamSelect" class="form-label">Replace current player with:</label>
+      <select name="newTeamId" class="form-select" id="newTeamSelect">
+        <option selected>Choose a new team</option>
+        {{#each selectTeams}}
+          <option value={{id_team}}>(Team{{id_team}})</option>
+        {{/each}}
+      </select>
+    </div>
+    <button class="btn btn-primary" id="assignTeamBtn">Assign to New Team</button>
+  </form>
+</div>
+<script>
+  const currentTeamSelect = document.querySelector('#currentTeamSelect'); const newTeamSelect = document.querySelector('#newTeamSelect'); const assignTeamBtn = document.querySelector('#assignTeamBtn'); currentTeamSelect.addEventListener('change', (e) => { const selectedOption = e.target.options[e.target.selectedIndex]; const selectedTeamId = selectedOption.getAttribute('data-check'); for (let i = 0; i < newTeamSelect.options.length; i++) { const option = newTeamSelect.options[i]; if (option.value === selectedTeamId) { option.setAttribute("disabled", true); } else { option.removeAttribute("disabled"); } } });
+
+</script>

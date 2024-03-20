@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8 mx-auto">
-            <h1 class="text-center mt-5 mb-5 bg-primary p-1 rounded-4 fs-3">Gestion des catégories de poids</h1>
+            <h1 class="text-center mt-5 mb-5 bg-primary p-1 rounded-4 fs-3">Gestion des profils</h1>
         </div>
     </div>
     <div class="row">
@@ -9,44 +9,39 @@
             <table class="table table-stripped">
                 <thead>
                     <tr>
-                        <th scope="col" class="w-50">Catégorie de poids</th>
-                        <th scope="col" class="text-center">Poids mini</th>
-                        <th scope="col" class="text-center">Poids maxi</th>
-                        <th scope="col" class="text-center">Modifier</th>
-                        <th scope="col" class="text-center">Supprimer</th>
+                        <th scope="col" style="width: auto;">Code Profil</th>
+                        <th scope="col">Profil</th>
+                        <th class="text-center" scope="col">Modifier</th>
+                        <th class="text-center" scope="col">Supprimer</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {{#each team}}
+                    {{#each profil}}
                     <tr>
-                        <td scope="row">{{team_wording}}</td>
-                        <td scope="row" class="text-center">{{weight_min}}</td>
-                        <td scope="row" class="text-center">{{weight_max}}</td>
+                        <td scope="row">{{profil_code}}</td>
+                        <td scope="row">{{profil_wording}}</td>
                         <td class="text-center">
                             <a href="" class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
-                                data-bs-target="#updateModal{{id_team}}">Modifier</a>
+                                data-bs-target="#updateModal{{id_profil}}">Modifier</a>
                         </td>
-                        <!-- Modal modifier la catégorie de poids -->
-                        <div class="modal fade" id="updateModal{{id_team}}" tabindex="-1"
+                        <!-- Modal modifier le profil -->
+                        <div class="modal fade" id="updateModal{{id_profil}}" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modification d'une catégorie de poids</h1>
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Modification d'un profil</h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        <form action="/team/update/{{id_team}}" method="post">
-                                            <label for="team_wording_update" class="mb-1">Catégorie de poids</label>
-                                            <input class="w-100 mb-2" type="text" name="team_wording_update"
-                                            id="team_wording_update" value="{{team_wording}}">
-                                            <label for="weight_min_update" class="mb-1">Poids mini</label>
-                                            <input class="w-100 mb-2" type="number" step="any" name="weight_min_update"
-                                            id="weight_min_update" value="{{weight_min}}">
-                                            <label for="weight_maxi_update" class="mb-1">Poids maxi</label>
-                                            <input class="w-100 mb-2" type="number" step="any" name="weight_max_update"
-                                            id="weight_max_update" value="{{weight_max}}">
+                                        <form action="/profil/update/{{id_profil}}" method="post">
+                                            <label for="profil_code_update" class="mb-1">Code Profil</label>
+                                            <input class="w-100" type="text" name="profil_code_update"
+                                            id="profil_code_update" value="{{profil_code}}">
+                                            <label for="profil_wording_update" class="mb-1">Profil</label>
+                                            <input class="w-100" type="text" name="profil_wording_update"
+                                            id="profil_wording_update" value="{{profil_wording}}">
                                     </div>
                                     <div class="modal-footer">
                                             <button type="submit" class="btn btn-outline-success btn-sm">Modifier</button>
@@ -57,26 +52,26 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Fin Modal modifier la catégorie de poids-->
+                        <!-- Fin Modal modifier le profil -->
                         <td class="text-center">
                             <a href="" class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
-                                data-bs-target="#deleteModal{{id_team}}">Supprimer</a>
+                                data-bs-target="#deleteModal{{id_profil}}">Supprimer</a>
                         </td>
-                        <!-- Modal supprimer la catégorie de poids -->
-                        <div class="modal fade" id="deleteModal{{id_team}}" tabindex="-1"
+                        <!-- Modal supprimer le type d'évènement -->
+                        <div class="modal fade" id="deleteModal{{id_profil}}" tabindex="-1"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Suppression de la catégorie de poids <span class="fw-bold fst-italic">{{team_wording}}</span></h1>
+                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Suppression du profil <span class="fw-bold fst-italic">{{profil_wording}}</span></h1>
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
                                     <div class="modal-body">
-                                        Etes-vous sûr de vouloir supprimer cette catégorie de poids ?
+                                        Etes-vous sûr de vouloir supprimer ce profil ?
                                     </div>
                                     <div class="modal-footer">
-                                        <form action="/team/delete/{{id_team}}" method="post">
+                                        <form action="/profil/delete/{{id_profil}}" method="post">
                                             <button type="submit" class="btn btn-outline-success btn-sm">Supprimer
                                                 définitivement</button>
                                         </form>
@@ -86,19 +81,20 @@
                                 </div>
                             </div>
                         </div>
-                        <!-- Fin Modal supprimer la catégorie de poids -->
+<<<<<<< HEAD
+                        <!-- Fin Modal Supprimer le profil -->
+=======
+                        <!-- Fin Modal modifier le profil -->
+>>>>>>> dc26be2b771865a997db1627b63cf2d258d5681a
                     </tr>
                     {{/each}}
                     <tr>
-                        <form action="/team/create" method="post">
+                        <form action="/profil/create" method="post">
                             <td scope="row">
-                                <input class="w-100" type="text" name="team_wording" id="team_wording">
+                                <input class="w-100" type="text" name="profil_code" id="profil_code">
                             </td>
-                             <td scope="row">
-                                <input class="w-100" type="number" step="any" name="weight_min" id="weight_min">
-                            </td>
-                             <td scope="row">
-                                <input class="w-100" type="number" step="any" name="weight_max" id="weight_max">
+                            <td scope="row">
+                                <input class="w-100" type="text" name="profil_wording" id="profil_wording">
                             </td>
                             <td colspan=2 class="text-center">
                                 <button type="submit" class="btn btn-outline-success btn-sm">Ajouter</button>

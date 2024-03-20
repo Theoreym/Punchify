@@ -10,10 +10,10 @@
                                 <p class="m-4">PUNCHIFY</p>
                             </div>
                             <div class="col-7">
-                                <p>Date de naissance: </p>
-                                <p>Catégorie: </p>
-                                <p>Poids: </p>
-                                <p>Taille: </p>
+                                <p>Date de naissance: {{moment profilBoxer.birthdate format="DD/MM/YYYY"}}</p>
+                                <p>Catégorie: {{profilBoxer.category}}</p>
+                                <p>Poids: {{profilBoxer.weight}} kg</p>
+                                <p>Taille: {{profilBoxer.size}} cm</p>
                             </div>
                         </div>
                     </div>
@@ -22,16 +22,14 @@
 
                 <div class="card">
                     <div class="row align-items-start m-3">
-                        <div class="col-5">
-                            <img src="" alt="">
-                            test
+                        <div class="col-5" style="height: 100px; background-image: ../assets/images/logo.jpg;">
+                            <img src="../assets/images/logo.jpg" alt="">
                         </div>
                         <div class="col-7">
-                            <p>Nom: </p>
-                            <p>Prénom: </p>
-                            <p>Email: </p>
-                            <p>Numéro: </p>
-                            <p>Adresse: </p>
+                            <p>Nom: {{profilBoxer.lastname}}</p>
+                            <p>Prénom: {{profilBoxer.firstname}}</p>
+                            <p>Numéro: {{profilBoxer.phone}}</p>
+                            <p>Adresse: {{profilBoxer.address_number}} {{profilBoxer.address_wording}}, {{profilBoxer.postal_code}} {{profilBoxer.city}}</p>
                             <!-- Button trigger modal -->
                             <div class="col">
                                 <div class="d-grid gap-2">
@@ -50,14 +48,23 @@
             </div>
             <div class="col mt-5">
                 <div class="alert alert-secondary">
-                    A simple primary alert—check it out!
+                    <div class="container-fluid">
+                        <p>NOTIFICATION</p>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                                {{moment  format="DD/MM/YY"}} {{moment  format="HH:mm"}}
+                        </div>
+                    </div>
+                    <div class="container-fluid">
+                        <p>{{event_wording}} le {{date_start}} à {{time_start}}.</p>
+                        <p>Adresse: {{place_name}}</p>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Modal de modification -->
+    <div class="modal fade" id="exampleModal{{id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -66,22 +73,14 @@
                 </div>
                 <div class="modal-body">
 
-                    <form action="" method="post">
-                        <label for="nom" class="form-label">Nom</label>
-                        <input name="nom" type="text" class="form-control" id="nom" placeholder="nom" value="">
-
-                        <label for="prenom" class="form-label">Prénom</label>
-                        <input name="prenom" type="text" class="form-control" id="prenom" placeholder="prenom" value="">
-
-                        <label for="email" class="form-label">Email</label>
-                        <input name="email" type="email" class="form-control" id="email" placeholder="email" value="">
+                    <form action="/information/update/{{profilBoxer.id}}" method="post">
 
                         <label for="numero" class="form-label">Numéro</label>
-                        <input name="numero" type="text" class="form-control" id="numero" placeholder="numero" value="">
+                        <input name="numero" type="text" class="form-control" id="numero" placeholder="numero" value="{{profilBoxer.phone}}">
 
                         <label for="adresse" class="form-label">Adresse</label>
-                        <input name="adresse" type="text" class="form-control" id="adresse" placeholder="adresse" value="">
-
+                        <input name="adresse" type="text" class="form-control" id="adresse" placeholder="adresse"
+                            value="{{profilBoxer.address_number}} {{profilBoxer.address_wording}}, {{profilBoxer.postal_code}} {{profilBoxer.city}}">
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>

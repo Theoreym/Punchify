@@ -5,17 +5,17 @@ module.exports = {
         const navCategoryManage = true;
         const category = await Category.findAll({ raw: true });
         //console.log(category);
-        res.render('category_manage', {category, navCategoryManage})
+        res.render('category_manage', {category, navCategoryManage});
     },
 
     postCreate: async (req, res) => {
-        //console.log(req.body)
+        //console.log(req.body);
         await Category.create({
             category_wording: req.body.category_wording.toLowerCase(),
             age_min: req.body.age_min,
             age_max: req.body.age_max
-        })
-        res.redirect('back')
+        });
+        res.redirect('back');
     },
 
     postUpdate: async  (req, res) => {
@@ -34,4 +34,4 @@ module.exports = {
         });
         res.redirect('back');
     }
-}
+};

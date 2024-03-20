@@ -18,11 +18,6 @@ const Injury = config.sequelize.define('injuries', {
     date_end: {
         type: DataTypes.DATE
     },
-    id_adherent: {
-        type: DataTypes.INTEGER,
-        allowNull: false
-    }
-    // Supprimer
 });
 
 

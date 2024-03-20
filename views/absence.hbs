@@ -1,19 +1,9 @@
 <h1 style="text-align: center;">Absence</h1>
 
-<div class="container">
+<div class="container p-5">
     <form action="/absence" method="post">
 
         <div class="mb-3">
-            <div class="row">
-                <div class="col">
-                    <label for="nom">Nom</label>
-                    <input type="text" class="form-control mb-3" name="nom" placeholder="Nom" aria-label="nom">
-                </div>
-                <div class="col">
-                    <label for="prenom">Prénom</label>
-                    <input type="text" class="form-control mb-3" name="prenom" placeholder="Prenom" aria-label="prenom">
-                </div>
-            </div>
 
             <div class="row">
                 <div class="col">
@@ -21,11 +11,7 @@
                     <input type="text" class="form-control mb-3" name="blessure" placeholder="Blessure"
                         aria-label="blessure">
                 </div>
-                <div class="col">
-                    <label for="categorie">Catégorie</label>
-                    <input type="text" class="form-control mb-3" name="categorie" placeholder="Catégorie"
-                        aria-label="categorie">
-                </div>
+                
             </div>
 
             <div class="row">
@@ -48,23 +34,17 @@
     <table class="table table-hover border border-success">
         <thead>
             <tr>
-                <th>Nom</th>
-                <th>Prénom</th>
-                <th>Catégorie</th>
                 <th>Date</th>
                 <th>Blessure</th>
             </tr>
         </thead>
         <tbody>
-{{#each adherent.injury}}
-    <tr>
-                <td>...</td>
-                <td>...</td>
-                <td>...</td>
-                <td>... à ...</td>
-                <td>...</td>
+            {{#each adherent.injuries}}
+            <tr>
+                <td>{{moment date_start format="DD/MM/YY"}} à {{moment date_end format="DD/MM/YY"}}</td>
+                <td>{{this.injury_wording}}</td>
             </tr>
-{{/each}}
+            {{/each}}
 
         </tbody>
 
