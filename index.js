@@ -48,6 +48,20 @@ MomentHandler.registerHelpers(Handlebars);
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
   
+app.use(session({
+  secret: config.sessionSecret,
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: false },
+  store: new SequelizeStore({db: config.sequelize})
+}))
+
+app.use('*', (req, res, next) => {
+  if (req.session.username) {
+    res.locals.username = req.session.username
+  }
+  next()
+})
 
 app.use('/', router);
 

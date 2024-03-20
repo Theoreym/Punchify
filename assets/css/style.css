@@ -1,4 +1,17 @@
 :root {
+    .bg-body-tertiary {
+        background-color: rgba(33, 33, 33) !important;
+    }
+
+    svg {
+        scale: 3 !important;
+    }
+
+    .dropdown-menu {
+        --bs-dropdown-bg: rgba(33, 33, 33) !important;
+        --bs-dropdown-link-active-bg: #1db954 !important;
+    }
+
     --bs-body-color: #B3B3B3 !important; 
     --bs-body-color-rgb: 179, 179, 179 !important;
 
@@ -56,8 +69,8 @@
 }
 
 .btn-outline-success:hover {
-    color: var(--bs-secondary-color) !important;
-    background-color: var(--bs-secondary-bg)! important ; 
+    color: white !important;
+    background-color: #1db954 !important ; 
 }
 
 
