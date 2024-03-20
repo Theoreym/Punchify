@@ -142,42 +142,42 @@ router.route('/adherent/inscription')
 router.route('/adherent/createbyuser')
     .post(
         body('lastname')
-            .exists()
-            .notEmpty().withMessage('Ce champ ne doit pas être vide')
-            .isLength({ min: 2, max:100 }).withMessage('Le champ doit contenir plus de 2 caractères ou moins de 100')
+            .exists().withMessage('1')
+            .notEmpty().withMessage('2 - Ce champ ne doit pas être vide')
+            .isLength({ min: 2, max:100 }).withMessage('3 - Le champ doit contenir plus de 2 caractères ou moins de 100')
             .trim().escape(),
         body('firstname')
-            .exists()
-            .notEmpty().withMessage('Ce champ ne doit pas être vide')
-            .isLength({ min: 2, max:100 }).withMessage('Le champ doit contenir plus de 2 caractères ou moins de 100')
+            .exists().withMessage('4 - Ce champ ne doit pas être vide')
+            .notEmpty().withMessage('5 - Ce champ ne doit pas être vide')
+            .isLength({ min: 2, max:100 }).withMessage('6 - Le champ doit contenir plus de 2 caractères ou moins de 100')
             .trim().escape(),
         body('radioGenre')
-            .exists(),
+            .exists().withMessage('7'),
         body('birthdate')
-            .exists()
-            .notEmpty().withMessage('Veuillez renseigner une date de naissance')
-            .isDate().withMessage('Format incorrect'),
+            .exists().withMessage('8')
+            .notEmpty().withMessage('9 - Veuillez renseigner une date de naissance')
+            .isDate().withMessage('10 - Format incorrect'),
         body('size')
-            .exists()
-            .notEmpty().withMessage('Ce champ ne doit pas être vide')
-            .isNumeric().withMessage('Format incorrect'),
+            .exists().withMessage('11')
+            .notEmpty().withMessage('12 - Ce champ ne doit pas être vide')
+            .isNumeric().withMessage('13 - Format incorrect'),
         body('weight')
-            .exists()
-            .notEmpty().withMessage('Ce champ ne doit pas être vide')
-            .isNumeric().withMessage('Format incorrect'),
-        body('adress_wording')
-            .exists()
-            .notEmpty().withMessage('Ce champ ne doit pas être vide')
-            .isLength({ min: 2, max:255 }).withMessage('Le champ doit contenir plus de 2 caractères ou moins de 255'),
+            .exists().withMessage('14')
+            .notEmpty().withMessage('15 - Ce champ ne doit pas être vide')
+            .isNumeric().withMessage('16 - Format incorrect'),
+        body('address_wording')
+            .exists().withMessage('17')
+            .notEmpty().withMessage('18 - Ce champ ne doit pas être vide')
+            .isLength({ min: 2, max:255 }).withMessage('19 - Le champ doit contenir plus de 2 caractères ou moins de 255'),
         body('postal_code')
-            .exists()
-            .notEmpty().withMessage('Ce champ ne doit pas être vide')
-            .isLength({ min: 5, max:5 }).withMessage('Le champ doit contenir 5 caractères')
-            .isNumeric().withMessage('Format incorrect'),
+            .exists().withMessage('20')
+            .notEmpty().withMessage('21 - Ce champ ne doit pas être vide')
+            .isLength({ min: 5, max:5 }).withMessage('22 - Le champ doit contenir 5 caractères')
+            .isNumeric().withMessage('23 - Format incorrect'),
         body('city')
-            .exists()
-            .notEmpty().withMessage('Ce champ ne doit pas être vide')
-            .isLength({ min: 2, max:100 }).withMessage('Le champ doit contenir plus de 2 caractères ou moins de 100'),
+            .exists().withMessage('24')
+            .notEmpty().withMessage('25 - Ce champ ne doit pas être vide')
+            .isLength({ min: 2, max:100 }).withMessage('26 - Le champ doit contenir plus de 2 caractères ou moins de 100'),
         adherentController.postCreateByUser);
 
 router.route('/adherent/create')
