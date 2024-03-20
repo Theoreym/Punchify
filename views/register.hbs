@@ -1,0 +1,45 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-3 pe-0 my-4">
+            <h1 class="d-flex justify-content-center align-items-center rounded-start-4 fs-4 h-100 bg-secondary text-dark"
+                id="adhesionTitle" tabindex="0" aria-labelledby="adhesionTitle" role="heading">Inscription</h1>
+        </div>
+        <div class="col-md-9 mx-auto my-4 py-4 bg-dark rounded-end-4">
+            <form action="/register" method="post" class="bg-dark" aria-label="Formulaire de demande d'adhésion" role="form">
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-6 form-floating mb-3">
+                        <input type="email" class="form-control" id="email" name="email" aria-label="Nom"
+                            aria-required="true" required {{#if lastname}}value="{{lastname}}" {{/if}}>
+                        <label for="lastname"><i class="bi bi-envelope text-secondary me-1"></i> Adresse E-mail</label>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-6 form-floating mb-3">
+                        <input type="password" step="any" class="form-control" id="password" name="password"  aria-label="Taille" aria-required="true"
+                            required {{#if size}}value="{{size}}" {{/if}}>
+                        <label for="size"><i class="bi bi-key text-secondary me-1"></i> Mot de passe</label>
+                    </div>
+                </div>
+                <div class="row d-flex justify-content-center">
+                    <div class="col-md-6 form-floating mb-3">
+                        <input type="password" step="any" class="form-control" id="confirmpassword" aria-label="Taille" aria-required="true"
+                            required {{#if size}}value="{{size}}" {{/if}}>
+                        <label for="size"><i class="bi bi-key text-secondary me-1"></i> Confirmez le mot de passe</label>
+                    </div>
+                </div>  
+                {{#if errors}}
+                <div class="col text-center">
+                    {{#each errors}}
+                    <div class="alert alert-danger" role="alert">
+                        {{msg}}
+                    </div>
+                    {{/each}}
+                </div>
+                {{/if}}
+                <div class="col text-center">
+                    <button type="submit" class="btn btn-outline-success px-5">Adhérer !</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

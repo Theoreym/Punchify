@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Nom de l'Adhérent</th>
+          <th scope="col">Nom de l'événement</th>
+          <th scope="col">Convoqué</th>
+          <th scope="col">Disponible</th>
+          <th scope="col">Présent</th>
+          <th scope="col">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each participateEvent}}
+          <tr>
+            <td>{{firstname}} {{lastname}}</td>
+            <td>{{events.event_wording}}</td>
+            <td>{{#if events.participateevents.summoned}}vrai{{else}}faux{{/if}}</td>
+            <td>{{#if events.participateevents.available}}vrai{{else}}faux{{/if}}</td>
+            <td>{{#if events.participateevents.present}}vrai{{else}}faux{{/if}}</td>
+            <td>{{moment events.date_start format="DD/MM/YYYY"}}</td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="container mt-5">
+  <form method="POST" action="/notification-d'événement" id="notificationForm">
+    <div class="mb-3">
+      <label for="adherentIdAdherent" class="form-label">Adhérent</label>
+      <select name="adherentIdAdherent" class="form-select" id="adherentIdAdherent">
+        <option selected>Sélectionner un Adhérent</option>
+        {{#each adherent}}
+          <option value={{id_adherent}}>{{firstname}} {{lastname}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="eventIdEvent" class="form-label">Événement</label>
+      <select name="eventIdEvent" class="form-select" id="eventIdEvent">
+        <option selected>Sélectionner un ID d'événement</option>
+        {{#each events}}
+          <option value={{id_event}}>{{event_wording}}</option>
+        {{/each}}
+      </select>
+    </div>
+    <div class="mb-3">
+      <div class="form-check">
+        <input name="summoned" class="form-check-input" type="checkbox" value="1" id="summoned" />
+        <label class="form-check-label" for="summoned">
+          Convoqué
+        </label>
+      </div>
+    </div>
+    <div class="mb-3">
+      <div class="form-check">
+        <input name="available" class="form-check-input" type="checkbox" value="1" id="available" />
+        <label class="form-check-label" for="available">
+          Disponible
+        </label>
+      </div>
+    </div>
+    <div class="mb-3">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="present" name="present" value="1" />
+        <label class="form-check-label" for="present">
+          Présent
+        </label>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Soumettre</button>
+  </form>
+</div>
+
+<script>
+  document.getElementById("notificationForm").addEventListener("submit", function(event) { document.querySelectorAll('input[type="checkbox"]').forEach(function(checkbox) { if (!checkbox.checked) { checkbox.value = "0"; } }); });
+
+</script>

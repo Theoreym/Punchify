@@ -52,16 +52,20 @@ app.use(session({
   secret: config.sessionSecret,
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: false },
+  cookie: { secure: false, maxAge: 3600000 },
   store: new SequelizeStore({db: config.sequelize})
 }))
 
-app.use('*', (req, res, next) => {
-  if (req.session.username) {
-    res.locals.username = req.session.username
+app.use('*', (req, res, next)=>{
+  if (req.session.email) {
+    res.locals.email = req.session.email;
+    res.locals.userId = req.session.userId;
+    if (req.session.isAdmin){
+      res.locals.isAdmin = req.session.isAdmin;
+    }
   }
-  next()
-})
+  next();
+});
 
 app.use('/', router);
 

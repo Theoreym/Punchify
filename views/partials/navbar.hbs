@@ -12,7 +12,20 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
+<<<<<<< HEAD
           <a class="nav-link {{#if navAdherentInscription}}active{{/if}}" href="/adherent/inscription">Adhésion</a>
+=======
+          <a class="nav-link {{#if navHome}}active{{/if}}" aria-current="page" href="/">Maison</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{#if navList}}active{{/if}}" href="/article/list">Lis des trucs</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{#if navUser}}active{{/if}}" href="/register">Créer son compte</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link {{#if navAdherentInscription}}active{{/if}}" href="/adherent/inscription">Demande d'adhésion</a>
+>>>>>>> origin/thomas
         </li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="/eventType/Manage" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -27,9 +40,28 @@
             <li><a class="dropdown-item" href="/profil/boxer">Mon profil</a></li>
           </ul>
         </li>
-        <li>
+      </ul>
+      <ul class="navbar-nav d-flex me-5">
+        {{#if username}}
+          <a class="btn btn-outline-success d-flex me-3" href="/user/read"><i class="bi bi-person-gear pe-2"></i> Gérer {{username}}</a>
+         
+          
+        {{/if}}
+        {{#unless email}}
+        <li class="nav-item">
+          <a class="btn aside-btn me-2 ms-2 {{#if navLogin}} active {{/if}}" href="/login"><i
+              class="bi bi-person-fill"></i> Connexion</a>
+        </li>
+        {{/unless}}
+        {{#if email}}
+        <li class="nav-item">
+          <a class=" btn btn-outline-danger me-2 ms-2 {{#if navLogin}} active {{/if}}" href="/logout"><i
+              class="bi bi-box-arrow-right me-2"></i>Se deconnecter</a>
+        </li>
+        {{/if}}
+         <li>
            <button class="btn aside-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#staticBackdrop" aria-controls="staticBackdrop">
-               Coach
+               Coach Dashboard
           </button>
         </li>
       </ul>

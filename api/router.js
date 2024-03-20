@@ -10,6 +10,7 @@ const teamController = require('./controllers/teamController');
 const profilController = require('./controllers/profilController');
 const adherentController = require('./controllers/adherentController');
 const coachController = require('./controllers/coachController');
+const userController = require('./controllers/userController');
 
 
 
@@ -17,6 +18,24 @@ const coachController = require('./controllers/coachController');
 router.route('/')
     .get(homeController.get);
 //***********************************//
+
+router.route('/register')
+    .get(userController.get)
+    .post(userController.post);
+
+
+//*****     routes login     *****//
+router.route('/login')
+    .get(userController.getLogin)
+    .post(userController.postLogin);
+
+
+router.route('/logout')
+    .get(userController.logout)
+//*****     routes login     *****//
+//***********************************//
+
+
 
 //*****     routes eventType     *****//
 router.route('/eventType/manage')

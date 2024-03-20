@@ -4,16 +4,16 @@
 
 <main class="d-flex align-items-center justify-content-center min-vh-100 py-4 bg-body-tertiary">
   <div class="form-signin">
-    <form class="d-flex flex-column gap-4" style="max-width: 300px;" id="login-form" action="#" method="post">
+    <form class="d-flex flex-column gap-4" style="max-width: 300px;" id="login-form" action="/login" method="post">
       <h1 class="header h3 mb-3 fw-normal">Connexion</h1>
 
       <div class="form-floating">
-        <input type="email" class="form-control inputs" id="email" placeholder="name@example.com" aria-label="Email d’utilisateur" required />
+        <input type="email" class="form-control inputs" id="email" placeholder="name@example.com" aria-label="Email d’utilisateur" name="email" required />
         <label for="email">Email d’utilisateur</label>
         <span class="email-error"></span>
       </div>
       <div class="form-floating">
-        <input type="password" class="form-control inputs" id="password" placeholder="Password" aria-label="Mot de passe" required />
+        <input type="password" class="form-control inputs" id="password" placeholder="Password" aria-label="Mot de passe" name="password" required />
         <label for="password">Mot de passe</label>
         <span class="password-error"></span>
 
@@ -24,8 +24,8 @@
 </main>
 <style>
   .error{
-    background-color: red;
-    border: 34px solid red;
+    background-color: rgba(220, 60, 60, 0.727);
+    border: 2px solid red;
   }
 </style>
 
