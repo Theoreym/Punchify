@@ -181,7 +181,60 @@ router.route('/adherent/createbyuser')
         adherentController.postCreateByUser);
 
 router.route('/adherent/create')
-    .post(adherentController.postCreate);
+    .post(
+        body('lastname')
+            .exists().withMessage('1')
+            .notEmpty().withMessage('2 - Ce champ ne doit pas être vide')
+            .isLength({ min: 2, max:100 }).withMessage('3 - Le champ doit contenir plus de 2 caractères ou moins de 100')
+            .trim().escape(),
+        body('firstname')
+            .exists().withMessage('4 - Ce champ ne doit pas être vide')
+            .notEmpty().withMessage('5 - Ce champ ne doit pas être vide')
+            .isLength({ min: 2, max:100 }).withMessage('6 - Le champ doit contenir plus de 2 caractères ou moins de 100')
+            .trim().escape(),
+        body('radioGenre')
+            .exists().withMessage('7'),
+        body('birthdate')
+            .exists().withMessage('8')
+            .notEmpty().withMessage('9 - Veuillez renseigner une date de naissance')
+            .isDate().withMessage('10 - Format incorrect'),
+        body('size')
+            .exists().withMessage('11')
+            .notEmpty().withMessage('12 - Ce champ ne doit pas être vide')
+            .isNumeric().withMessage('13 - Format incorrect'),
+        body('weight')
+            .exists().withMessage('14')
+            .notEmpty().withMessage('15 - Ce champ ne doit pas être vide')
+            .isNumeric().withMessage('16 - Format incorrect'),
+        body('address_wording')
+            .exists().withMessage('17')
+            .notEmpty().withMessage('18 - Ce champ ne doit pas être vide')
+            .isLength({ min: 2, max:255 }).withMessage('19 - Le champ doit contenir plus de 2 caractères ou moins de 255'),
+        body('postal_code')
+            .exists().withMessage('20')
+            .notEmpty().withMessage('21 - Ce champ ne doit pas être vide')
+            .isLength({ min: 5, max:5 }).withMessage('22 - Le champ doit contenir 5 caractères')
+            .isNumeric().withMessage('23 - Format incorrect'),
+        body('city')
+            .exists().withMessage('24')
+            .notEmpty().withMessage('25 - Ce champ ne doit pas être vide')
+            .isLength({ min: 2, max:100 }).withMessage('26 - Le champ doit contenir plus de 2 caractères ou moins de 100'),
+        body('radioIsValidate')
+            .exists().withMessage('27')
+            .isBoolean().withMessage('28 - Format incorrect'),
+        body('userIdUser')
+            .exists().withMessage('29')
+            .notEmpty().withMessage('30 - Ce champ ne doit pas être vide')
+            .isNumeric().withMessage('31 - Sélectionner un élément de la liste'),
+        body('categoryIdCategory')
+            .exists().withMessage('32')
+            .notEmpty().withMessage('33 - Ce champ ne doit pas être vide')
+            .isNumeric().withMessage('34 - Sélectionner un élément de la liste'),
+        body('teamIdTeam')
+            .exists().withMessage('35')
+            .notEmpty().withMessage('36 - Ce champ ne doit pas être vide')
+            .isNumeric().withMessage('37 - Sélectionner un élément de la liste'),
+        adherentController.postCreate);
 
 router.route('/adherent/manage')
     .get(adherentController.getList);

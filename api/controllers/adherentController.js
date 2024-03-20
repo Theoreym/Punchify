@@ -88,7 +88,41 @@ module.exports = {
     },
 
     postCreate: async (req, res) => {
-        const adherent = await Adherent.create({
+        const result = validationResult(req);
+        console.log(result);
+
+        if (!result.isEmpty()) {
+            const navAdherentManage = true;
+
+            //console.log(result.errors[0].msg);
+            const lastname = req.body.lastname.toUpperCase();
+            const firstname = req.body.firstname;
+            const genre = req.body.radioGenre;
+            const birthdate = req.body.birthdate;
+            const size = req.body.size;
+            const weight = req.body.weight;
+            const phone = req.body.phone;
+            const address_number = req.body.address_number;
+            const address_wording = req.body.address_wording;
+            const postal_code = req.body.postal_code;
+            const city = req.body.city.toUpperCase();
+            const isValidate = req.body.radioIsValidate;
+            const userIdUser = req.body.userIdUser;
+            console.log(userIdUser)
+            const categoryIdCategory = req.body.categoryIdCategory;
+            console.log(categoryIdCategory);
+            const teamIdTeam = req.body.teamIdTeam;
+            console.log(teamIdTeam);
+
+            const categories = await Category.findAll({ order: [['age_min', 'ASC']], raw: true });
+            const teams = await Team.findAll({ order: [['weight_max', 'ASC'],['weight_min', 'ASC']], raw: true });
+            const users = await User.findAll({ order: [['email', 'ASC']], raw: true });
+            res.render('adherent_add_update', { lastname, firstname, genre, birthdate, size, weight, phone, address_number, address_wording, postal_code, city, isValidate, userIdUser, categoryIdCategory, teamIdTeam, categories, teams, users, navAdherentManage, 'errors': result.errors });
+            //res.redirect('back')
+        } else {
+            const navAdherentManage = true;
+
+            await Adherent.create({
             lastname:  req.body.lastname.toUpperCase(),
             firstname: req.body.firstname,
             genre: req.body.radioGenre,
@@ -104,9 +138,14 @@ module.exports = {
             userIdUser: req.body.userIdUser,
             categoryIdCategory: req.body.categoryIdCategory,
             teamIdTeam: req.body.teamIdTeam
-        });
-        //console.log(adherent)
-        res.redirect('/');
+            });
+            //console.log(adherent)
+
+            const adherent = await Adherent.findAll({ raw: true });
+            res.render('adherent_manage', {adherent, navAdherentManage});
+            // res.redirect('/');
+        }
+
     },
 
     getList: async function (req,res) {
@@ -151,7 +190,7 @@ module.exports = {
     },
 
     postUpdate: async (req, res) => {
-        const adherent = await Adherent.update({
+        await Adherent.update({
             lastname:  req.body.lastname.toUpperCase(),
             firstname: req.body.firstname,
             genre: req.body.radioGenre,

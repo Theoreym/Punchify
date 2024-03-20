@@ -18,13 +18,15 @@
                 method="post" class="bg-dark">
                 <div class="row">
                     <div class="col-md-6 form-floating mb-3">
-                        <input type="text" class="form-control" id="lastname" name="lastname" {{#if
-                            adherent}}value="{{adherent.lastname}}" {{/if}} required>
+                        <input type="text" class="form-control" id="lastname" name="lastname" aria-required="true"
+                            required {{#if adherent}}value="{{adherent.lastname}}" {{/if}} {{#if
+                            lastname}}value="{{lastname}}" {{/if}}>
                         <label for="lastname">Nom</label>
                     </div>
                     <div class="col-md-6 form-floating mb-3">
                         <input type="text" class="form-control" id="firstname" name="firstname" aria-required="true"
-                            {{#if adherent}}value="{{adherent.firstname}}" {{/if}} required>
+                            required {{#if adherent}}value="{{adherent.firstname}}" {{/if}} {{#if
+                            firstname}}value="{{firstname}}" {{/if}}>
                         <label for="firstname">Prénom</label>
                     </div>
                 </div>
@@ -37,12 +39,14 @@
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="radioGenre" id="radioMen" value="M"
                                     aria-required="true" required {{#if adherent}}{{#ifEquals adherent.genre "M"
+                                    }}checked{{/ifEquals}}{{/if}} {{#if genre}} {{#ifEquals genre "M"
                                     }}checked{{/ifEquals}}{{/if}}>
                                 <label class="form-check-label" for="radioMen">masuclin</label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="radioGenre" id="radioWomen" value="F"
                                     aria-required="true" required {{#if adherent}}{{#ifEquals adherent.genre "F"
+                                    }}checked{{/ifEquals}}{{/if}} {{#if genre}}{{#ifEquals genre "F"
                                     }}checked{{/ifEquals}}{{/if}}>
                                 <label class="form-check-label" for="radioWomen">féminin</label>
                             </div>
@@ -50,55 +54,62 @@
                     </div>
                     <div class="col-md-6 form-floating mb-3">
                         <input type="date" class="form-control" id="birthdate" name="birthdate" aria-required="true"
-                            {{#if adherent}}value="{{moment adherent.birthdate format="YYYY-MM-DD"}}"{{/if}} required>
+                            required {{#if adherent}}value="{{moment adherent.birthdate format="YYYY-MM-DD"}}"{{/if}}
+                            {{#if birthdate}}value="{{moment birthdate format="YYYY-MM-DD"}}"{{/if}}>
                         <label for="birthdate">Date de naissance</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 form-floating mb-3">
                         <input type="number" step="any" class="form-control" id="size" name="size" aria-required="true"
-                            {{#if adherent}}value="{{adherent.size}}" {{/if}} required>
+                            required {{#if adherent}}value="{{adherent.size}}" {{/if}} {{#if size}}value="{{size}}"
+                            {{/if}}>
                         <label for="size">Taille</label>
                     </div>
                     <div class="col-md-6 form-floating mb-3">
                         <input type="number" step="any" class="form-control" id="weight" name="weight"
-                            aria-required="true" {{#if adherent}}value="{{adherent.weight}}" {{/if}} required>
+                            aria-required="true" required {{#if adherent}}value="{{adherent.weight}}" {{/if}} {{#if
+                            weight}}value="{{weight}}" {{/if}}>
                         <label for="weight">Poids</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 form-floating mb-3">
                         <input type="text" class="form-control" id="phone" name="phone" {{#if
-                            adherent}}value="{{adherent.phone}}" {{/if}}>
+                            adherent}}value="{{adherent.phone}}" {{/if}} {{#if phone}}value="{{phone}}" {{/if}}>
                         <label for="phone">Numéro de portable</label>
                     </div>
                     <div class="col-md-6 form-floating mb-3">
                         <input type="email" class="form-control" id="user_email" name="user_email" {{#if
-                            adherent}}value="{{adherent.user.email}}"{{else}}value="ici apparaitra l'email de connexion utilisateur"{{/if}}disabled>
+                            adherent}}value="{{adherent.user.email}}"
+                            {{else}}value="ici apparaitra l'email de connexion utilisateur" {{/if}}disabled>
                         <label for="user_email">Email</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 form-floating mb-3">
                         <input type="text" class="form-control" id="address_number" name="address_number" {{#if
-                            adherent}}value="{{adherent.address_number}}" {{/if}}>
+                            adherent}}value="{{adherent.address_number}}" {{/if}} {{#if
+                            address_number}}value="{{address_number}}" {{/if}}>
                         <label for="address_number">N° adresse</label>
                     </div>
                     <div class="col-md-6 form-floating mb-3">
-                        <input type="text" class="form-control" id="address_wording" name="address_wording" {{#if
-                            adherent}}value="{{adherent.address_wording}}" {{/if}} aria-required="true" required>
+                        <input type="text" class="form-control" id="address_wording" name="address_wording"
+                            aria-required="true" required {{#if adherent}}value="{{adherent.address_wording}}" {{/if}}
+                            {{#if address_wording}}value="{{address_wording}}" {{/if}}>
                         <label for="address_wording">Libellé adresse</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-6 form-floating mb-3">
-                        <input type="number" class="form-control" id="postal_code" name="postal_code" {{#if
-                            adherent}}value="{{adherent.postal_code}}" {{/if}} aria-required="true" required>
+                        <input type="number" class="form-control" id="postal_code" name="postal_code"
+                            aria-required="true" required {{#if adherent}}value="{{adherent.postal_code}}" {{/if}} {{#if
+                            postal_code}}value="{{postal_code}}" {{/if}}>
                         <label for="postal_code">Code postal</label>
                     </div>
                     <div class="col-md-6 form-floating mb-3">
-                        <input type="text" class="form-control" id="city" name="city" aria-required="true" {{#if
-                            adherent}}value="{{adherent.city}}" {{/if}} required>
+                        <input type="text" class="form-control" id="city" name="city" aria-required="true" required
+                            {{#if adherent}}value="{{adherent.city}}" {{/if}} {{#if city}}value="{{city}}" {{/if}}>
                         <label for="city">Ville</label>
                     </div>
                 </div>
@@ -111,13 +122,15 @@
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="radioIsValidate"
                                     id="radioIsValidateY" value="1" aria-required="true" required {{#if
-                                    adherent}}{{#ifEquals adherent.isValidate "1" }}checked{{/ifEquals}}{{/if}}>
+                                    adherent}}{{#ifEquals adherent.isValidate "1" }}checked{{/ifEquals}}{{/if}} {{#if
+                                    isValidate}}{{#ifEquals isValidate "1" }}checked{{/ifEquals}}{{/if}}>
                                 <label class="form-check-label" for="radioMen">valide</label>
                             </div>
                             <div class="form-check form-check-inline">
                                 <input class="form-check-input" type="radio" name="radioIsValidate"
                                     id="radioIsValidateN" value="0" aria-required="true" required {{#if
-                                    adherent}}{{#ifEquals adherent.isValidate "0" }}checked{{/ifEquals}}{{/if}}>
+                                    adherent}}{{#ifEquals adherent.isValidate "0" }}checked{{/ifEquals}}{{/if}} {{#if
+                                    isValidate}}{{#ifEquals isValidate "0" }}checked{{/ifEquals}}{{/if}}>
                                 <label class="form-check-label" for="radioWomen">à confirmer</label>
                             </div>
                         </div>
@@ -130,11 +143,13 @@
                         </div>
                         <div class="ps-5">
                             <select class="form-select form-select-sm" aria-label="Small select example"
-                                name="userIdUser">
-                                <option {{#if adherent}}{{else}}selected{{/if}}>Liste des Utilisateurs</option>
+                                name="userIdUser" aria-required="true" required>
+                                <option value="" {{#if adherent}}{{else}}{{#if
+                                    userIdUser}}{{else}}selected{{/if}}{{/if}}>Liste des Utilisateurs</option>
                                 {{#each users}}
-                                <option value="{{id_user}}" {{#if @root.adherent}}{{#ifCond id_user
-                                    @root.adherent.userIdUser}}selected{{else}}{{/ifCond}}{{/if}}>{{email}}</option>
+                                <option value="{{id_user}}" 
+                                    {{#if @root.adherent}}{{#ifCond id_user @root.adherent.userIdUser}}selected{{else}}{{/ifCond}}{{/if}} 
+                                    {{#if @root.userIdUser}}{{#ifEquals id_user @root.userIdUser}}selected{{else}}{{/ifEquals}}{{/if}}>{{email}}</option>
                                 {{/each}}
                             </select>
                         </div>
@@ -147,11 +162,12 @@
                         </div>
                         <div class="ps-5">
                             <select class="form-select form-select-sm" aria-label="Small select example"
-                                name="categoryIdCategory">
-                                <option {{#if adherent}}{{else}}selected{{/if}}>Liste des Catégories</option>
+                                name="categoryIdCategory" aria-required="true" required>
+                                <option value="" {{#if adherent}}{{else}}selected{{/if}}>Liste des Catégories</option>
                                 {{#each categories}}
-                                <option value="{{id_category}}" {{#if @root.adherent}}{{#ifCond id_category
-                                    @root.adherent.categoryIdCategory}}selected{{else}}{{/ifCond}}{{/if}}>
+                                <option value="{{id_category}}" 
+                                    {{#if @root.adherent}}{{#ifCond id_category @root.adherent.categoryIdCategory}}selected{{else}}{{/ifCond}}{{/if}} 
+                                    {{#if @root.categoryIdCategory}}{{#ifEquals id_category @root.categoryIdCategory}}selected{{else}}{{/ifEquals}}{{/if}}>
                                     {{category_wording}}</option>
                                 {{/each}}
                             </select>
@@ -165,11 +181,14 @@
                         </div>
                         <div class="ps-5">
                             <select class="form-select form-select-sm" aria-label="Small select example"
-                                name="teamIdTeam">
-                                <option {{#if adherent}}{{else}}selected{{/if}}>Liste des Catégories de Poids</option>
+                                name="teamIdTeam" aria-required="true" required>
+                                <option value="" {{#if adherent}}{{else}}selected{{/if}}>Liste des Catégories de Poids
+                                </option>
                                 {{#each teams}}
-                                <option value="{{id_team}}" {{#if @root.adherent}}{{#ifCond id_team
-                                    @root.adherent.teamIdTeam}}selected{{else}}{{/ifCond}}{{/if}}>{{team_wording}}
+                                <option value="{{id_team}}" 
+                                    {{#if @root.adherent}}{{#ifCond id_team @root.adherent.teamIdTeam}}selected{{else}}{{/ifCond}}{{/if}} 
+                                    {{#if @root.teamIdTeam}}{{#ifEquals id_team @root.teamIdTeam}}selected{{else}}{{/ifEquals}}{{/if}}>
+                                    {{team_wording}}
                                 </option>
                                 {{/each}}
                             </select>
@@ -181,36 +200,47 @@
                         adherent}}Modifier{{else}}Créer{{/if}}</button>
                     {{#if adherent}}
                     <a href="" class="btn btn-outline-success" data-bs-toggle="modal"
-                                data-bs-target="#deleteModal{{adherent.id_adherent}}">Supprimer</a>
+                        data-bs-target="#deleteModal{{adherent.id_adherent}}">Supprimer</a>
                     {{/if}}
                     <a href="javascript:history.go(-1)" class="btn btn-outline-success">Retour à la liste</a>
                 </div>
             </form>
             <!-- Modal supprimer l'adhérent -->
-                        <div class="modal fade" id="deleteModal{{adherent.id_adherent}}" tabindex="-1"
-                            aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h1 class="modal-title fs-5" id="exampleModalLabel">Suppression de l'{{#ifEquals adherent.genre "M" }}adhérent{{else}}adhérente{{/ifEquals}} <span class="fw-bold fst-italic">{{adherent.firstname}} {{adherent.lastname}}</span></h1>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        Etes-vous sûr de vouloir supprimer {{#ifEquals adherent.genre "M" }}cet adhérent{{else}}cette adhérente{{/ifEquals}} ?
-                                    </div>
-                                    <div class="modal-footer">
-                                    <form action="/adherent/delete/{{adherent.id_adherent}}" method="post">
-                                        <button type="submit" class="btn btn-outline-success btn-sm">Supprimer
-                                                définitivement</button>
-                                    </form>
-                                        <button type="button" class="btn btn-secondary btn-sm"
-                                            data-bs-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                            </div>
+            <div class="modal fade" id="deleteModal{{adherent.id_adherent}}" tabindex="-1"
+                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="exampleModalLabel">Suppression de l'{{#ifEquals
+                                adherent.genre "M" }}adhérent{{else}}adhérente{{/ifEquals}} <span
+                                    class="fw-bold fst-italic">{{adherent.firstname}} {{adherent.lastname}}</span></h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
+                        <div class="modal-body">
+                            Etes-vous sûr de vouloir supprimer {{#ifEquals adherent.genre "M" }}cet
+                            adhérent{{else}}cette adhérente{{/ifEquals}} ?
+                        </div>
+                        <div class="modal-footer">
+                            <form action="/adherent/delete/{{adherent.id_adherent}}" method="post">
+                                <button type="submit" class="btn btn-outline-success btn-sm">Supprimer
+                                    définitivement</button>
+                            </form>
+                            <button type="button" class="btn btn-secondary btn-sm"
+                                data-bs-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <!-- Fin Modal  supprimer l'adhérent -->
         </div>
+        {{#if errors}}
+        <div class="col-md-8 mx-auto">
+            {{#each errors}}
+            <div class="alert alert-danger" role="alert">
+                {{msg}}
+            </div>
+            {{/each}}
+        </div>
+        {{/if}}
     </div>
 </div>
