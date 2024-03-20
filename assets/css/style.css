@@ -32,14 +32,9 @@
     --bs-emphasis-color: #B3B3B3 !important;
 }
 
-<<<<<<< HEAD
-.form-control,
-.fight-option {
-=======
 
 /*########################################## Administration Part ( David ) ###################################################### */
 .form-control, .fight-option {
->>>>>>> 4fa19292a32b86519e39deeedc7b27f10e1e801b
     background-color: var(--bs-dark) !important;
     border-top: none !important;
     border-right: none !important;
@@ -66,18 +61,11 @@
 .schedule-btn:hover,
 .aside-btn:hover {
     color: var(--bs-secondary-color) !important;
-<<<<<<< HEAD
-    background-color: var(--bs-secondary-bg) ! important;
-}
-
-
-=======
     background-color: var(--bs-secondary-bg)! important ; 
 }
 
 
 
->>>>>>> 4fa19292a32b86519e39deeedc7b27f10e1e801b
 /*########################################## Coach Part ( Abdelrahman ) ###################################################### */
 .info-coach-card {
     background-color: rgb(42, 111, 42);
@@ -89,10 +77,5 @@
 
 .read {
     background-color: red;
-<<<<<<< HEAD
-}
-
-=======
 /*############################################################################################################################ */
 }
->>>>>>> 4fa19292a32b86519e39deeedc7b27f10e1e801b
