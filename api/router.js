@@ -9,9 +9,6 @@ const categoryController = require('./controllers/categoryController');
 const teamController = require('./controllers/teamController');
 const profilController = require('./controllers/profilController');
 const adherentController = require('./controllers/adherentController');
-const loginController = require('./controllers/loginController');
-const coachController = require('./controllers/coachController');
-const loginController = require('./controllers/loginController');
 const coachController = require('./controllers/coachController');
 
 
@@ -20,20 +17,6 @@ const coachController = require('./controllers/coachController');
 router.route('/')
     .get(homeController.get);
 //***********************************//
-
-
-
-//*****     routes login     *****//
-router.route('/login')
-    .get(loginController.get);
-//***********************************//
-
-
-//*****     routes login     *****//
-router.route('/login')
-    .get(loginController.get);
-//***********************************//
-
 
 //*****     routes eventType     *****//
 router.route('/eventType/manage')
@@ -240,18 +223,22 @@ router.route('/injury-notification')
 
 //*****     routes coach dashboard     *****//
 
+
 router.route('/coach/meeting')
     .get(coachController.addMeeting)
-    .post(coachController.addMeetingPost)
+    // .post(coachController.addMeetingPost)
 router.route('/coach/injury-notifications')
     .get(coachController.injuryNotification);
 router.route('/coach/availability-notifications')
     .get(coachController.meetingNotification);
 router.route('/coach/modify-team')
     .get(coachController.modifyTeam)
-    .post(coachController.modifyTeamPost)
+    .post(coachController.modifyTeamPatch)
 router.route('/injury-notification')
     .post(coachController.injuryNotificationPost);
+router.route('/coach-events')
+    .get(coachController.SendEvents)
+    .post(coachController.SendEventsPost)
 
 //************************************//
 
