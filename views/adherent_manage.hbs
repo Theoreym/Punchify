@@ -4,12 +4,18 @@
             <h1 class="text-center mt-5 mb-4 bg-secondary text-dark p-1 rounded-4 fs-3">Gestion des adhérents</h1>
         </div>
         <div class="col-md-8 mx-auto text-center mb-4">
-            <a href="/adherent/read/" class="btn btn-outline-success btn-sm">Ajouter un adhérent</a>
+            <a href="/adherent/read/" class="btn btn-outline-success btn-sm">Ajouter un adhérent</a> 
         </div>
+    <div class="row">
+        <div class="col-md-8 mx-auto form-floating text-center mb-4 w-25 d-flex align-items-center">
+            <img class="me-2" src="/img/search.png" alt="icône recherche" style="width: 25px; height: 25px;">
+            <input class="form-control text-center me-2" type="search" id="searchAdherent" onkeyup="myFunction()">
+        </div>
+    </div>
     </div>
     <div class="row">
         <div class="col-md-12 mx-auto">
-            <table class="table table-stripped">
+            <table class="table table-striped">
                 <thead>
                     <tr>
                         <th scope="col">Nom</th>
