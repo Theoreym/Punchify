@@ -74,7 +74,7 @@
                     </div>
                     <div class="col-md-6 form-floating mb-3">
                         <input type="email" class="form-control" id="user_email" name="user_email" {{#if
-                            adherent}}value="{{adherent.user.email}}" disabled{{/if}}>
+                            adherent}}value="{{adherent.user.email}}"{{else}}value="ici apparaitra l'email de connexion utilisateur"{{/if}}disabled>
                         <label for="user_email">Email</label>
                     </div>
                 </div>

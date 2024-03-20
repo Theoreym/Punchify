@@ -187,7 +187,6 @@ module.exports = {
 
         const categories = await Category.findAll({ order: [['age_min', 'ASC']], raw: true });
         const teams = await Team.findAll({ order: [['weight_max', 'ASC'],['weight_min', 'ASC']], raw: true });
-        // const users = await User.findAll({ order: [['email', 'ASC']], raw: true });
 
         res.render('adherent_groups_manage', { categories, teams, navAdherentGroups });
     },
