@@ -201,6 +201,9 @@ router.route('/coach/modify-team')
     .post(coachController.modifyTeamPatch)
 router.route('/injury-notification')
     .post(coachController.injuryNotificationPost);
+router.route('/coach-events')
+    .get(coachController.SendEvents)
+    .post(coachController.SendEventsPost)
 
 //************************************//
 
