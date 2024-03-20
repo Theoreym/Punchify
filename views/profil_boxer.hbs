@@ -47,7 +47,6 @@
                 </div>
 
             </div>
-            {{#each }}
             <div class="col mt-5">
                 <div class="alert alert-secondary">
                     <div class="container-fluid">
@@ -62,7 +61,6 @@
                     </div>
                 </div>
             </div>
-            {{/each}}
         </div>
     </div>
 
@@ -77,7 +75,7 @@
                 </div>
                 <div class="modal-body">
 
-                    <form action="/profil/boxer" method="post">
+                    <form action="/profil/boxer/{{profilBoxer.id_adherent}}" method="post">
 
                         <label for="numero" class="form-label">Numéro</label>
                         <input name="numero" type="text" class="form-control" id="numero" placeholder="numero"

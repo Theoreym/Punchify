@@ -4,7 +4,7 @@
   "description": "Projet asso. boxe",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "nodemon index.js"
   },
   "keywords": [],
   "author": "",
@@ -17,6 +17,7 @@
     "express-session": "^1.18.0",
     "express-validator": "^7.0.1",
     "handlebars.moment": "^1.0.4",
+    "morgan": "^1.10.0",
     "mysql2": "^3.9.2",
     "sequelize": "^6.37.1"
   }
