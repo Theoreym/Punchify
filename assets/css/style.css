@@ -34,7 +34,8 @@
 
 
 /*########################################## Administration Part ( David ) ###################################################### */
-.form-control, .fight-option {
+.form-control,
+.fight-option {
     background-color: var(--bs-dark) !important;
     border-top: none !important;
     border-right: none !important;
@@ -61,7 +62,7 @@
 .schedule-btn:hover,
 .aside-btn:hover {
     color: var(--bs-secondary-color) !important;
-    background-color: var(--bs-secondary-bg)! important ; 
+    background-color: var(--bs-secondary-bg) ! important;
 }
 
 
@@ -75,7 +76,28 @@
 
 }
 
+.dashboard-modal li {
+    border: 1px solid red;
+    border-color: #1db954;
+    box-shadow: red;
+}
+
+.dashboard-modal li:hover {
+    background-color: #1db954;
+
+}
+
+.dashboard-modal li a {
+    color: var(--bs-emphasis-color);
+    text-decoration: none;
+    color: white;
+}
+
 .read {
     background-color: red;
-/*############################################################################################################################ */
+
+
+
+
+    /*############################################################################################################################ */
 }
