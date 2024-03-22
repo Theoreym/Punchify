@@ -1,14 +1,14 @@
 <h1 style="text-align: center;">Absence</h1>
 
 <div class="container p-5">
-    <form action="/absence" method="post">
+    <form id="absenceForm" action="/absence" method="post">
 
         <div class="mb-3">
 
             <div class="row">
                 <div class="col">
                     <label for="blessure">Blessure</label>
-                    <input type="text" class="form-control mb-3" name="blessure" placeholder="Blessure"
+                    <input type="text" class="form-control mb-3" id="blessure" name="blessure" placeholder="Blessure"
                         aria-label="blessure">
                 </div>
                 
@@ -24,6 +24,7 @@
                     <input class="form-control" type="date" id="dateFin" name="dateFin">
                 </div>
             </div>
+            <div id="error" class="alert alert-danger text-white d-none" role="alert"></div>
             <div class="col">
                 <div class="d-grid gap-2">
                     <button class="btn btn-success mb-3 mt-3" type="submit">Envoyer</button>

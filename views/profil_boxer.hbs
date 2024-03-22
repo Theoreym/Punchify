@@ -22,7 +22,7 @@
 
                 <div class="card">
                     <div class="row align-items-start m-3">
-                        <div class="col-5" style="height: 100px; background-image: ../assets/images/logo.jpg;">
+                        <div class="col-5" style="height: 100px;">
                             <img src="../assets/images/logo.jpg" alt="">
                         </div>
                         <div class="col-7">
@@ -47,20 +47,23 @@
                 </div>
 
             </div>
+            
             <div class="col mt-5">
+                {{#each events}}
                 <div class="alert alert-secondary">
                     <div class="container-fluid">
-                        <p>NOTIFICATION</p>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            {{moment format="DD/MM/YY"}} {{moment format="HH:mm"}}
+                            {{moment events.create format="DD/MM/YY"}} {{moment events.create format="HH:mm"}}
                         </div>
                     </div>
                     <div class="container-fluid">
-                        <p>{{event_wording}} le {{date_start}} à {{time_start}}.</p>
+                        <p>{{event_wording}} le {{moment date_start format="DD/MM/YYYY"}} à {{moment time_start format="HH:mm"}}.</p>
                         <p>Adresse: {{place_name}}</p>
                     </div>
                 </div>
+                {{/each}}
             </div>
+
         </div>
     </div>
 
