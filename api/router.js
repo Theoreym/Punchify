@@ -296,15 +296,14 @@ router.route('/coach-events')
 
 //************************************//
 
-//*****     routes user list    *****//
+//*****     routes user manage    *****//
 
 router.route('/user/manage')
     .get(userController.list)
-router.route('/user/delete/:id')
+router.route('/user/delete/:id_user')
     .post(userController.delete)
 
-router.route('/user/update/:id')
-    .get(userController.getUpdate)
+router.route('/user/update/:id_user')
     .post(userController.postUpdate)
 
 module.exports = router
