@@ -222,6 +222,36 @@ router.route('/adherent/addToGroups/:id_categorySelected/:id_teamSelected')
 
 
 //*****     routes coach dashboard     *****//
+router.route('/coach/meeting')
+    .get(coachController.addMeeting)
+    .post(coachController.addMeetingPost)
+router.route('/coach/injury-notifications')
+    .get(coachController.injuryNotification);
+router.route('/coach/availability-notifications')
+    .get(coachController.meetingNotification);
+router.route('/coach/modify-team')
+    .get(coachController.modifyTeam)
+    .post(coachController.modifyTeamPost)
+router.route('/injury-notification')
+    .post(coachController.injuryNotificationPost);
+//************************************//
+
+//*****     routes Absences     *****//
+router.route('/absence')
+    .get(adherentController.getBlessure)
+    .post(adherentController.postBlessure)
+//************************************//
+
+//*****     routes Profil Boxer     *****//
+router.route('/profil/boxer')
+    .get(adherentController.getProfilBoxer)
+
+router.route('/profil/boxer/:id_adherent')
+    .post(adherentController.postProfilUpdate)
+//************************************//
+
+
+//*****     routes coach dashboard     *****//
 
 
 router.route('/coach/meeting')
@@ -237,6 +267,9 @@ router.route('/coach/modify-team')
 router.route('/injury-notification')
     .post(coachController.injuryNotificationPost);
 
+// router.route('/profil/boxer/id')
+//     .get(adherentController.getProfilUpdate)
+//     .post(adherentController.postProfilUpdate)
 //************************************//
 
 

@@ -13,6 +13,22 @@ module.exports = {
             console.error(err.message)
         }
     },
+    addMeetingPost: async (req, res) => {
+        try {
+            const { adherentId, date, time, message } = req.body
+            await Event.create({
+                event_wording: message,
+                date_start: date,
+                time_start: time,
+                place_name: adherentId,
+                eventtypeIdEventType: eventType
+            })
+            res.redirect("back")
+
+        } catch (err) {
+            console.error(err.message)
+        }
+    },
     injuryNotification: (req, res) => {
         res.render("coach_injury_notification")
     },
@@ -79,6 +95,20 @@ module.exports = {
             res.redirect("back")
         } catch (err) {
             console.log(err.message)
+        }
+    },
+    modifyTeamPost: async (req, res) => {
+        try {
+            const { id_adherent, newTeamId } = req.body
+            await Adherent.update({ teamIdTeam: newTeamId }, {
+                where: { id_adherent }
+            });
+            res.status(200).redirect("back");
+        }
+        catch (err) {
+            console.log(err.message)
+            res.status(500).send("Error modifying player's team.");
+
         }
     }
 }

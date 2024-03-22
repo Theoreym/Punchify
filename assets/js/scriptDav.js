@@ -5,7 +5,6 @@ btnAddAdherentOnList.addEventListener("click", function() {
     divAddAdherentOnList.classList.remove("visually-hidden");
 });
 
-
 function myFunction() {
     // Declare variables
     var input, filter, tr, td, i, txtValue;
