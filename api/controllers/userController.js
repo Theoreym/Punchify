@@ -51,7 +51,7 @@ module.exports = {
                     return res.status(401).render('login', { 'error': 'Mot de passe incorrect'});
                 }
                 req.session.email = user.email;
-                req.session.userId = user.id;
+                req.session.id_user = user.id_user;
                 // Si personne est admin
                 // Si les mots de passe correspondent, enregistrer l'utilisateur dans la session
                 
