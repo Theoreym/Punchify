@@ -426,5 +426,43 @@ module.exports = {
             const listSelected = 1;
             res.render('adherent_groups_manage', {adherents, categories, teams, categoryIdCategoryRequest, teamIdTeamRequest, adherentsAll, navAdherentGroups, listSelected}); 
         }
+    },
+
+    getBlessure: async (req, res) => {
+        let adherent = await Adherent.findByPk('1', {include: Injury});
+        adherent = adherent.toJSON();
+        console.log(adherent);
+        res.render('absence', {adherent});
+    },
+
+    postBlessure: async (req, res) => {
+        await Injury.create({
+            injury_wording: req.body.blessure,
+            date_start: req.body.date,
+            date_end: req.body.dateFin,
+            adherentIdAdherent : 1
+        })
+        res.redirect('/absence')
+    },
+
+    getProfilBoxer: async (req, res) => {
+        let profilBoxer = await Adherent.findByPk(1, {raw:true});
+        // console.log(profilBoxer);
+        res.render('profil_boxer', { profilBoxer });
+    },
+    
+    postProfilUpdate: async (req, res) => {
+        await Adherent.update({
+            phone: req.body.numero,
+            address_number: req.body.adresse,
+            address_wording: req.body.adresse,
+            postal_code: req.body.adresse,
+            city: req.body.adresse
+        }, {
+            where: {
+                id_adherent : req.params.id_adherent
+            }
+        })
+        res.redirect('back');
     }
 }
