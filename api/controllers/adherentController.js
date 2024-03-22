@@ -5,6 +5,8 @@ const Team = require("../models/teamModel");
 const User = require("../models/userModel");
 
 const { Op } = require('sequelize');
+const ParticipateEvent = require("../models/participateEventModel");
+const Event = require("../models/eventModel");
 
 const { validationResult } = require('express-validator');
 
@@ -432,7 +434,18 @@ module.exports = {
     getProfilBoxer: async (req, res) => {
         let profilBoxer = await Adherent.findByPk(1, {raw:true});
         // console.log(profilBoxer);
-        res.render('profil_boxer', { profilBoxer });
+
+        //les info de meeting
+        let participations = await ParticipateEvent.findAll({where: {adherentIdAdherent : 1}}, {raw:true});
+        // console.log(participations);
+        let events = []
+        for (let i = 0; i < participations.length; i++) {
+            const participation = participations[i];
+            events.push(await Event.findByPk(participation.eventIdEvent, {raw:true})) 
+        }
+        // console.log(events)
+
+        res.render('profil_boxer', { profilBoxer, events });
     },
     
     postProfilUpdate: async (req, res) => {
