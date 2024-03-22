@@ -3,6 +3,7 @@ const { Request, Response } = require('express');
 const bcrypt = require("bcrypt");
 const { Op } = require('sequelize');
 const User = require("../models/userModel");
+const Profil = require('../models/profilModel')
 
 module.exports = {
     get: (req, res) => {
@@ -33,11 +34,20 @@ module.exports = {
             }
     
             // Récupérer l'utilisateur par son email ou son nom d'utilisateur depuis la base de données
-            const user = await User.findOne({
+            
+            // const user = await User.findOne({
+            //     where: {
+            //         [Op.or]: { email: req.body.email }
+            //     } 
+            // });
+
+            let user = await User.findOne({
                 where: {
-                    [Op.or]: { email: req.body.email }
-                }
+                    email: req.body.email
+                }, include : [{ model: Profil}]
             });
+            user = user.toJSON()
+            console.log(user)
     
             if (!user) {
                 // Si aucun utilisateur n'est trouvé, retour à la page d'inscription 
@@ -51,9 +61,14 @@ module.exports = {
                     return res.status(401).render('login', { 'error': 'Mot de passe incorrect'});
                 }
                 req.session.email = user.email;
-                req.session.userId = user.id;
+                req.session.id_user = user.id_user;
+                req.session.id_profil = user.profil.id_profil;
+                req.session.profil_code = user.profil.profil_code;
+                req.session.profil_isAdmin = user.profil.isAdmin;
+
                 // Si personne est admin
                 // Si les mots de passe correspondent, enregistrer l'utilisateur dans la session
+                console.log(req.session);
                 
                 res.redirect('/'); // Rediriger vers la page d'accueil ou une autre page après la connexion réussie
             });
@@ -65,5 +80,72 @@ module.exports = {
     logout: (req, res)=>{
         req.session.destroy()
         res.redirect('/')
+    },
+    list: async (req, res) => {
+        const users = await User.findAll({ raw: true })
+        res.render('user_manage', { users })
+    },
+    delete: (req, res) => {
+        User.destroy({ where: { id: req.params.id } })
+        res.redirect('/user/manage')
+    },
+    postUpdate: async (req, res) => {
+        const user = await User.findByPk(req.params.id, { raw: true })
+        if (!req.body.newPassword) {
+            bcrypt.compare(req.body.passwordOld, user.password, async function (err, result) {
+                if (!result) {
+                    const errorMDP = "nope"
+                    res.render('user_update', { user, errorMDP })
+                } else {
+                    await User.update({
+                        username: req.body.username,
+                        email: req.body.email
+                    },
+                        {
+                            where: {
+                                id: req.params.id
+                            }
+                        }
+                    )
+                    res.redirect('/user/manage')
+                }
+
+            })
+        } else {
+            bcrypt.compare(req.body.passwordOld, user.password, async function (err, result) {
+                if (!result) {
+                    const errorMDP = "nope"
+                    res.render('user_update', { user, errorMDP })
+                } else {
+                    if (req.body.newPassword !== req.body.confPasswordNew) {
+                        const errorMatch = true
+                        res.render('user_update', { user, errorMatch })
+                    } else {
+                        console.log("newPass " + req.body.newPassword);
+                        await User.update({
+                            username: req.body.username,
+                            email: req.body.email,
+                            password: req.body.newPassword
+                        },
+                            {
+                                where: {
+                                    id: req.params.id
+                                },
+                                individualHooks: true
+                            })
+                        res.redirect('/user/manage')
+                    }
+                }
+            })
+        }
+
+
+
+
+
+    },
+    getUpdate: async (req, res) => {
+        const user = await User.findByPk(req.params.id, { raw: true })
+        res.render('user_update', { user })
     }
 }

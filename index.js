@@ -59,9 +59,15 @@ app.use(session({
 app.use('*', (req, res, next)=>{
   if (req.session.email) {
     res.locals.email = req.session.email;
-    res.locals.userId = req.session.userId;
+    res.locals.id_user = req.session.id_user;
     if (req.session.isAdmin){
       res.locals.isAdmin = req.session.isAdmin;
+    }
+    if (req.session.profil_code === 'adm' || req.session.profil_code === 'mca') {
+      res.locals.profil = 'menuAdministration'
+    }
+    if (req.session.profil_code === 'adm' || req.session.profil_code === 'mca' || req.session.profil_code === 'ctr') {
+      res.locals.profil = 'menuCoach'
     }
   }
   next();

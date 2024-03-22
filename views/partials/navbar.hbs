@@ -11,10 +11,14 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        {{#if email}}
         <li class="nav-item">
           <a class="nav-link {{#if navAdherentInscription}}active{{/if}}" href="/adherent/inscription">Adhésion</a>
         </li>
+        {{/if}}
+        {{#ifEquals profil 'menuAdministration'}}
         <li class="nav-item dropdown">
+         
           <a class="nav-link dropdown-toggle" href="/eventType/Manage" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Administration
           </a>
@@ -27,6 +31,7 @@
             <li><a class="dropdown-item" href="/profil/boxer">Mon profil</a></li>
           </ul>
         </li>
+        {{/ifEquals}}
       </ul>
       <ul class="navbar-nav d-flex me-5">
         {{#if username}}
@@ -58,13 +63,6 @@
 
           
         {{/if}}
-        <li class="nav-item me-2">
-          <a class="btn btn-outline-{{#if username}}danger rounded-pill{{else}}success px-4{{/if}} d-flex" {{#if username}}href="/user/logout"><i class="bi bi-box-arrow-right"></i>
-            {{else}}
-            href="/login"> Connexion
-            {{/if}}
-          </a>
-        </li>
       </ul>
     </div>
   </div>
