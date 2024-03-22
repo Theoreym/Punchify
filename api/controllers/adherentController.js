@@ -5,14 +5,11 @@ const Team = require("../models/teamModel");
 const User = require("../models/userModel");
 
 const { Op } = require('sequelize');
-<<<<<<< HEAD
 const ParticipateEvent = require("../models/participateEventModel");
 const Event = require("../models/eventModel");
-=======
 
 const { validationResult } = require('express-validator');
 
->>>>>>> 95ba50eb0ea5dd99d1c24477e104ad9cf3708bab
 module.exports = {
     getInscription: async (req, res) => {
         const navAdherentInscription = true;

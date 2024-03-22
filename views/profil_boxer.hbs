@@ -22,13 +22,8 @@
 
                 <div class="card">
                     <div class="row align-items-start m-3">
-<<<<<<< HEAD
-                        <div class="col-5" style="height: 100px;">
-                            <img src="../assets/images/logo.jpg" alt="">
-=======
                         <div class="col-5">
                             <img class ="p-5" src="/img/logo.png" alt="profilpic">
->>>>>>> 95ba50eb0ea5dd99d1c24477e104ad9cf3708bab
                         </div>
                         <div class="col-7">
                             <p>Nom: {{profilBoxer.lastname}}</p>
@@ -58,12 +53,13 @@
                 <div class="alert alert-secondary">
                     <div class="container-fluid">
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            {{moment events.create format="DD/MM/YY"}} {{moment events.create format="HH:mm"}}
+                            NOTIFICATION
                         </div>
                     </div>
                     <div class="container-fluid">
                         <p>{{event_wording}} le {{moment date_start format="DD/MM/YYYY"}} à {{moment time_start format="HH:mm"}}.</p>
-                        <p>Adresse: {{place_name}}</p>
+                        <p>salle: {{place_name}}</p>
+                        <p>Adresse: {{address_number}} {{address_wording}} {{postal_code}} {{city}}</p>
                     </div>
                 </div>
                 {{/each}}
