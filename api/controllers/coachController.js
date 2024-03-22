@@ -13,6 +13,8 @@ module.exports = {
             console.error(err.message)
         }
     },
+   
+
     addMeetingPost: async (req, res) => {
         try {
             const { adherentId, date, time, message } = req.body

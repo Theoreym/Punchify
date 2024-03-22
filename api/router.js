@@ -45,18 +45,18 @@ router.route('/eventType/create')
     .post(
         body('event_type_wording')
             .exists()
-            .isLength({ min: 2, max:100 }).withMessage('Le champ doit contenir plus de 2 caractères ou moins de 100')
+            .isLength({ min: 2, max: 100 }).withMessage('Le champ doit contenir plus de 2 caractères ou moins de 100')
             .notEmpty().withMessage('Ce champ ne doit pas être vide'),
         eventtypeController.postCreate);
 
-router.route('/eventType/update/:id_event_type')  
+router.route('/eventType/update/:id_event_type')
     .post(eventtypeController.postUpdate);
 
-router.route('/eventType/delete/:id_event_type')  
+router.route('/eventType/delete/:id_event_type')
     .post(eventtypeController.postDelete);
 //************************************//
 
-    
+
 
 //*****     routes category     *****//   
 router.route('/category/manage')
@@ -66,7 +66,7 @@ router.route('/category/create')
     .post(
         body('category_wording')
             .exists()
-            .isLength({ min: 2, max:100 }).withMessage('Le champ doit contenir plus de 2 caractères ou moins de 100')
+            .isLength({ min: 2, max: 100 }).withMessage('Le champ doit contenir plus de 2 caractères ou moins de 100')
             .notEmpty().withMessage('Ce champ ne doit pas être vide'),
         body('age_min')
             .exists()
@@ -78,10 +78,10 @@ router.route('/category/create')
             .isNumeric().withMessage('Format incorrect'),
         categoryController.postCreate);
 
-router.route('/category/update/:id_category')  
+router.route('/category/update/:id_category')
     .post(categoryController.postUpdate);
 
-router.route('/category/delete/:id_category')  
+router.route('/category/delete/:id_category')
     .post(categoryController.postDelete);
 //***********************************//  
 
@@ -95,7 +95,7 @@ router.route('/team/create')
     .post(
         body('team_wording')
             .exists()
-            .isLength({ min: 2, max:100 }).withMessage('Le champ doit contenir plus de 2 caractères ou moins de 100')
+            .isLength({ min: 2, max: 100 }).withMessage('Le champ doit contenir plus de 2 caractères ou moins de 100')
             .notEmpty().withMessage('Ce champ ne doit pas être vide'),
         body('weight_min')
             .exists()
@@ -107,10 +107,10 @@ router.route('/team/create')
             .isNumeric().withMessage('Format incorrect'),
         teamController.postCreate);
 
-router.route('/team/update/:id_team')  
+router.route('/team/update/:id_team')
     .post(teamController.postUpdate);
 
-router.route('/team/delete/:id_team')  
+router.route('/team/delete/:id_team')
     .post(teamController.postDelete);
 //***********************************//  
 
@@ -124,11 +124,11 @@ router.route('/profil/create')
     .post(
         body('profil_code')
             .exists()
-            .isLength({ min:2, max:3 }).withMessage('Le champ doit contenir entre 2 et 3 caractères')
+            .isLength({ min: 2, max: 3 }).withMessage('Le champ doit contenir entre 2 et 3 caractères')
             .notEmpty().withMessage('Ce champ ne doit pas être vide'),
         body('profil_wording')
             .exists()
-            .isLength({ min: 2, max:100 }).withMessage('Le champ doit contenir plus de 2 caractères ou moins de 255')
+            .isLength({ min: 2, max: 100 }).withMessage('Le champ doit contenir plus de 2 caractères ou moins de 255')
             .notEmpty().withMessage('Ce champ ne doit pas être vide'),
         body('profil_isAdmin')
             .exists()
@@ -136,10 +136,10 @@ router.route('/profil/create')
             .notEmpty().withMessage('Ce champ ne doit pas être vide'),
         profilController.postCreate);
 
-router.route('/profil/update/:id_profil')  
+router.route('/profil/update/:id_profil')
     .post(profilController.postUpdate);
 
-router.route('/profil/delete/:id_profil')  
+router.route('/profil/delete/:id_profil')
     .post(profilController.postDelete);
 //************************************//
 
@@ -153,12 +153,12 @@ router.route('/adherent/createbyuser')
         body('lastname')
             .exists().withMessage('1')
             .notEmpty().withMessage('2 - Ce champ ne doit pas être vide')
-            .isLength({ min: 2, max:100 }).withMessage('3 - Le champ doit contenir plus de 2 caractères ou moins de 100')
+            .isLength({ min: 2, max: 100 }).withMessage('3 - Le champ doit contenir plus de 2 caractères ou moins de 100')
             .trim().escape(),
         body('firstname')
             .exists().withMessage('4 - Ce champ ne doit pas être vide')
             .notEmpty().withMessage('5 - Ce champ ne doit pas être vide')
-            .isLength({ min: 2, max:100 }).withMessage('6 - Le champ doit contenir plus de 2 caractères ou moins de 100')
+            .isLength({ min: 2, max: 100 }).withMessage('6 - Le champ doit contenir plus de 2 caractères ou moins de 100')
             .trim().escape(),
         body('radioGenre')
             .exists().withMessage('7'),
@@ -177,16 +177,16 @@ router.route('/adherent/createbyuser')
         body('address_wording')
             .exists().withMessage('17')
             .notEmpty().withMessage('18 - Ce champ ne doit pas être vide')
-            .isLength({ min: 2, max:255 }).withMessage('19 - Le champ doit contenir plus de 2 caractères ou moins de 255'),
+            .isLength({ min: 2, max: 255 }).withMessage('19 - Le champ doit contenir plus de 2 caractères ou moins de 255'),
         body('postal_code')
             .exists().withMessage('20')
             .notEmpty().withMessage('21 - Ce champ ne doit pas être vide')
-            .isLength({ min: 5, max:5 }).withMessage('22 - Le champ doit contenir 5 caractères')
+            .isLength({ min: 5, max: 5 }).withMessage('22 - Le champ doit contenir 5 caractères')
             .isNumeric().withMessage('23 - Format incorrect'),
         body('city')
             .exists().withMessage('24')
             .notEmpty().withMessage('25 - Ce champ ne doit pas être vide')
-            .isLength({ min: 2, max:100 }).withMessage('26 - Le champ doit contenir plus de 2 caractères ou moins de 100'),
+            .isLength({ min: 2, max: 100 }).withMessage('26 - Le champ doit contenir plus de 2 caractères ou moins de 100'),
         adherentController.postCreateByUser);
 
 router.route('/adherent/create')
@@ -195,19 +195,19 @@ router.route('/adherent/create')
 router.route('/adherent/manage')
     .get(adherentController.getList);
 
-router.route('/adherent/read/')  
+router.route('/adherent/read/')
     .get(adherentController.getRead);
 
-router.route('/adherent/read/:id_adherent')  
+router.route('/adherent/read/:id_adherent')
     .get(adherentController.getRead);
 
-router.route('/adherent/confirmAdhesion/:id_adherent')  
+router.route('/adherent/confirmAdhesion/:id_adherent')
     .post(adherentController.postConfirmAdhesion);
 
-router.route('/adherent/update/:id_adherent')  
+router.route('/adherent/update/:id_adherent')
     .post(adherentController.postUpdate);
 
-router.route('/adherent/delete/:id_adherent')  
+router.route('/adherent/delete/:id_adherent')
     .post(adherentController.postDelete);
 
 router.route('/adherent/groups')
@@ -248,6 +248,8 @@ router.route('/profil/boxer')
 
 router.route('/profil/boxer/:id_adherent')
     .post(adherentController.postProfilUpdate)
+
+
 //************************************//
 
 
@@ -256,7 +258,7 @@ router.route('/profil/boxer/:id_adherent')
 
 router.route('/coach/meeting')
     .get(coachController.addMeeting)
-    // .post(coachController.addMeetingPost)
+// .post(coachController.addMeetingPost)
 router.route('/coach/injury-notifications')
     .get(coachController.injuryNotification);
 router.route('/coach/availability-notifications')
@@ -278,7 +280,7 @@ router.route('/injury-notification')
 
 router.route('/coach/meeting')
     .get(coachController.addMeeting)
-    // .post(coachController.addMeetingPost)
+// .post(coachController.addMeetingPost)
 router.route('/coach/injury-notifications')
     .get(coachController.injuryNotification);
 router.route('/coach/availability-notifications')

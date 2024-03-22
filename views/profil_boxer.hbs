@@ -47,20 +47,24 @@
                 </div>
 
             </div>
+            
             <div class="col mt-5">
+                {{#each events}}
                 <div class="alert alert-secondary">
                     <div class="container-fluid">
-                        <p>NOTIFICATION</p>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            {{moment format="DD/MM/YY"}} {{moment format="HH:mm"}}
+                            NOTIFICATION
                         </div>
                     </div>
                     <div class="container-fluid">
-                        <p>{{event_wording}} le {{date_start}} à {{time_start}}.</p>
-                        <p>Adresse: {{place_name}}</p>
+                        <p>{{event_wording}} le {{moment date_start format="DD/MM/YYYY"}} à {{moment time_start format="HH:mm"}}.</p>
+                        <p>salle: {{place_name}}</p>
+                        <p>Adresse: {{address_number}} {{address_wording}} {{postal_code}} {{city}}</p>
                     </div>
                 </div>
+                {{/each}}
             </div>
+
         </div>
     </div>
 
