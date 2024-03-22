@@ -121,7 +121,6 @@
 }
 
 .btn-outline-success {
-.information-home-right-up {
     border-top: var(--bs-border-width) solid #1db954 !important;
     border-right: var(--bs-border-width) solid #1db954 !important;
     border-left: none !important;
