@@ -11,6 +11,7 @@
                     <tr>
                         <th scope="col" style="width: auto;">Code Profil</th>
                         <th scope="col">Profil</th>
+                        <th scope="col" class="text-center">isAdmin</th>
                         <th class="text-center" scope="col">Modifier</th>
                         <th class="text-center" scope="col">Supprimer</th>
                     </tr>
@@ -20,6 +21,7 @@
                     <tr>
                         <td scope="row">{{profil_code}}</td>
                         <td scope="row">{{profil_wording}}</td>
+                        <td scope="row" class="text-center">{{isAdmin}}</td>
                         <td class="text-center">
                             <a href="" class="btn btn-outline-success btn-sm" data-bs-toggle="modal"
                                 data-bs-target="#updateModal{{id_profil}}">Modifier</a>
