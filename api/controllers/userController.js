@@ -65,5 +65,72 @@ module.exports = {
     logout: (req, res)=>{
         req.session.destroy()
         res.redirect('/')
+    },
+    list: async (req, res) => {
+        const users = await User.findAll({ raw: true })
+        res.render('user_manage', { users })
+    },
+    delete: (req, res) => {
+        User.destroy({ where: { id: req.params.id } })
+        res.redirect('/user/manage')
+    },
+    postUpdate: async (req, res) => {
+        const user = await User.findByPk(req.params.id, { raw: true })
+        if (!req.body.newPassword) {
+            bcrypt.compare(req.body.passwordOld, user.password, async function (err, result) {
+                if (!result) {
+                    const errorMDP = "nope"
+                    res.render('user_update', { user, errorMDP })
+                } else {
+                    await User.update({
+                        username: req.body.username,
+                        email: req.body.email
+                    },
+                        {
+                            where: {
+                                id: req.params.id
+                            }
+                        }
+                    )
+                    res.redirect('/user/manage')
+                }
+
+            })
+        } else {
+            bcrypt.compare(req.body.passwordOld, user.password, async function (err, result) {
+                if (!result) {
+                    const errorMDP = "nope"
+                    res.render('user_update', { user, errorMDP })
+                } else {
+                    if (req.body.newPassword !== req.body.confPasswordNew) {
+                        const errorMatch = true
+                        res.render('user_update', { user, errorMatch })
+                    } else {
+                        console.log("newPass " + req.body.newPassword);
+                        await User.update({
+                            username: req.body.username,
+                            email: req.body.email,
+                            password: req.body.newPassword
+                        },
+                            {
+                                where: {
+                                    id: req.params.id
+                                },
+                                individualHooks: true
+                            })
+                        res.redirect('/user/manage')
+                    }
+                }
+            })
+        }
+
+
+
+
+
+    },
+    getUpdate: async (req, res) => {
+        const user = await User.findByPk(req.params.id, { raw: true })
+        res.render('user_update', { user })
     }
 }
