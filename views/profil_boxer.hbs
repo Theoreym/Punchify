@@ -11,7 +11,7 @@
                             </div>
                             <div class="col-7">
                                 <p>Date de naissance: {{moment profilBoxer.birthdate format="DD/MM/YYYY"}}</p>
-                                <p>Catégorie: {{profilBoxer.category}}</p>
+                                <p>Catégorie: {{profilBoxerCategory.category_wording}}</p>
                                 <p>Poids: {{profilBoxer.weight}} kg</p>
                                 <p>Taille: {{profilBoxer.size}} cm</p>
                             </div>
@@ -57,7 +57,7 @@
                         </div>
                     </div>
                     <div class="container-fluid">
-                        <p>{{event_wording}} le {{moment date_start format="DD/MM/YYYY"}} à {{moment time_start format="HH:mm"}}.</p>
+                        <p>{{event_wording}} le {{moment date_start format="DD/MM/YYYY"}} à {{ time_start }}.</p>
                         <p>salle: {{place_name}}</p>
                         <p>Adresse: {{address_number}} {{address_wording}} {{postal_code}} {{city}}</p>
                     </div>

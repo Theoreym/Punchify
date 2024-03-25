@@ -248,6 +248,7 @@ router.route('/profil/boxer')
 
 router.route('/profil/boxer/:id_adherent')
     .post(adherentController.postProfilUpdate)
+    .get(adherentController.getCategorie)
 
 
 //************************************//
