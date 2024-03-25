@@ -427,11 +427,13 @@ module.exports = {
     },
 
     postBlessure: async (req, res) => {
+        const adherent = await Adherent.findOne({where: {userIdUser : req.session.id_user}});
+
         await Injury.create({
             injury_wording: req.body.blessure,
             date_start: req.body.date,
             date_end: req.body.dateFin,
-            adherentIdAdherent: req.session.id_adherent
+            adherentIdAdherent: adherent.id_adherent
         })
         res.redirect('/absence')
     },

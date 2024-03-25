@@ -55,7 +55,7 @@
         --bs-dropdown-link-active-bg: #1db954 !important;
     }
 
-    --bs-body-color: #B3B3B3 !important; 
+    --bs-body-color:     !important; 
 
     .bg-body-tertiary {
         background-color: rgba(33, 33, 33) !important;
