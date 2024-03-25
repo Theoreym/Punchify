@@ -15,8 +15,9 @@ module.exports = {
             const { email, password } = req.body;
             const newUser = await User.create({ email, password });
             // Réponse réussie
-            const successMessage = 'Utilisateur enregistré avec succès';
-            res.status(200).render('register', { success: successMessage });
+            //const successMessage = 'Utilisateur enregistré avec succès';
+            //res.status(200).render('register', { success: successMessage });
+            res.redirect("/login")
         } catch (error) {
             // Gestion des erreurs
             console.error('Erreur lors de l\'enregistrement de l\'utilisateur :', error);
