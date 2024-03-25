@@ -82,10 +82,11 @@ module.exports = {
         res.redirect('/')
     },
     list: async (req, res) => {
+        const navUserManage = true;
         const users = await User.findAll({include: [{model:Profil}], raw: true })
         console.log(users)
         const profiles = await Profil.findAll({ raw: true })
-        res.render('user_manage', { users, profiles })
+        res.render('user_manage', { users, profiles, navUserManage })
     },
     delete: (req, res) => {
         User.destroy({ where: { id_user: req.params.id_user } })

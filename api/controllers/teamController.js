@@ -4,7 +4,6 @@ const { validationResult } = require('express-validator');
 
 module.exports = {
     getList: async (req, res) => {
-        const navTeamManage = true;
         const team = await Team.findAll({ raw: true });
         //console.log(team);
         res.render('team_manage', {team, navTeamManage});

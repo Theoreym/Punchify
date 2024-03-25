@@ -5,6 +5,7 @@ const { validationResult } = require('express-validator');
 module.exports = {
     getList: async (req, res) => {
         const navProfilManage = true;
+        console.log(req.session.email)
         const profil = await Profil.findAll({ raw: true });
         //console.log(profil);
         res.render('profil_manage', {profil, navProfilManage});
