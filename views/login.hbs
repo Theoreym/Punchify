@@ -11,48 +11,24 @@
     flex-flow: column wrap;
     align-items: center;
   }
-
-  .login-button {
-    background-color: #17502b;
-  }
-
-  .login-button:hover {
-    background-color: #0d6e3a;
-  }
-
-  .inputs {
-    border-bottom: #1ED760 solid 4px;
-    transition: all 400ms;
-    max-width: 300px;
-    width: 100%;
-  }
-
-  .inputs:focus {
-    box-shadow: none;
-    border-color: #1ED760;
-  }
-
-  .header {
-    text-align: center;
-  }
 </style>
 
-<main class="d-flex align-items-center justify-content-center min-vh-100 py-4 bg-body-tertiary">
+<main class="d-flex align-items-center justify-content-center">
   <div class="form-signin">
     <form class="d-flex flex-column gap-4" style="max-width: 300px;" id="login-form" action="/login" method="post">
-      <h1 class="header h3 mb-3 fw-normal">Connexion</h1>
+      <h1 class="header h3 fw-normal text-center">Connexion</h1>
 
       <div class="form-floating">
         <input type="email" class="form-control inputs" id="email" placeholder="name@example.com"
           aria-label="Email d’utilisateur" name="email" required />
-        <label for="email">Email d’utilisateur</label>
+        <label for="email">Email</label>
         <div class="alert alert-danger d-flex mt-3" role="alert" id="emailError" style="display: none !important;">
           <div>
             <i class="bi bi-exclamation-triangle me-2"></i> Adresse E-Mail Invalide.
           </div>
         </div>
       </div>
-      <div class="form-floating">
+      <div class="form-floating mb-3">
         <input type="password" class="form-control inputs" id="password" placeholder="Password"
           aria-label="Mot de passe" name="password" required />
         <label for="password">Mot de passe</label>
@@ -62,7 +38,7 @@
           </div>
         </div>
       </div>
-      <button class="btn login-button w-100 py-2" type="submit">Se connecter</button>
+      <button class="btn btn-outline-success w-100 py-2" type="submit">Connexion</button>
     </form>
   </div>
 </main>

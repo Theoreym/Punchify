@@ -8,7 +8,7 @@
     }
 
     .form-control, .fight-option {
-        background-color: var(--bs-dark) !important;
+        background-color: var(--bs-body-bg) !important;
         border-top: none !important;
         border-right: none !important;
         border-left: none !important;
@@ -150,7 +150,7 @@
 }
 
 .btn-outline-success:hover {
-    color: white !important;
+    color: black !important;
     background-color: #1db954 !important ; 
 .green-btn {
     color: white !important;
