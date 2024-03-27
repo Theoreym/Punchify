@@ -7,7 +7,7 @@ btnAddAdherentOnList.addEventListener("click", function () {
 
 function myFunction() {
   // Declare variables
-  var input, filter, tr, td, i, txtValue;
+  let input, filter, tr, td, i, txtValue, txtValue2;
   input = document.querySelector('#searchAdherent');
   filter = input.value.toUpperCase();
   tr = document.querySelectorAll('tr');
@@ -17,7 +17,8 @@ function myFunction() {
     td = tr[i].querySelectorAll("td");
     if (td.length > 0) {
       txtValue = td[0].textContent || td[0].innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      txtValue2 = td[1].textContent || td[2].innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1 || txtValue2.toUpperCase().indexOf(filter) > -1) {
         tr[i].style.display = "";
       } else {
         tr[i].style.display = "none";
