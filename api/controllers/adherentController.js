@@ -136,7 +136,15 @@ module.exports = {
 
     getList: async function (req, res) {
         const navAdherentManage = true;
-        const adherent = await Adherent.findAll({ raw: true });
+        // let adherent = await Adherent.findAll({           SI CONVERSION EN JSON AU LIEU DE RAW: TRUE
+        const adherent = await Adherent.findAll({
+            include: [{
+                model: Category
+            }, {
+                model: Team
+            }], raw: true
+        });
+        //adherent = adherent.map(adherentObj => adherentObj.toJSON());
         //console.log(adherent);
         res.render('adherent_manage', { adherent, navAdherentManage });
     },

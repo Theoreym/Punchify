@@ -24,6 +24,8 @@
                         <th scope="col" class="text-center">Adhésion validée</th>
                         <th scope="col" class="text-center">Voir la fiche</th>
                         <th scope="col" class="text-center">Valider l'adhésion</th>
+                        <th scope="col">Catégorie d'âge</th>
+                        <th scope="col">Catégorie de poids</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,6 +43,8 @@
                                 <button type="submit" class="btn btn-outline-success btn-sm" {{#ifEquals isValidate 1}}disabled{{/ifEquals}}>Valider l'adhésion</button>
                             </form>
                         </td>
+                        <td scope="row">{{'category.category_wording'}}</td>
+                        <td scope="row">{{'team.team_wording'}}</td>
                     </tr>
                     {{/each}}
                 </tbody>
